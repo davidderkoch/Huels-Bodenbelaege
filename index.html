@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
   <style>
+    /* Original styles unchanged, adding only new styles */
     :root {
       --primary: #3a3a3a;
       --primary-light: #4a4a4a;
@@ -106,7 +107,7 @@
       margin-top: 2rem;
     }
 
-    .space-y-2 > * + * {
+ نمایندگان    .space-y-2 > * + * {
       margin-top: 0.5rem;
     }
 
@@ -215,6 +216,10 @@
 
     .z-10 {
       z-index: 10;
+    }
+
+    .z-20 {
+      z-index: 20;
     }
 
     .bg-white {
@@ -537,8 +542,23 @@
       }
     }
 
+    @keyframes slideDown {
+      0% {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
     .animate-bounce {
       animation: bounce 2s infinite;
+    }
+
+    .animate-slide-down {
+      animation: slideDown 1s ease-out forwards;
     }
 
     /* Responsive */
@@ -639,6 +659,36 @@
       margin-bottom: 3rem;
     }
 
+    .fixed-logo {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      width: 20rem;
+      height: 20rem;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius);
+      padding: 1rem;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .fixed-logo img {
+      width: 100%;
+      height: auto;
+    }
+
+    .slogan {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 3rem;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 2rem;
+    }
+
     .service-card {
       background-color: rgba(255, 255, 255, 0.9);
       padding: 2rem;
@@ -660,6 +710,31 @@
       object-fit: cover;
     }
 
+    /* Responsive logo and slogan */
+    @media (max-width: 768px) {
+      .fixed-logo {
+        width: 12rem;
+        height: 12rem;
+        top: 1rem;
+        left: 1rem;
+      }
+
+      .slogan {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .fixed-logo {
+        width: 8rem;
+        height: 8rem;
+      }
+
+      .slogan {
+        font-size: 1.5rem;
+      }
+    }
+
     /* Hide scrollbar for Chrome, Safari and Opera */
     html::-webkit-scrollbar {
       display: none;
@@ -673,17 +748,18 @@
   </style>
 </head>
 <body>
+  <!-- Fixed Logo -->
+  <div class="fixed-logo animate-slide-down">
+    <img src="Huellogo.png" alt="Huellogo">
+  </div>
+
   <div id="fullpage">
     <!-- Section 1: Homepage -->
     <div class="section">
       <div class="section-content">
-        <div class="logo-container">
-          <img src="Huellogo.png" alt="Huellogo">
-        </div>
-        <h1 class="text-4xl md:text-5xl font-light mb-6 text-center">Hüls-Bodenbelege</h1>
+        <h2 class="slogan">Qualität, die man fühlt</h2>
         <p class="text-xl md:text-2xl text-secondary max-w-2xl text-center font-light">
-          Ihr Spezialist für hochwertige Bodenbeläge seit 1985. Wir bieten Qualität, Expertise und
-          maßgeschneiderte Lösungen für Ihr Zuhause.
+          Bei Hüls-Bodenbeläge steht Ihre Zufriedenheit an erster Stelle. Mit über 35 Jahren Erfahrung verwirklichen wir Ihren Traum vom perfekten Bodenbelag – von der fachkundigen Beratung bis zur professionellen Umsetzung. Auch nach Projektabschluss sind wir stets für Sie da.
         </p>
         <div class="absolute" style="bottom: 2.5rem;">
           <div class="animate-bounce">
@@ -936,7 +1012,7 @@
           <div class="flex flex-col md:flex-row justify-between items-center">
             <div class="mb-4 md:mb-0">
               <p class="text-sm text-light">
-                &copy; <span id="currentYear"></span> Hüls-Bodenbelege. Alle Rechte vorbehalten.
+                © <span id="currentYear"></span> Hüls-Bodenbelege. Alle Rechte vorbehalten.
               </p>
             </div>
             <div class="flex space-x-6">
@@ -1102,9 +1178,9 @@
       scrollingSpeed: 1000,
       navigation: true,
       navigationPosition: 'right',
-      navigationTooltips: ['Start', 'Parkettböden', 'Laminatböden', 'Vinylböden', 'Kontakt', 'Kaufen', 'Standort', 'Impressum'],
+      navigationTooltips: ['', '', '', '', '', '', '', ''],
       showActiveTooltip: true,
-      anchors: ['home', 'parkett', 'laminat', 'vinyl', 'kontakt', 'kaufen', 'standort', 'footer'],
+      anchors: ['', '', '', '', '', '', '', ''],
       css3: true
     });
 
