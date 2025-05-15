@@ -3,264 +3,1309 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hüls-Bodenbelege</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Fullpage.js CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css" integrity="sha512-hWGLsMB2ebQ5CRmAEBsA4Q4LqE7Yp6uT3n1H4I9Z36snOHPk3dWNOyVqHGA1+SKp4BI2S9b3oK1uUajaLal6unw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js" integrity="sha512-vQM+YqecYgGum0PIhmcn42J2T6+ZAoP3ns6uAvQ5I2qW2F/Xz3a2tE3aYGldh+Cu7z8Rhf4u/9B0XkpQfsL6wSw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <!-- SimpleCart.js CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/simplecartjs/3.0.5/simpleCart.min.js"></script>
-  <!-- Google Fonts: Inter -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <title>Hüls-Bodenbelege - Ihr Spezialist für hochwertige Bodenbeläge</title>
+  <meta name="description" content="Hochwertige Bodenbeläge, Parkettböden, Laminat und Vinylböden. Beratung, Verkauf und professionelle Verlegung aus einer Hand.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
   <style>
+    :root {
+      --primary: #3a3a3a;
+      --primary-light: #4a4a4a;
+      --primary-dark: #2a2a2a;
+      --secondary: #f5f5f5;
+      --text-primary: #1a1a1a;
+      --text-secondary: #4a4a4a;
+      --text-light: #6a6a6a;
+      --white: #ffffff;
+      --error: #e53e3e;
+      --success: #38a169;
+      --border: #e2e8f0;
+      --radius: 0.5rem;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #ffffff;
-      color: #1a202c;
+      color: var(--text-primary);
+      line-height: 1.5;
     }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 300;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      color: var(--primary-dark);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .mb-2 {
+      margin-bottom: 0.5rem;
+    }
+
+    .mb-4 {
+      margin-bottom: 1rem;
+    }
+
+    .mb-6 {
+      margin-bottom: 1.5rem;
+    }
+
+    .mb-8 {
+      margin-bottom: 2rem;
+    }
+
+    .mt-4 {
+      margin-top: 1rem;
+    }
+
+    .mt-8 {
+      margin-top: 2rem;
+    }
+
+    .space-y-2 > * + * {
+      margin-top: 0.5rem;
+    }
+
+    .space-y-4 > * + * {
+      margin-top: 1rem;
+    }
+
+    .space-y-6 > * + * {
+      margin-top: 1.5rem;
+    }
+
+    .space-y-8 > * + * {
+      margin-top: 2rem;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .flex-col {
+      flex-direction: column;
+    }
+
+    .items-center {
+      align-items: center;
+    }
+
+    .items-start {
+      align-items: flex-start;
+    }
+
+    .justify-center {
+      justify-content: center;
+    }
+
+    .justify-between {
+      justify-content: space-between;
+    }
+
+    .grid {
+      display: grid;
+    }
+
+    .grid-cols-1 {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    .gap-4 {
+      gap: 1rem;
+    }
+
+    .gap-6 {
+      gap: 1.5rem;
+    }
+
+    .w-full {
+      width: 100%;
+    }
+
+    .max-w-xs {
+      max-width: 20rem;
+    }
+
+    .max-w-sm {
+      max-width: 24rem;
+    }
+
+    .max-w-md {
+      max-width: 28rem;
+    }
+
+    .max-w-lg {
+      max-width: 32rem;
+    }
+
+    .max-w-xl {
+      max-width: 36rem;
+    }
+
+    .max-w-2xl {
+      max-width: 42rem;
+    }
+
+    .max-w-3xl {
+      max-width: 48rem;
+    }
+
+    .relative {
+      position: relative;
+    }
+
+    .absolute {
+      position: absolute;
+    }
+
+    .inset-0 {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    .z-0 {
+      z-index: 0;
+    }
+
+    .z-10 {
+      z-index: 10;
+    }
+
+    .bg-white {
+      background-color: var(--white);
+    }
+
+    .bg-secondary {
+      background-color: var(--secondary);
+    }
+
+    .bg-success {
+      background-color: #f0fff4;
+    }
+
+    .bg-error {
+      background-color: #fff5f5;
+    }
+
+    .text-white {
+      color: var(--white);
+    }
+
+    .text-primary {
+      color: var(--primary);
+    }
+
+    .text-secondary {
+      color: var(--text-secondary);
+    }
+
+    .text-light {
+      color: var(--text-light);
+    }
+
+    .text-success {
+      color: var(--success);
+    }
+
+    .text-error {
+      color: var(--error);
+    }
+
+    .text-sm {
+      font-size: 0.875rem;
+    }
+
+    .text-lg {
+      font-size: 1.125rem;
+    }
+
+    .text-xl {
+      font-size: 1.25rem;
+    }
+
+    .text-2xl {
+      font-size: 1.5rem;
+    }
+
+    .text-3xl {
+      font-size: 1.875rem;
+    }
+
+    .text-4xl {
+      font-size: 2.25rem;
+    }
+
+    .font-light {
+      font-weight: 300;
+    }
+
+    .font-normal {
+      font-weight: 400;
+    }
+
+    .font-medium {
+      font-weight: 500;
+    }
+
+    .font-semibold {
+      font-weight: 600;
+    }
+
+    .font-bold {
+      font-weight: 700;
+    }
+
+    .p-2 {
+      padding: 0.5rem;
+    }
+
+    .p-4 {
+      padding: 1rem;
+    }
+
+    .p-6 {
+      padding: 1.5rem;
+    }
+
+    .p-8 {
+      padding: 2rem;
+    }
+
+    .px-4 {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .py-2 {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .py-4 {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    .py-6 {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+
+    .py-8 {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .rounded {
+      border-radius: var(--radius);
+    }
+
+    .rounded-lg {
+      border-radius: calc(var(--radius) * 1.5);
+    }
+
+    .border {
+      border: 1px solid var(--border);
+    }
+
+    .border-success {
+      border-color: #c6f6d5;
+    }
+
+    .border-error {
+      border-color: #fed7d7;
+    }
+
+    .shadow {
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    }
+
+    .shadow-md {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .shadow-lg {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .object-cover {
+      object-fit: cover;
+    }
+
+    .object-contain {
+      object-fit: contain;
+    }
+
+    /* Form Elements */
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="number"]:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      margin-top: 0.25rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .btn-block {
+      display: block;
+      width: 100%;
+    }
+
+    /* Card */
+    .card {
+      background-color: var(--white);
+      border-radius: var(--radius);
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+    }
+
+    .card-body {
+      padding: 1.5rem;
+    }
+
+    /* Alert */
+    .alert {
+      padding: 1rem;
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .alert-success {
+      background-color: #f0fff4;
+      border: 1px solid #c6f6d5;
+      color: var(--success);
+    }
+
+    .alert-error {
+      background-color: #fff5f5;
+      border: 1px solid #fed7d7;
+      color: var(--error);
+    }
+
+    .alert-icon {
+      margin-right: 0.5rem;
+    }
+
+    /* Radio Group */
+    .radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .radio-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--secondary);
+      padding: 1.5rem 0;
+    }
+
+    /* Animation */
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .animate-bounce {
+      animation: bounce 2s infinite;
+    }
+
+    /* Responsive */
+    @media (min-width: 640px) {
+      .sm\:flex-row {
+        flex-direction: row;
+      }
+
+      .sm\:space-y-0 {
+        margin-top: 0 !important;
+      }
+
+      .sm\:space-x-4 > * + * {
+        margin-left: 1rem;
+      }
+
+      .sm\:w-auto {
+        width: auto;
+      }
+
+      .sm\:w-40 {
+        width: 10rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .md\:flex-row {
+        flex-direction: row;
+      }
+
+      .md\:grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .md\:mb-0 {
+        margin-bottom: 0;
+      }
+
+      .md\:text-5xl {
+        font-size: 3rem;
+      }
+
+      .md\:text-2xl {
+        font-size: 1.5rem;
+      }
+
+      .md\:text-4xl {
+        font-size: 2.25rem;
+      }
+
+      .md\:p-12 {
+        padding: 3rem;
+      }
+
+      .md\:px-8 {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+    }
+
+    /* Fullpage.js custom styles */
+    #fp-nav ul li a span,
+    .fp-slidesNav ul li a span {
+      background: var(--primary-light) !important;
+    }
+
+    .fp-tooltip {
+      color: var(--primary-light) !important;
+    }
+
+    /* Custom styles for sections */
     .section {
+      text-align: center;
+    }
+
+    .section-content {
+      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      text-align: center;
-      padding: 2rem;
-      min-height: 100vh;
-      position: relative;
+      padding: 0 1rem;
     }
-    .bg-image {
-      background-size: cover;
-      background-position: center;
+
+    .bg-overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      opacity: 0.5;
-      z-index: -1;
+      background-color: rgba(0, 0, 0, 0.4);
     }
-    .logo {
-      max-width: 200px;
-      margin-bottom: 2rem;
+
+    .logo-container {
+      width: 16rem;
+      height: 16rem;
+      position: relative;
+      margin-bottom: 3rem;
     }
-    .form-container {
-      background: rgba(255, 255, 255, 0.9);
+
+    .service-card {
+      background-color: rgba(255, 255, 255, 0.9);
       padding: 2rem;
-      border-radius: 0.5rem;
-      max-width: 500px;
+      border-radius: var(--radius);
+      max-width: 42rem;
+    }
+
+    .product-image {
+      height: 10rem;
       width: 100%;
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
     }
-    .cart-container {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 2rem;
-      border-radius: 0.5rem;
-      max-width: 600px;
+
+    .product-image img {
       width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-    .footer {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      padding: 1rem;
-      background: #1a202c;
-      color: #ffffff;
-      text-align: center;
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    html::-webkit-scrollbar {
+      display: none;
     }
-    .footer a {
-      color: #f7fafc;
-      text-decoration: underline;
-    }
-    .color-option {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: inline-block;
-      margin: 0.5rem;
-      cursor: pointer;
-      border: 2px solid transparent;
-    }
-    .color-option.selected {
-      border-color: #1a202c;
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    html {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
     }
   </style>
 </head>
 <body>
   <div id="fullpage">
-    <!-- Section 1: Startseite -->
+    <!-- Section 1: Homepage -->
     <div class="section">
-      <img src="https://via.placeholder.com/200x100.png?text=Logo" alt="Hüls-Bodenbelege Logo" class="logo">
-      <div class="max-w-2xl mx-auto mt-8">
-        <h1 class="text-4xl font-bold text-gray-800">Hüls-Bodenbelege</h1>
-        <p class="mt-4 text-lg text-gray-600">
-          Seit über 20 Jahren sind wir Ihr Experte für hochwertige Bodenbeläge. Mit Leidenschaft und Präzision schaffen wir langlebige und ästhetische Lösungen für Ihr Zuhause.
+      <div class="section-content">
+        <div class="logo-container">
+          <img src="https://placeholder.svg?height=200&width=200" alt="Hüls-Bodenbelege Logo">
+        </div>
+        <h1 class="text-4xl md:text-5xl font-light mb-6 text-center">Hüls-Bodenbelege</h1>
+        <p class="text-xl md:text-2xl text-secondary max-w-2xl text-center font-light">
+          Ihr Spezialist für hochwertige Bodenbeläge seit 1985. Wir bieten Qualität, Expertise und
+          maßgeschneiderte Lösungen für Ihr Zuhause.
         </p>
-      </div>
-    </div>
-
-    <!-- Section 2: Service - Parkett -->
-    <div class="section">
-      <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
-      <div class="max-w-2xl mx-auto">
-        <h2 class="text-3xl font-semibold text-gray-800">Parkett</h2>
-        <p class="mt-4 text-lg text-gray-600">
-          Hochwertiges Parkett für ein natürliches und elegantes Wohngefühl. Langlebig, nachhaltig und individuell anpassbar. Perfekt für jeden Raum.
-        </p>
-      </div>
-    </div>
-
-    <!-- Section 3: Service - Laminat -->
-    <div class="section">
-      <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
-      <div class="max-w-2xl mx-auto">
-        <h2 class="text-3xl font-semibold text-gray-800">Laminat</h2>
-        <p class="mt-4 text-lg text-gray-600">
-          Robustes und pflegeleichtes Laminat in zahlreichen Designs. Ideal für stark frequentierte Bereiche. Wirtschaftlich und stilvoll.
-        </p>
-      </div>
-    </div>
-
-    <!-- Section 4: Service - Vinyl -->
-    <div class="section">
-      <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1600585153490-76fb20a0f2b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
-      <div class="max-w-2xl mx-auto">
-        <h2 class="text-3xl font-semibold text-gray-800">Vinyl</h2>
-        <p class="mt-4 text-lg text-gray-600">
-          Moderner Vinylboden mit hoher Strapazierfähigkeit. Wasserfest und vielseitig einsetzbar. Komfort und Design in einem.
-        </p>
-      </div>
-    </div>
-
-    <!-- Section 5: Kontakt -->
-    <div class="section">
-      <div class="form-container">
-        <h2 class="text-3xl font-semibold text-gray-800 mb-6">Kontaktieren Sie uns</h2>
-        <form action="https://formsubmit.co/your-email@example.com" method="POST" class="space-y-4">
-          <input type="text" name="name" placeholder="Name" required class="w-full p-2 border border-gray-300 rounded">
-          <input type="email" name="email" placeholder="E-Mail" required class="w-full p-2 border border-gray-300 rounded">
-          <textarea name="message" placeholder="Nachricht" required class="w-full p-2 border border-gray-300 rounded h-32"></textarea>
-          <label class="flex items-center">
-            <input type="checkbox" name="dsgvo" required class="mr-2">
-            <span class="text-sm text-gray-600">Ich stimme der Verarbeitung meiner Daten gemäß der <a href="#datenschutz" class="underline">Datenschutzerklärung</a> zu.</span>
-          </label>
-          <button type="submit" class="w-full bg-gray-800 text-white p-2 rounded hover:bg-gray-700">Absenden</button>
-        </form>
-      </div>
-    </div>
-
-    <!-- Section 6: Kaufoption -->
-    <div class="section">
-      <div class="cart-container">
-        <h2 class="text-3xl font-semibold text-gray-800 mb-6">Ihr Bodenbelag</h2>
-        <div class="simpleCart_shelfItem space-y-4">
-          <div>
-            <label class="block text-lg font-medium text-gray-700">Option wählen</label>
-            <select id="purchase-option" class="item_option w-full p-2 border border-gray-300 rounded">
-              <option value="probe">Probe anfordern</option>
-              <option value="kauf">Direkt kaufen</option>
-            </select>
+        <div class="absolute" style="bottom: 2.5rem;">
+          <div class="animate-bounce">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-secondary">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
           </div>
-          <div>
-            <label class="block text-lg font-medium text-gray-700">Parkettfarbe</label>
-            <div id="color-options" class="flex justify-center">
-              <div class="color-option item_color" style="background-color: #DEB887;" data-color="Eiche Natur" data-price-probe="10" data-price-kauf="100"></div>
-              <div class="color-option item_color" style="background-color: #8B5A2B;" data-color="Eiche Dunkel" data-price-probe="12" data-price-kauf="120"></div>
-              <div class="color-option item_color" style="background-color: #F5F5DC;" data-color="Eiche Hell" data-price-probe="11" data-price-kauf="110"></div>
-            </div>
-          </div>
-          <div>
-            <span class="item_price text-lg font-semibold text-gray-800"></span>
-          </div>
-          <button class="simpleCart_add w-full bg-gray-800 text-white p-2 rounded hover:bg-gray-700" onclick="addToCart()">Zum Warenkorb</button>
-          <div class="simpleCart_items"></div>
-          <button class="simpleCart_checkout w-full bg-gray-800 text-white p-2 rounded hover:bg-gray-700 mt-4">Kauf abschließen</button>
         </div>
       </div>
     </div>
 
-    <!-- Section 7: Kontaktinformationen -->
+    <!-- Section 2: Parkettböden -->
     <div class="section">
-      <div class="max-w-2xl mx-auto">
-        <h2 class="text-3xl font-semibold text-gray-800">Kontaktinformationen</h2>
-        <p class="mt-4 text-lg text-gray-600">
-          Hüls-Bodenbelege<br>
-          Musterstraße 123, 12345 Musterstadt<br>
-          Telefon: +49 123 456789<br>
-          E-Mail: info@hüls-bodenbelege.de<br>
-          Öffnungszeiten: Mo–Fr 9:00–17:00
-        </p>
+      <div class="relative h-full w-full">
+        <div class="absolute inset-0 z-0">
+          <img src="https://placeholder.svg?height=800&width=1200" alt="Parkettböden" style="width: 100%; height: 100%; object-fit: cover;">
+          <div class="bg-overlay"></div>
+        </div>
+        <div class="relative z-10 flex flex-col items-center justify-center h-full px-4 md:px-8">
+          <div class="service-card">
+            <h2 class="text-3xl md:text-4xl font-light mb-4">Parkettböden</h2>
+            <p class="text-lg md:text-xl text-secondary">
+              Hochwertige Parkettböden in verschiedenen Holzarten und Designs. Wir bieten Beratung, Verkauf und professionelle Verlegung aus einer Hand.
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="footer">
-        <a href="#impressum">Impressum</a> | <a href="#datenschutz">Datenschutz</a>
+    </div>
+
+    <!-- Section 3: Laminatböden -->
+    <div class="section">
+      <div class="relative h-full w-full">
+        <div class="absolute inset-0 z-0">
+          <img src="https://placeholder.svg?height=800&width=1200" alt="Laminatböden" style="width: 100%; height: 100%; object-fit: cover;">
+          <div class="bg-overlay"></div>
+        </div>
+        <div class="relative z-10 flex flex-col items-center justify-center h-full px-4 md:px-8">
+          <div class="service-card">
+            <h2 class="text-3xl md:text-4xl font-light mb-4">Laminatböden</h2>
+            <p class="text-lg md:text-xl text-secondary">
+              Robuste und pflegeleichte Laminatböden in vielen Designs. Eine kostengünstige Alternative mit hervorragender Optik und langer Lebensdauer.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 4: Vinylböden -->
+    <div class="section">
+      <div class="relative h-full w-full">
+        <div class="absolute inset-0 z-0">
+          <img src="https://placeholder.svg?height=800&width=1200" alt="Vinylböden" style="width: 100%; height: 100%; object-fit: cover;">
+          <div class="bg-overlay"></div>
+        </div>
+        <div class="relative z-10 flex flex-col items-center justify-center h-full px-4 md:px-8">
+          <div class="service-card">
+            <h2 class="text-3xl md:text-4xl font-light mb-4">Vinylböden</h2>
+            <p class="text-lg md:text-xl text-secondary">
+              Moderne Vinylböden vereinen Ästhetik mit Funktionalität. Wasserfest, strapazierfähig und in zahlreichen Designs erhältlich.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 5: Contact Form -->
+    <div class="section">
+      <div class="section-content">
+        <div class="w-full max-w-2xl">
+          <h2 class="text-3xl md:text-4xl font-light mb-8 text-center">Kontaktieren Sie uns</h2>
+          <form id="contactForm" class="space-y-6">
+            <div id="formSuccess" class="alert alert-success" style="display: none;">
+              <span class="alert-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </span>
+              <span>Vielen Dank für Ihre Nachricht! Wir werden uns in Kürze bei Ihnen melden.</span>
+            </div>
+
+            <div id="formError" class="alert alert-error" style="display: none;">
+              <span class="alert-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="12"></line>
+                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+              </span>
+              <span>Es gab ein Problem beim Senden Ihrer Nachricht. Bitte versuchen Sie es später erneut.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email">E-Mail</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Nachricht</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+
+            <div class="checkbox-group">
+              <input type="checkbox" id="gdprConsent" name="gdprConsent" required>
+              <label for="gdprConsent" class="text-sm font-normal">
+                Ich stimme der Verarbeitung meiner Daten gemäß der Datenschutzerklärung zu.
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-block" id="submitButton">Nachricht senden</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 6: Purchase Options -->
+    <div class="section">
+      <div class="section-content">
+        <div class="w-full max-w-3xl">
+          <h2 class="text-3xl md:text-4xl font-light mb-8 text-center">Unsere Produkte</h2>
+          <div id="purchaseSection" class="space-y-8">
+            <form id="purchaseForm" class="space-y-8">
+              <div class="space-y-4">
+                <h3 class="text-xl font-medium">Bestellart wählen</h3>
+                <div class="radio-group sm:flex-row sm:space-y-0 sm:space-x-4">
+                  <div class="radio-item">
+                    <input type="radio" name="purchaseType" id="sample" value="sample" checked>
+                    <label for="sample">Probe anfordern</label>
+                  </div>
+                  <div class="radio-item">
+                    <input type="radio" name="purchaseType" id="buy" value="buy">
+                    <label for="buy">Direkt kaufen</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="space-y-4">
+                <h3 class="text-xl font-medium">Parkettfarbe auswählen</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <select id="productSelect" class="w-full">
+                      <option value="eiche-natur">Eiche Natur</option>
+                      <option value="eiche-rustikal">Eiche Rustikal</option>
+                      <option value="nussbaum">Nussbaum</option>
+                      <option value="ahorn">Ahorn</option>
+                      <option value="kirsche">Kirsche</option>
+                    </select>
+                  </div>
+
+                  <div class="product-image">
+                    <img id="productImage" src="https://placeholder.svg?height=400&width=600" alt="Eiche Natur">
+                  </div>
+                </div>
+              </div>
+
+              <div id="quantitySection" class="space-y-4" style="display: none;">
+                <h3 class="text-xl font-medium">Menge (m²)</h3>
+                <select id="quantitySelect" class="w-full sm:w-40">
+                  <option value="1">1 m²</option>
+                  <option value="5">5 m²</option>
+                  <option value="10">10 m²</option>
+                  <option value="15">15 m²</option>
+                  <option value="20">20 m²</option>
+                  <option value="25">25 m²</option>
+                  <option value="30">30 m²</option>
+                  <option value="40">40 m²</option>
+                  <option value="50">50 m²</option>
+                </select>
+              </div>
+
+              <div class="card">
+                <div class="card-body">
+                  <div class="flex justify-between items-center">
+                    <div>
+                      <h3 class="text-lg font-medium" id="priceLabel">Musterpreis</h3>
+                      <p class="text-light text-sm" id="productDetails">Eiche Natur</p>
+                    </div>
+                    <div class="text-2xl font-bold" id="priceDisplay">5,00 €</div>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-block" id="purchaseButton">Muster bestellen</button>
+            </form>
+
+            <div id="orderSuccess" class="card" style="display: none;">
+              <div class="card-body">
+                <div class="text-center space-y-4">
+                  <h3 class="text-2xl font-medium text-success" id="thankYouMessage">
+                    Vielen Dank für Ihre Musterbestellung!
+                  </h3>
+                  <p id="orderConfirmation">
+                    Wir senden Ihnen in Kürze ein Muster zu.
+                  </p>
+                  <button class="btn btn-outline" id="newOrderButton">Neue Bestellung</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 7: Contact Information -->
+    <div class="section">
+      <div class="section-content">
+        <div class="w-full max-w-2xl">
+          <h2 class="text-3xl md:text-4xl font-light mb-8 text-center">Unser Standort</h2>
+          <div class="bg-secondary p-8 rounded-lg">
+            <div class="mb-6">
+              <h3 class="text-xl font-medium mb-2">Adresse</h3>
+              <p class="text-secondary">
+                Musterstraße 123
+                <br>
+                12345 Musterstadt
+              </p>
+            </div>
+            <div class="mb-6">
+              <h3 class="text-xl font-medium mb-2">Kontakt</h3>
+              <p class="text-secondary">
+                Telefon: +49 123 456789
+                <br>
+                E-Mail: info@huels-bodenbelege.de
+              </p>
+            </div>
+            <div>
+              <h3 class="text-xl font-medium mb-2">Öffnungszeiten</h3>
+              <p class="text-secondary">
+                Mo - Fr: 9:00 - 18:00 Uhr
+                <br>
+                Sa: 10:00 - 14:00 Uhr
+                <br>
+                So: Geschlossen
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="section fp-auto-height">
+      <footer class="footer">
+        <div class="container">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+              <p class="text-sm text-light">
+                &copy; <span id="currentYear"></span> Hüls-Bodenbelege. Alle Rechte vorbehalten.
+              </p>
+            </div>
+            <div class="flex space-x-6">
+              <a href="#" class="text-sm text-light hover:text-primary" onclick="showImpressum(); return false;">
+                Impressum
+              </a>
+              <a href="#" class="text-sm text-light hover:text-primary" onclick="showDatenschutz(); return false;">
+                Datenschutz
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Impressum Modal -->
+  <div id="impressumModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" style="display: none;">
+    <div class="bg-white rounded-lg shadow-lg max-w-2xl w-full max-h-screen overflow-y-auto">
+      <div class="p-6">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-2xl font-semibold">Impressum</h2>
+          <button onclick="hideModal('impressumModal')" class="text-gray-500 hover:text-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="space-y-6">
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Angaben gemäß § 5 TMG</h3>
+            <p>
+              Hüls-Bodenbelege GmbH
+              <br>
+              Musterstraße 123
+              <br>
+              12345 Musterstadt
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Kontakt</h3>
+            <p>
+              Telefon: +49 123 456789
+              <br>
+              E-Mail: info@huels-bodenbelege.de
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Registereintrag</h3>
+            <p>
+              Eintragung im Handelsregister.
+              <br>
+              Registergericht: Amtsgericht Musterstadt
+              <br>
+              Registernummer: HRB 12345
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Umsatzsteuer-ID</h3>
+            <p>
+              Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:
+              <br>
+              DE123456789
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h3>
+            <p>
+              Max Mustermann
+              <br>
+              Musterstraße 123
+              <br>
+              12345 Musterstadt
+            </p>
+          </div>
+        </div>
+        
+        <div class="mt-6">
+          <button onclick="hideModal('impressumModal')" class="btn">
+            Schließen
+          </button>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Fullpage.js Initialization -->
+  <!-- Datenschutz Modal -->
+  <div id="datenschutzModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" style="display: none;">
+    <div class="bg-white rounded-lg shadow-lg max-w-2xl w-full max-h-screen overflow-y-auto">
+      <div class="p-6">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-2xl font-semibold">Datenschutzerklärung</h2>
+          <button onclick="hideModal('datenschutzModal')" class="text-gray-500 hover:text-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="space-y-6">
+          <div>
+            <h3 class="text-xl font-semibold mb-2">1. Datenschutz auf einen Blick</h3>
+            <h4 class="text-lg font-medium mb-1">Allgemeine Hinweise</h4>
+            <p>
+              Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten
+              passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich
+              identifiziert werden können.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-semibold mb-2">2. Allgemeine Hinweise und Pflichtinformationen</h3>
+            <h4 class="text-lg font-medium mb-1">Datenschutz</h4>
+            <p>
+              Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre
+              personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser
+              Datenschutzerklärung.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-semibold mb-2">3. Datenerfassung auf dieser Website</h3>
+            <h4 class="text-lg font-medium mb-1">Kontaktformular</h4>
+            <p>
+              Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular
+              inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von
+              Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-semibold mb-2">4. Bestellprozess</h3>
+            <p>
+              Wenn Sie über unsere Website Produkte bestellen oder Muster anfordern, werden die von Ihnen angegebenen
+              Daten zur Bearbeitung Ihrer Bestellung verwendet. Diese Daten werden nur für den Zweck der Bestellabwicklung
+              verwendet und nicht an Dritte weitergegeben, außer wenn dies für die Bestellabwicklung notwendig ist.
+            </p>
+          </div>
+        </div>
+        
+        <div class="mt-6">
+          <button onclick="hideModal('datenschutzModal')" class="btn">
+            Schließen
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js"></script>
   <script>
+    // Initialize fullpage.js
     new fullpage('#fullpage', {
-      autoScrolling: true,
-      scrollHorizontally: false,
-      navigation: false,
-      fitToSection: true,
-      animateAnchor: true,
-      easing: 'easeInOutCubic',
-    });
-  </script>
-
-  <!-- SimpleCart.js Configuration -->
-  <script>
-    simpleCart({
-      checkout: {
-        type: "SendForm",
-        url: "https://formsubmit.co/your-email@example.com",
-        method: "POST",
-        extra_data: {
-          _subject: "Neue Bestellung von Hüls-Bodenbelege"
-        }
-      },
-      currency: "EUR",
-      cartStyle: "div",
+      licenseKey: 'YOUR_KEY_HERE', // Replace with your Fullpage.js license key or use the open source version
+      scrollingSpeed: 1000,
+      navigation: true,
+      navigationPosition: 'right',
+      navigationTooltips: ['Start', 'Parkettböden', 'Laminatböden', 'Vinylböden', 'Kontakt', 'Kaufen', 'Standort', 'Impressum'],
+      showActiveTooltip: true,
+      anchors: ['home', 'parkett', 'laminat', 'vinyl', 'kontakt', 'kaufen', 'standort', 'footer'],
+      css3: true
     });
 
-    let selectedColor = null;
-    const colorOptions = document.querySelectorAll('.color-option');
-    const priceDisplay = document.querySelector('.item_price');
-    const purchaseOption = document.getElementById('purchase-option');
+    // Set current year in footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-    colorOptions.forEach(option => {
-      option.addEventListener('click', () => {
-        colorOptions.forEach(opt => opt.classList.remove('selected'));
-        option.classList.add('selected');
-        selectedColor = option.dataset.color;
-        updatePrice();
-      });
-    });
+    // Contact Form Handling
+    const contactForm = document.getElementById('contactForm');
+    const formSuccess = document.getElementById('formSuccess');
+    const formError = document.getElementById('formError');
+    const submitButton = document.getElementById('submitButton');
 
-    purchaseOption.addEventListener('change', updatePrice);
-
-    function updatePrice() {
-      if (!selectedColor) return;
-      const selectedOption = purchaseOption.value;
-      const selectedColorOption = Array.from(colorOptions).find(opt => opt.dataset.color === selectedColor);
-      const price = selectedOption === 'probe' ? selectedColorOption.dataset.priceProbe : selectedColorOption.dataset.priceKauf;
-      priceDisplay.textContent = `Preis: ${price} €`;
-      simpleCart.each(item => simpleCart.remove(item.id));
-      simpleCart.add({
-        name: `Parkett ${selectedColor} (${selectedOption === 'probe' ? 'Probe' : 'Kauf'})`,
-        price: price,
-        color: selectedColor,
-        option: selectedOption
-      });
-    }
-
-    function addToCart() {
-      if (!selectedColor) {
-        alert('Bitte wählen Sie eine Farbe aus.');
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const gdprConsent = document.getElementById('gdprConsent');
+      if (!gdprConsent.checked) {
+        alert('Bitte stimmen Sie der Verarbeitung Ihrer Daten zu.');
         return;
       }
-      updatePrice();
+
+      submitButton.textContent = 'Wird gesendet...';
+      submitButton.disabled = true;
+
+      // Simulate form submission
+      setTimeout(() => {
+        // In a real application, you would use FormSubmit or another service here
+        const success = Math.random() > 0.1; // 90% success rate for demo
+        
+        if (success) {
+          formSuccess.style.display = 'flex';
+          contactForm.reset();
+        } else {
+          formError.style.display = 'flex';
+        }
+        
+        submitButton.textContent = 'Nachricht senden';
+        submitButton.disabled = false;
+        
+        // Hide alerts after 5 seconds
+        setTimeout(() => {
+          formSuccess.style.display = 'none';
+          formError.style.display = 'none';
+        }, 5000);
+      }, 1500);
+    });
+
+    // Purchase Section Handling
+    const products = [
+      { id: 'eiche-natur', name: 'Eiche Natur', price: 49.99, image: 'https://placeholder.svg?height=400&width=600' },
+      { id: 'eiche-rustikal', name: 'Eiche Rustikal', price: 54.99, image: 'https://placeholder.svg?height=400&width=600' },
+      { id: 'nussbaum', name: 'Nussbaum', price: 64.99, image: 'https://placeholder.svg?height=400&width=600' },
+      { id: 'ahorn', name: 'Ahorn', price: 59.99, image: 'https://placeholder.svg?height=400&width=600' },
+      { id: 'kirsche', name: 'Kirsche', price: 69.99, image: 'https://placeholder.svg?height=400&width=600' },
+    ];
+
+    const purchaseForm = document.getElementById('purchaseForm');
+    const orderSuccess = document.getElementById('orderSuccess');
+    const purchaseTypeRadios = document.querySelectorAll('input[name="purchaseType"]');
+    const productSelect = document.getElementById('productSelect');
+    const productImage = document.getElementById('productImage');
+    const quantitySection = document.getElementById('quantitySection');
+    const quantitySelect = document.getElementById('quantitySelect');
+    const priceLabel = document.getElementById('priceLabel');
+    const productDetails = document.getElementById('productDetails');
+    const priceDisplay = document.getElementById('priceDisplay');
+    const purchaseButton = document.getElementById('purchaseButton');
+    const thankYouMessage = document.getElementById('thankYouMessage');
+    const orderConfirmation = document.getElementById('orderConfirmation');
+    const newOrderButton = document.getElementById('newOrderButton');
+
+    // Initialize with default values
+    let purchaseType = 'sample';
+    let selectedProduct = products[0];
+    let quantity = 1;
+
+    // Update price display
+    function updatePriceDisplay() {
+      if (purchaseType === 'sample') {
+        priceLabel.textContent = 'Musterpreis';
+        productDetails.textContent = selectedProduct.name;
+        priceDisplay.textContent = '5,00 €';
+        purchaseButton.textContent = 'Muster bestellen';
+      } else {
+        const totalPrice = (selectedProduct.price * quantity).toFixed(2).replace('.', ',');
+        priceLabel.textContent = 'Gesamtpreis';
+        productDetails.textContent = `${selectedProduct.name} (${quantity} m²)`;
+        priceDisplay.textContent = `${totalPrice} €`;
+        purchaseButton.textContent = 'Jetzt kaufen';
+      }
     }
+
+    // Purchase type change handler
+    purchaseTypeRadios.forEach(radio => {
+      radio.addEventListener('change', function() {
+        purchaseType = this.value;
+        if (purchaseType === 'buy') {
+          quantitySection.style.display = 'block';
+        } else {
+          quantitySection.style.display = 'none';
+        }
+        updatePriceDisplay();
+      });
+    });
+
+    // Product select change handler
+    productSelect.addEventListener('change', function() {
+      selectedProduct = products.find(p => p.id === this.value);
+      productImage.src = selectedProduct.image;
+      productImage.alt = selectedProduct.name;
+      updatePriceDisplay();
+    });
+
+    // Quantity select change handler
+    quantitySelect.addEventListener('change', function() {
+      quantity = parseInt(this.value);
+      updatePriceDisplay();
+    });
+
+    // Purchase form submit handler
+    purchaseForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Simulate order processing
+      purchaseButton.textContent = purchaseType === 'sample' ? 'Muster wird bestellt...' : 'Bestellung wird verarbeitet...';
+      purchaseButton.disabled = true;
+      
+      setTimeout(() => {
+        purchaseForm.style.display = 'none';
+        orderSuccess.style.display = 'block';
+        
+        if (purchaseType === 'sample') {
+          thankYouMessage.textContent = 'Vielen Dank für Ihre Musterbestellung!';
+          orderConfirmation.textContent = 'Wir senden Ihnen in Kürze ein Muster zu.';
+        } else {
+          thankYouMessage.textContent = 'Vielen Dank für Ihre Bestellung!';
+          orderConfirmation.textContent = 'Wir werden uns in Kürze mit Ihnen in Verbindung setzen, um die Zahlung und Lieferung zu besprechen.';
+        }
+      }, 1500);
+    });
+
+    // New order button handler
+    newOrderButton.addEventListener('click', function() {
+      orderSuccess.style.display = 'none';
+      purchaseForm.style.display = 'block';
+      purchaseForm.reset();
+      
+      // Reset to defaults
+      purchaseType = 'sample';
+      document.getElementById('sample').checked = true;
+      productSelect.value = 'eiche-natur';
+      selectedProduct = products[0];
+      productImage.src = selectedProduct.image;
+      productImage.alt = selectedProduct.name;
+      quantitySelect.value = '1';
+      quantity = 1;
+      quantitySection.style.display = 'none';
+      
+      purchaseButton.textContent = 'Muster bestellen';
+      purchaseButton.disabled = false;
+      
+      updatePriceDisplay();
+    });
+
+    // Modal functions
+    function showImpressum() {
+      document.getElementById('impressumModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function showDatenschutz() {
+      document.getElementById('datenschutzModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function hideModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    // Close modals when clicking outside
+    window.addEventListener('click', function(e) {
+      const impressumModal = document.getElementById('impressumModal');
+      const datenschutzModal = document.getElementById('datenschutzModal');
+      
+      if (e.target === impressumModal) {
+        hideModal('impressumModal');
+      }
+      
+      if (e.target === datenschutzModal) {
+        hideModal('datenschutzModal');
+      }
+    });
+
+    // Close modals with Escape key
+    window.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        hideModal('impressumModal');
+        hideModal('datenschutzModal');
+      }
+    });
   </script>
 </body>
 </html>
