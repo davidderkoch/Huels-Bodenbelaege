@@ -560,6 +560,15 @@
       }
     }
 
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+    }
+
     .animate-bounce {
       animation: bounce 2s infinite;
     }
@@ -672,17 +681,16 @@
 
     .fixed-logo {
       position: fixed;
-      top: 2rem;
-      left: 2rem;
+      top: 0.5rem;
+      left: 0.5rem;
       width: 20rem;
-      height: 20rem;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: var(--radius);
-      padding: 1rem;
+      height: auto;
+      background: transparent;
+      padding: 0;
       z-index: 20;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-start;
+      justify-content: flex-start;
     }
 
     .fixed-logo img {
@@ -725,10 +733,23 @@
     }
 
     .stat-item h3 {
-      font-size: 2.5rem;
+      font-size: 3.5rem;
       font-weight: 300;
       color: var(--primary);
       margin-bottom: 0.5rem;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .stat-item:nth-child(1) h3 {
+      animation-delay: 0s;
+    }
+
+    .stat-item:nth-child(2) h3 {
+      animation-delay: 0.3s;
+    }
+
+    .stat-item:nth-child(3) h3 {
+      animation-delay: 0.6s;
     }
 
     .stat-item p {
@@ -804,15 +825,15 @@
     <div class="section">
       <div class="section-content">
         <div class="stats-container">
-          <div class="stat-item animate-drop" style="animation-delay: 0.2s;">
+          <div class="stat-item">
             <h3>50+</h3>
             <p>Zufriedene Kunden</p>
           </div>
-          <div class="stat-item animate-drop" style="animation-delay: 0.4s;">
+          <div class="stat-item">
             <h3>200+</h3>
             <p>Abgeschlossene Projekte</p>
           </div>
-          <div class="stat-item animate-drop" style="animation-delay: 0.6s;">
+          <div class="stat-item">
             <h3>7+</h3>
             <p>Jahre Erfahrung</p>
           </div>
@@ -1112,8 +1133,7 @@
 
           <div>
             <h3 class="text-xl font-semibold mb-2">3. Datenerfassung auf dieser Website</h3>
-            <h4 class="text-lg font-medium mb-1">Kontaktformular</h4>
-            <p>
+            <h4 class="text-lg font-medium mb通信
               Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular
               inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von
               Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
@@ -1160,7 +1180,6 @@
     const submitButton = document.getElementById('submitButton');
     const gdprConsent = document.getElementById('gdprConsent');
 
-    // Enable/disable submit button based on GDPR checkbox
     gdprConsent.addEventListener('change', function() {
       submitButton.disabled = !this.checked;
     });
@@ -1182,7 +1201,7 @@
         if (success) {
           formSuccess.style.display = 'flex';
           contactForm.reset();
-          submitButton.disabled = true; // Reset button to disabled after form reset
+          submitButton.disabled = true;
         } else {
           formError.style.display = 'flex';
           submitButton.disabled = false;
