@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hüls-Bodenbelege</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fullpage.js CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css" integrity="sha512-hWGLsMB2ebQ5CRmAEBsA4Q4LqE7Yp6uT3n1H4I9Z36snOHPk3dWNOyVqHGA1+SKp4BI2S9b3oK1uUajaLal6unw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js" integrity="sha512-vQM+YqecYgGum0PIhmcn42J2T6+ZAoP3ns6uAvQ5I2qW2F/Xz3a2tE3aYGldh+Cu7z8Rhf4u/9B0XkpQfsL6wSw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- SimpleCart.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/simplecartjs/3.0.5/simpleCart.min.js"></script>
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #ffffff;
+      color: #1a202c;
+    }
+    .section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      min-height: 100vh;
+      position: relative;
+    }
+    .bg-image {
+      background-size: cover;
+      background-position: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.5;
+      z-index: -1;
+    }
+    .logo {
+      max-width: 200px;
+      margin-bottom: 2rem;
+    }
+    .form-container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 2rem;
+      border-radius: 0.5rem;
+      max-width: 500px;
+      width: 100%;
+    }
+    .cart-container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 2rem;
+      border-radius: 0.5rem;
+      max-width: 600px;
+      width: 100%;
+    }
+    .footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 1rem;
+      background: #1a202c;
+      color: #ffffff;
+      text-align: center;
+    }
+    .footer a {
+      color: #f7fafc;
+      text-decoration: underline;
+    }
+    .color-option {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: inline-block;
+      margin: 0.5rem;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+    .color-option.selected {
+      border-color: #1a202c;
+    }
+  </style>
+</head>
+<body>
+  <div id="fullpage">
+    <!-- Section 1: Startseite -->
+    <div class="section">
+      <img src="https://via.placeholder.com/200x100.png?text=Logo" alt="Hüls-Bodenbelege Logo" class="logo">
+      <div class="max-w-2xl mx-auto mt-8">
+        <h1 class="text-4xl font-bold text-gray-800">Hüls-Bodenbelege</h1>
+        <p class="mt-4 text-lg text-gray-600">
+          Seit über 20 Jahren sind wir Ihr Experte für hochwertige Bodenbeläge. Mit Leidenschaft und Präzision schaffen wir langlebige und ästhetische Lösungen für Ihr Zuhause.
+        </p>
+      </div>
+    </div>
+
+    <!-- Section 2: Service - Parkett -->
+    <div class="section">
+      <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+      <div class="max-w-2xl mx-auto">
+        <h2 class="text-3xl font-semibold text-gray-800">Parkett</h2>
+        <p class="mt-4 text-lg text-gray-600">
+          Hochwertiges Parkett für ein natürliches und elegantes Wohngefühl. Langlebig, nachhaltig und individuell anpassbar. Perfekt für jeden Raum.
+        </p>
+      </div>
+    </div>
+
+    <!-- Section 3: Service - Laminat -->
+    <div class="section">
+      <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+      <div class="max-w-2xl mx-auto">
+        <h2 class="text-3xl font-semibold text-gray-800">Laminat</h2>
+        <p class="mt-4 text-lg text-gray-600">
+          Robustes und pflegeleichtes Laminat in zahlreichen Designs. Ideal für stark frequentierte Bereiche. Wirtschaftlich und stilvoll.
+        </p>
+      </div>
+    </div>
+
+    <!-- Section 4: Service - Vinyl -->
+    <div class="section">
+      <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1600585153490-76fb20a0f2b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+      <div class="max-w-2xl mx-auto">
+        <h2 class="text-3xl font-semibold text-gray-800">Vinyl</h2>
+        <p class="mt-4 text-lg text-gray-600">
+          Moderner Vinylboden mit hoher Strapazierfähigkeit. Wasserfest und vielseitig einsetzbar. Komfort und Design in einem.
+        </p>
+      </div>
+    </div>
+
+    <!-- Section 5: Kontakt -->
+    <div class="section">
+      <div class="form-container">
+        <h2 class="text-3xl font-semibold text-gray-800 mb-6">Kontaktieren Sie uns</h2>
+        <form action="https://formsubmit.co/your-email@example.com" method="POST" class="space-y-4">
+          <input type="text" name="name" placeholder="Name" required class="w-full p-2 border border-gray-300 rounded">
+          <input type="email" name="email" placeholder="E-Mail" required class="w-full p-2 border border-gray-300 rounded">
+          <textarea name="message" placeholder="Nachricht" required class="w-full p-2 border border-gray-300 rounded h-32"></textarea>
+          <label class="flex items-center">
+            <input type="checkbox" name="dsgvo" required class="mr-2">
+            <span class="text-sm text-gray-600">Ich stimme der Verarbeitung meiner Daten gemäß der <a href="#datenschutz" class="underline">Datenschutzerklärung</a> zu.</span>
+          </label>
+          <button type="submit" class="w-full bg-gray-800 text-white p-2 rounded hover:bg-gray-700">Absenden</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Section 6: Kaufoption -->
+    <div class="section">
+      <div class="cart-container">
+        <h2 class="text-3xl font-semibold text-gray-800 mb-6">Ihr Bodenbelag</h2>
+        <div class="simpleCart_shelfItem space-y-4">
+          <div>
+            <label class="block text-lg font-medium text-gray-700">Option wählen</label>
+            <select id="purchase-option" class="item_option w-full p-2 border border-gray-300 rounded">
+              <option value="probe">Probe anfordern</option>
+              <option value="kauf">Direkt kaufen</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-lg font-medium text-gray-700">Parkettfarbe</label>
+            <div id="color-options" class="flex justify-center">
+              <div class="color-option item_color" style="background-color: #DEB887;" data-color="Eiche Natur" data-price-probe="10" data-price-kauf="100"></div>
+              <div class="color-option item_color" style="background-color: #8B5A2B;" data-color="Eiche Dunkel" data-price-probe="12" data-price-kauf="120"></div>
+              <div class="color-option item_color" style="background-color: #F5F5DC;" data-color="Eiche Hell" data-price-probe="11" data-price-kauf="110"></div>
+            </div>
+          </div>
+          <div>
+            <span class="item_price text-lg font-semibold text-gray-800"></span>
+          </div>
+          <button class="simpleCart_add w-full bg-gray-800 text-white p-2 rounded hover:bg-gray-700" onclick="addToCart()">Zum Warenkorb</button>
+          <div class="simpleCart_items"></div>
+          <button class="simpleCart_checkout w-full bg-gray-800 text-white p-2 rounded hover:bg-gray-700 mt-4">Kauf abschließen</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 7: Kontaktinformationen -->
+    <div class="section">
+      <div class="max-w-2xl mx-auto">
+        <h2 class="text-3xl font-semibold text-gray-800">Kontaktinformationen</h2>
+        <p class="mt-4 text-lg text-gray-600">
+          Hüls-Bodenbelege<br>
+          Musterstraße 123, 12345 Musterstadt<br>
+          Telefon: +49 123 456789<br>
+          E-Mail: info@hüls-bodenbelege.de<br>
+          Öffnungszeiten: Mo–Fr 9:00–17:00
+        </p>
+      </div>
+      <div class="footer">
+        <a href="#impressum">Impressum</a> | <a href="#datenschutz">Datenschutz</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fullpage.js Initialization -->
+  <script>
+    new fullpage('#fullpage', {
+      autoScrolling: true,
+      scrollHorizontally: false,
+      navigation: false,
+      fitToSection: true,
+      animateAnchor: true,
+      easing: 'easeInOutCubic',
+    });
+  </script>
+
+  <!-- SimpleCart.js Configuration -->
+  <script>
+    simpleCart({
+      checkout: {
+        type: "SendForm",
+        url: "https://formsubmit.co/your-email@example.com",
+        method: "POST",
+        extra_data: {
+          _subject: "Neue Bestellung von Hüls-Bodenbelege"
+        }
+      },
+      currency: "EUR",
+      cartStyle: "div",
+    });
+
+    let selectedColor = null;
+    const colorOptions = document.querySelectorAll('.color-option');
+    const priceDisplay = document.querySelector('.item_price');
+    const purchaseOption = document.getElementById('purchase-option');
+
+    colorOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        colorOptions.forEach(opt => opt.classList.remove('selected'));
+        option.classList.add('selected');
+        selectedColor = option.dataset.color;
+        updatePrice();
+      });
+    });
+
+    purchaseOption.addEventListener('change', updatePrice);
+
+    function updatePrice() {
+      if (!selectedColor) return;
+      const selectedOption = purchaseOption.value;
+      const selectedColorOption = Array.from(colorOptions).find(opt => opt.dataset.color === selectedColor);
+      const price = selectedOption === 'probe' ? selectedColorOption.dataset.priceProbe : selectedColorOption.dataset.priceKauf;
+      priceDisplay.textContent = `Preis: ${price} €`;
+      simpleCart.each(item => simpleCart.remove(item.id));
+      simpleCart.add({
+        name: `Parkett ${selectedColor} (${selectedOption === 'probe' ? 'Probe' : 'Kauf'})`,
+        price: price,
+        color: selectedColor,
+        option: selectedOption
+      });
+    }
+
+    function addToCart() {
+      if (!selectedColor) {
+        alert('Bitte wählen Sie eine Farbe aus.');
+        return;
+      }
+      updatePrice();
+    }
+  </script>
+</body>
+</html>
