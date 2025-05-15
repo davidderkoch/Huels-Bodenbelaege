@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
   <style>
-    /* Original styles unchanged, adding only new styles */
     :root {
       --primary: #3a3a3a;
       --primary-light: #4a4a4a;
@@ -107,7 +106,7 @@
       margin-top: 2rem;
     }
 
- نمایندگان    .space-y-2 > * + * {
+    .space-y-2 > * + * {
       margin-top: 0.5rem;
     }
 
@@ -448,16 +447,18 @@
       font-weight: 500;
       text-align: center;
       cursor: pointer;
-      transition: background-color 0.2s;
+      transition: background-color 0.2s, transform 0.2s;
     }
 
     .btn:hover {
       background-color: var(--primary-dark);
+      transform: translateY(-2px);
     }
 
     .btn:disabled {
       opacity: 0.7;
       cursor: not-allowed;
+      transform: none;
     }
 
     .btn-outline {
@@ -469,6 +470,7 @@
     .btn-outline:hover {
       background-color: var(--primary);
       color: var(--white);
+      transform: translateY(-2px);
     }
 
     .btn-block {
@@ -513,19 +515,6 @@
       margin-right: 0.5rem;
     }
 
-    /* Radio Group */
-    .radio-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .radio-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
     /* Footer */
     .footer {
       background-color: var(--secondary);
@@ -553,12 +542,34 @@
       }
     }
 
+    @keyframes drop {
+      0% {
+        transform: translateY(-100vh);
+        opacity: 0;
+      }
+      70% {
+        transform: translateY(20px);
+        opacity: 1;
+      }
+      85% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
     .animate-bounce {
       animation: bounce 2s infinite;
     }
 
     .animate-slide-down {
       animation: slideDown 1s ease-out forwards;
+    }
+
+    .animate-drop {
+      animation: drop 1.5s ease-out forwards;
     }
 
     /* Responsive */
@@ -696,21 +707,35 @@
       max-width: 42rem;
     }
 
-    .product-image {
-      height: 10rem;
+    .stats-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
       width: 100%;
-      position: relative;
+      max-width: 1200px;
+      padding: 2rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.9);
       border-radius: var(--radius);
-      overflow: hidden;
+      min-width: 200px;
     }
 
-    .product-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .stat-item h3 {
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
     }
 
-    /* Responsive logo and slogan */
+    .stat-item p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+    }
+
     @media (max-width: 768px) {
       .fixed-logo {
         width: 12rem;
@@ -721,6 +746,15 @@
 
       .slogan {
         font-size: 2rem;
+      }
+
+      .stats-container {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .stat-item {
+        animation: none;
       }
     }
 
@@ -735,26 +769,22 @@
       }
     }
 
-    /* Hide scrollbar for Chrome, Safari and Opera */
     html::-webkit-scrollbar {
       display: none;
     }
 
-    /* Hide scrollbar for IE, Edge and Firefox */
     html {
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;  /* Firefox */
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
   </style>
 </head>
 <body>
-  <!-- Fixed Logo -->
   <div class="fixed-logo animate-slide-down">
     <img src="Huellogo.png" alt="Huellogo">
   </div>
 
   <div id="fullpage">
-    <!-- Section 1: Homepage -->
     <div class="section">
       <div class="section-content">
         <h2 class="slogan">Qualität, die man fühlt</h2>
@@ -771,7 +801,25 @@
       </div>
     </div>
 
-    <!-- Section 2: Parkettböden -->
+    <div class="section">
+      <div class="section-content">
+        <div class="stats-container">
+          <div class="stat-item animate-drop" style="animation-delay: 0.2s;">
+            <h3>50+</h3>
+            <p>Zufriedene Kunden</p>
+          </div>
+          <div class="stat-item animate-drop" style="animation-delay: 0.4s;">
+            <h3>200+</h3>
+            <p>Abgeschlossene Projekte</p>
+          </div>
+          <div class="stat-item animate-drop" style="animation-delay: 0.6s;">
+            <h3>7+</h3>
+            <p>Jahre Erfahrung</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="section">
       <div class="relative h-full w-full">
         <div class="absolute inset-0 z-0">
@@ -789,7 +837,6 @@
       </div>
     </div>
 
-    <!-- Section 3: Laminatböden -->
     <div class="section">
       <div class="relative h-full w-full">
         <div class="absolute inset-0 z-0">
@@ -807,7 +854,6 @@
       </div>
     </div>
 
-    <!-- Section 4: Vinylböden -->
     <div class="section">
       <div class="relative h-full w-full">
         <div class="absolute inset-0 z-0">
@@ -825,7 +871,6 @@
       </div>
     </div>
 
-    <!-- Section 5: Contact Form -->
     <div class="section">
       <div class="section-content">
         <div class="w-full max-w-2xl">
@@ -874,101 +919,29 @@
               </label>
             </div>
 
-            <button type="submit" class="btn btn-block" id="submitButton">Nachricht senden</button>
+            <button type="submit" class="btn btn-block" id="submitButton" disabled>Nachricht senden</button>
           </form>
         </div>
       </div>
     </div>
 
-    <!-- Section 6: Purchase Options -->
     <div class="section">
       <div class="section-content">
         <div class="w-full max-w-3xl">
           <h2 class="text-3xl md:text-4xl font-light mb-8 text-center">Unsere Produkte</h2>
-          <div id="purchaseSection" class="space-y-8">
-            <form id="purchaseForm" class="space-y-8">
-              <div class="space-y-4">
-                <h3 class="text-xl font-medium">Bestellart wählen</h3>
-                <div class="radio-group sm:flex-row sm:space-y-0 sm:space-x-4">
-                  <div class="radio-item">
-                    <input type="radio" name="purchaseType" id="sample" value="sample" checked>
-                    <label for="sample">Probe anfordern</label>
-                  </div>
-                  <div class="radio-item">
-                    <input type="radio" name="purchaseType" id="buy" value="buy">
-                    <label for="buy">Direkt kaufen</label>
-                  </div>
-                </div>
-              </div>
-
-              <div class="space-y-4">
-                <h3 class="text-xl font-medium">Parkettfarbe auswählen</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <select id="productSelect" class="w-full">
-                      <option value="eiche-natur">Eiche Natur</option>
-                      <option value="eiche-rustikal">Eiche Rustikal</option>
-                      <option value="nussbaum">Nussbaum</option>
-                      <option value="ahorn">Ahorn</option>
-                      <option value="kirsche">Kirsche</option>
-                    </select>
-                  </div>
-
-                  <div class="product-image">
-                    <img id="productImage" src="https://placeholder.svg?height=400&width=600" alt="Eiche Natur">
-                  </div>
-                </div>
-              </div>
-
-              <div id="quantitySection" class="space-y-4" style="display: none;">
-                <h3 class="text-xl font-medium">Menge (m²)</h3>
-                <select id="quantitySelect" class="w-full sm:w-40">
-                  <option value="1">1 m²</option>
-                  <option value="5">5 m²</option>
-                  <option value="10">10 m²</option>
-                  <option value="15">15 m²</option>
-                  <option value="20">20 m²</option>
-                  <option value="25">25 m²</option>
-                  <option value="30">30 m²</option>
-                  <option value="40">40 m²</option>
-                  <option value="50">50 m²</option>
-                </select>
-              </div>
-
-              <div class="card">
-                <div class="card-body">
-                  <div class="flex justify-between items-center">
-                    <div>
-                      <h3 class="text-lg font-medium" id="priceLabel">Musterpreis</h3>
-                      <p class="text-light text-sm" id="productDetails">Eiche Natur</p>
-                    </div>
-                    <div class="text-2xl font-bold" id="priceDisplay">5,00 €</div>
-                  </div>
-                </div>
-              </div>
-
-              <button type="submit" class="btn btn-block" id="purchaseButton">Muster bestellen</button>
-            </form>
-
-            <div id="orderSuccess" class="card" style="display: none;">
-              <div class="card-body">
-                <div class="text-center space-y-4">
-                  <h3 class="text-2xl font-medium text-success" id="thankYouMessage">
-                    Vielen Dank für Ihre Musterbestellung!
-                  </h3>
-                  <p id="orderConfirmation">
-                    Wir senden Ihnen in Kürze ein Muster zu.
-                  </p>
-                  <button class="btn btn-outline" id="newOrderButton">Neue Bestellung</button>
-                </div>
-              </div>
+          <div class="space-y-6 text-center">
+            <p class="text-lg md:text-xl text-secondary max-w-2xl">
+              Entdecken Sie unsere hochwertigen Parkettböden. Sie können entweder ein Muster anfordern, um die Qualität hautnah zu erleben, oder direkt per E-Mail eine Bestellung aufgeben. Wir beraten Sie gerne!
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="sample-request.html" class="btn btn-block sm:w-auto">Probe anfordern</a>
+              <a href="direct-order.html" class="btn btn-outline btn-block sm:w-auto">Direkt per Mail bestellen</a>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Section 7: Contact Information -->
     <div class="section">
       <div class="section-content">
         <div class="w-full max-w-2xl">
@@ -1005,7 +978,6 @@
       </div>
     </div>
 
-    <!-- Footer Section -->
     <div class="section fp-auto-height">
       <footer class="footer">
         <div class="container">
@@ -1029,7 +1001,6 @@
     </div>
   </div>
 
-  <!-- Impressum Modal -->
   <div id="impressumModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" style="display: none;">
     <div class="bg-white rounded-lg shadow-lg max-w-2xl w-full max-h-screen overflow-y-auto">
       <div class="p-6">
@@ -1105,7 +1076,6 @@
     </div>
   </div>
 
-  <!-- Datenschutz Modal -->
   <div id="datenschutzModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" style="display: none;">
     <div class="bg-white rounded-lg shadow-lg max-w-2xl w-full max-h-screen overflow-y-auto">
       <div class="p-6">
@@ -1169,34 +1139,35 @@
     </div>
   </div>
 
-  <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js"></script>
   <script>
-    // Initialize fullpage.js
     new fullpage('#fullpage', {
-      licenseKey: 'YOUR_KEY_HERE', // Replace with your Fullpage.js license key or use the open source version
+      licenseKey: 'YOUR_KEY_HERE',
       scrollingSpeed: 1000,
       navigation: true,
       navigationPosition: 'right',
-      navigationTooltips: ['', '', '', '', '', '', '', ''],
+      navigationTooltips: ['', '', '', '', '', '', '', '', ''],
       showActiveTooltip: true,
-      anchors: ['', '', '', '', '', '', '', ''],
+      anchors: ['', '', '', '', '', '', '', '', ''],
       css3: true
     });
 
-    // Set current year in footer
     document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-    // Contact Form Handling
     const contactForm = document.getElementById('contactForm');
     const formSuccess = document.getElementById('formSuccess');
     const formError = document.getElementById('formError');
     const submitButton = document.getElementById('submitButton');
+    const gdprConsent = document.getElementById('gdprConsent');
+
+    // Enable/disable submit button based on GDPR checkbox
+    gdprConsent.addEventListener('change', function() {
+      submitButton.disabled = !this.checked;
+    });
 
     contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
       
-      const gdprConsent = document.getElementById('gdprConsent');
       if (!gdprConsent.checked) {
         alert('Bitte stimmen Sie der Verarbeitung Ihrer Daten zu.');
         return;
@@ -1205,22 +1176,20 @@
       submitButton.textContent = 'Wird gesendet...';
       submitButton.disabled = true;
 
-      // Simulate form submission
       setTimeout(() => {
-        // In a real application, you would use FormSubmit or another service here
-        const success = Math.random() > 0.1; // 90% success rate for demo
+        const success = Math.random() > 0.1;
         
         if (success) {
           formSuccess.style.display = 'flex';
           contactForm.reset();
+          submitButton.disabled = true; // Reset button to disabled after form reset
         } else {
           formError.style.display = 'flex';
+          submitButton.disabled = false;
         }
         
         submitButton.textContent = 'Nachricht senden';
-        submitButton.disabled = false;
         
-        // Hide alerts after 5 seconds
         setTimeout(() => {
           formSuccess.style.display = 'none';
           formError.style.display = 'none';
@@ -1228,124 +1197,6 @@
       }, 1500);
     });
 
-    // Purchase Section Handling
-    const products = [
-      { id: 'eiche-natur', name: 'Eiche Natur', price: 49.99, image: 'https://placeholder.svg?height=400&width=600' },
-      { id: 'eiche-rustikal', name: 'Eiche Rustikal', price: 54.99, image: 'https://placeholder.svg?height=400&width=600' },
-      { id: 'nussbaum', name: 'Nussbaum', price: 64.99, image: 'https://placeholder.svg?height=400&width=600' },
-      { id: 'ahorn', name: 'Ahorn', price: 59.99, image: 'https://placeholder.svg?height=400&width=600' },
-      { id: 'kirsche', name: 'Kirsche', price: 69.99, image: 'https://placeholder.svg?height=400&width=600' },
-    ];
-
-    const purchaseForm = document.getElementById('purchaseForm');
-    const orderSuccess = document.getElementById('orderSuccess');
-    const purchaseTypeRadios = document.querySelectorAll('input[name="purchaseType"]');
-    const productSelect = document.getElementById('productSelect');
-    const productImage = document.getElementById('productImage');
-    const quantitySection = document.getElementById('quantitySection');
-    const quantitySelect = document.getElementById('quantitySelect');
-    const priceLabel = document.getElementById('priceLabel');
-    const productDetails = document.getElementById('productDetails');
-    const priceDisplay = document.getElementById('priceDisplay');
-    const purchaseButton = document.getElementById('purchaseButton');
-    const thankYouMessage = document.getElementById('thankYouMessage');
-    const orderConfirmation = document.getElementById('orderConfirmation');
-    const newOrderButton = document.getElementById('newOrderButton');
-
-    // Initialize with default values
-    let purchaseType = 'sample';
-    let selectedProduct = products[0];
-    let quantity = 1;
-
-    // Update price display
-    function updatePriceDisplay() {
-      if (purchaseType === 'sample') {
-        priceLabel.textContent = 'Musterpreis';
-        productDetails.textContent = selectedProduct.name;
-        priceDisplay.textContent = '5,00 €';
-        purchaseButton.textContent = 'Muster bestellen';
-      } else {
-        const totalPrice = (selectedProduct.price * quantity).toFixed(2).replace('.', ',');
-        priceLabel.textContent = 'Gesamtpreis';
-        productDetails.textContent = `${selectedProduct.name} (${quantity} m²)`;
-        priceDisplay.textContent = `${totalPrice} €`;
-        purchaseButton.textContent = 'Jetzt kaufen';
-      }
-    }
-
-    // Purchase type change handler
-    purchaseTypeRadios.forEach(radio => {
-      radio.addEventListener('change', function() {
-        purchaseType = this.value;
-        if (purchaseType === 'buy') {
-          quantitySection.style.display = 'block';
-        } else {
-          quantitySection.style.display = 'none';
-        }
-        updatePriceDisplay();
-      });
-    });
-
-    // Product select change handler
-    productSelect.addEventListener('change', function() {
-      selectedProduct = products.find(p => p.id === this.value);
-      productImage.src = selectedProduct.image;
-      productImage.alt = selectedProduct.name;
-      updatePriceDisplay();
-    });
-
-    // Quantity select change handler
-    quantitySelect.addEventListener('change', function() {
-      quantity = parseInt(this.value);
-      updatePriceDisplay();
-    });
-
-    // Purchase form submit handler
-    purchaseForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Simulate order processing
-      purchaseButton.textContent = purchaseType === 'sample' ? 'Muster wird bestellt...' : 'Bestellung wird verarbeitet...';
-      purchaseButton.disabled = true;
-      
-      setTimeout(() => {
-        purchaseForm.style.display = 'none';
-        orderSuccess.style.display = 'block';
-        
-        if (purchaseType === 'sample') {
-          thankYouMessage.textContent = 'Vielen Dank für Ihre Musterbestellung!';
-          orderConfirmation.textContent = 'Wir senden Ihnen in Kürze ein Muster zu.';
-        } else {
-          thankYouMessage.textContent = 'Vielen Dank für Ihre Bestellung!';
-          orderConfirmation.textContent = 'Wir werden uns in Kürze mit Ihnen in Verbindung setzen, um die Zahlung und Lieferung zu besprechen.';
-        }
-      }, 1500);
-    });
-
-    // New order button handler
-    newOrderButton.addEventListener('click', function() {
-      orderSuccess.style.display = 'none';
-      purchaseForm.style.display = 'block';
-      purchaseForm.reset();
-      
-      // Reset to defaults
-      purchaseType = 'sample';
-      document.getElementById('sample').checked = true;
-      productSelect.value = 'eiche-natur';
-      selectedProduct = products[0];
-      productImage.src = selectedProduct.image;
-      productImage.alt = selectedProduct.name;
-      quantitySelect.value = '1';
-      quantity = 1;
-      quantitySection.style.display = 'none';
-      
-      purchaseButton.textContent = 'Muster bestellen';
-      purchaseButton.disabled = false;
-      
-      updatePriceDisplay();
-    });
-
-    // Modal functions
     function showImpressum() {
       document.getElementById('impressumModal').style.display = 'flex';
       document.body.style.overflow = 'hidden';
@@ -1361,7 +1212,6 @@
       document.body.style.overflow = '';
     }
 
-    // Close modals when clicking outside
     window.addEventListener('click', function(e) {
       const impressumModal = document.getElementById('impressumModal');
       const datenschutzModal = document.getElementById('datenschutzModal');
@@ -1375,7 +1225,6 @@
       }
     });
 
-    // Close modals with Escape key
     window.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         hideModal('impressumModal');
