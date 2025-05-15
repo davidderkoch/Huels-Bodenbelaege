@@ -138,6 +138,10 @@
       align-items: flex-start;
     }
 
+    .items-end {
+      align-items: flex-end;
+    }
+
     .justify-center {
       justify-content: center;
     }
@@ -164,6 +168,10 @@
 
     .w-full {
       width: 100%;
+    }
+
+    .h-full {
+      height: 100%;
     }
 
     .max-w-xs {
@@ -660,16 +668,67 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 0 1rem;
+      padding: 0 2rem; /* Größerer Seitenabstand für die erste Seite */
     }
 
-    .bg-overlay {
+    @media (max-width: 768px) {
+      .section-content {
+        padding: 0 1.5rem; /* Etwas kleiner für Tablets */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .section-content {
+        padding: 0 1rem; /* Minimaler Abstand für Mobilgeräte */
+      }
+    }
+
+    /* Service Section Hintergrundbilder */
+    .service-section {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+
+    .service-section::before {
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.4);
+      background-color: rgba(255, 255, 255, 0.2); /* Ausgebleichtes Overlay */
+      z-index: 0;
+    }
+
+    /* Individuelle Hintergrundbilder für jede Service-Section */
+    .service-parkett {
+      background-image: url('Parkett.png');
+    }
+
+    .service-vinyl {
+      background-image: url('https://placeholder.svg?height=800&width=1200');
+    }
+
+    .service-teppich {
+      background-image: url('https://placeholder.svg?height=800&width=1200');
+    }
+
+    .service-kautschuk {
+      background-image: url('https://placeholder.svg?height=800&width=1200');
+    }
+
+    .service-laminat {
+      background-image: url('https://placeholder.svg?height=800&width=1200');
+    }
+
+    .service-pvc {
+      background-image: url('https://placeholder.svg?height=800&width=1200');
+    }
+
+    .service-linoleum {
+      background-image: url('https://placeholder.svg?height=800&width=1200');
     }
 
     .logo-container {
@@ -708,11 +767,33 @@
       margin-bottom: 2rem;
     }
 
-    .service-card {
-      background-color: rgba(255, 255, 255, 0.9);
-      padding: 2rem;
-      border-radius: var(--radius);
-      max-width: 42rem;
+    /* Anpassung für Service-Text */
+    .service-text {
+      max-width: 36rem;
+      color: var(--text-primary);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Textschatten für bessere Lesbarkeit */
+      z-index: 10;
+    }
+
+    .service-text.right {
+      margin-left: auto;
+      margin-right: 2rem;
+      text-align: right;
+    }
+
+    .service-text.left {
+      margin-right: auto;
+      margin-left: 2rem;
+      text-align: left;
+    }
+
+    @media (max-width: 768px) {
+      .service-text.right,
+      .service-text.left {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        text-align: center; /* Zentrierter Text auf kleineren Bildschirmen */
+      }
     }
 
     .stats-container {
@@ -760,7 +841,7 @@
     @media (max-width: 768px) {
       .fixed-logo {
         width: 12rem;
-        height: 12rem;
+        height: auto;
         top: 1rem;
         left: 1rem;
       }
@@ -782,7 +863,7 @@
     @media (max-width: 480px) {
       .fixed-logo {
         width: 8rem;
-        height: 8rem;
+        height: auto;
       }
 
       .slogan {
@@ -841,53 +922,86 @@
       </div>
     </div>
 
-    <div class="section">
-      <div class="relative h-full w-full">
-        <div class="absolute inset-0 z-0">
-          <img src="https://placeholder.svg?height=800&width=1200" alt="Parkettböden" style="width: 100%; height: 100%; object-fit: cover;">
-          <div class="bg-overlay"></div>
-        </div>
-        <div class="relative z-10 flex flex-col items-center justify-center h-full px-4 md:px-8">
-          <div class="service-card">
-            <h2 class="text-3xl md:text-4xl font-light mb-4">Parkettböden</h2>
-            <p class="text-lg md:text-xl text-secondary">
-              Hochwertige Parkettböden in verschiedenen Holzarten und Designs. Wir bieten Beratung, Verkauf und professionelle Verlegung aus einer Hand.
-            </p>
-          </div>
+    <!-- Service 1: Parkett -->
+    <div class="section service-section service-parkett">
+      <div class="relative z-10 flex flex-col items-end justify-center h-full px-4 md:px-8">
+        <div class="service-text right">
+          <h2 class="text-3xl md:text-4xl font-light mb-4">Parkett</h2>
+          <p class="text-lg md:text-xl">
+            Natur pur – edles Echtholz mit warmer Ausstrahlung. Langlebig und stilvoll für Wohnräume.
+          </p>
         </div>
       </div>
     </div>
 
-    <div class="section">
-      <div class="relative h-full w-full">
-        <div class="absolute inset-0 z-0">
-          <img src="https://placeholder.svg?height=800&width=1200" alt="Laminatböden" style="width: 100%; height: 100%; object-fit: cover;">
-          <div class="bg-overlay"></div>
-        </div>
-        <div class="relative z-10 flex flex-col items-center justify-center h-full px-4 md:px-8">
-          <div class="service-card">
-            <h2 class="text-3xl md:text-4xl font-light mb-4">Laminatböden</h2>
-            <p class="text-lg md:text-xl text-secondary">
-              Robuste und pflegeleichte Laminatböden in vielen Designs. Eine kostengünstige Alternative mit hervorragender Optik und langer Lebensdauer.
-            </p>
-          </div>
+    <!-- Service 2: Vinyl Designbelag -->
+    <div class="section service-section service-vinyl">
+      <div class="relative z-10 flex flex-col items-start justify-center h-full px-4 md:px-8">
+        <div class="service-text left">
+          <h2 class="text-3xl md:text-4xl font-light mb-4">Vinyl Designbelag</h2>
+          <p class="text-lg md:text-xl">
+            Moderne Optik, pflegeleicht und wasserfest. Ideal für Bad, Küche und stark genutzte Räume.
+          </p>
         </div>
       </div>
     </div>
 
-    <div class="section">
-      <div class="relative h-full w-full">
-        <div class="absolute inset-0 z-0">
-          <img src="https://placeholder.svg?height=800&width=1200" alt="Vinylböden" style="width: 100%; height: 100%; object-fit: cover;">
-          <div class="bg-overlay"></div>
+    <!-- Service 3: Teppich -->
+    <div class="section service-section service-teppich">
+      <div class="relative z-10 flex flex-col items-end justify-center h-full px-4 md:px-8">
+        <div class="service-text right">
+          <h2 class="text-3xl md:text-4xl font-light mb-4">Teppich</h2>
+          <p class="text-lg md:text-xl">
+            Weich, warm und gemütlich. Sorgt für Wohnkomfort und gute Akustik – perfekt fürs Schlafzimmer.
+          </p>
         </div>
-        <div class="relative z-10 flex flex-col items-center justify-center h-full px-4 md:px-8">
-          <div class="service-card">
-            <h2 class="text-3xl md:text-4xl font-light mb-4">Vinylböden</h2>
-            <p class="text-lg md:text-xl text-secondary">
-              Moderne Vinylböden vereinen Ästhetik mit Funktionalität. Wasserfest, strapazierfähig und in zahlreichen Designs erhältlich.
-            </p>
-          </div>
+      </div>
+    </div>
+
+    <!-- Service 4: Kautschuk -->
+    <div class="section service-section service-kautschuk">
+      <div class="relative z-10 flex flex-col items-start justify-center h-full px-4 md:px-8">
+        <div class="service-text left">
+          <h2 class="text-3xl md:text-4xl font-light mb-4">Kautschuk</h2>
+          <p class="text-lg md:text-xl">
+            Robust, rutschhemmend und pflegeleicht. Für stark beanspruchte Flächen und gewerbliche Nutzung.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service 5: Laminat -->
+    <div class="section service-section service-laminat">
+      <div class="relative z-10 flex flex-col items-end justify-center h-full px-4 md:px-8">
+        <div class="service-text right">
+          <h2 class="text-3xl md:text-4xl font-light mb-4">Laminat</h2>
+          <p class="text-lg md:text-xl">
+            Attraktive Holzoptik zum fairen Preis. Kratzfest, pflegeleicht und schnell verlegt.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service 6: Homogener PVC -->
+    <div class="section service-section service-pvc">
+      <div class="relative z-10 flex flex-col items-start justify-center h-full px-4 md:px-8">
+        <div class="service-text left">
+          <h2 class="text-3xl md:text-4xl font-light mb-4">Homogener PVC</h2>
+          <p class="text-lg md:text-xl">
+            Durchgehendes Material – besonders widerstandsfähig. Beliebt in Praxen, Schulen und öffentlichen Gebäuden.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service 7: Linoleum -->
+    <div class="section service-section service-linoleum">
+      <div class="relative z-10 flex flex-col items-end justify-center h-full px-4 md:px-8">
+        <div class="service-text right">
+          <h2 class="text-3xl md:text-4xl font-light mb-4">Linoleum</h2>
+          <p class="text-lg md:text-xl">
+            Natürlich, ökologisch und langlebig. Antibakteriell und angenehm warm – ideal für nachhaltige Raumgestaltung.
+          </p>
         </div>
       </div>
     </div>
@@ -1005,7 +1119,7 @@
           <div class="flex flex-col md:flex-row justify-between items-center">
             <div class="mb-4 md:mb-0">
               <p class="text-sm text-light">
-                © <span id="currentYear"></span> Hüls-Bodenbelege. Alle Rechte vorbehalten.
+                © <span id="currentYear"></span> Hüls-Bodenbeläge. Alle Rechte vorbehalten.
               </p>
             </div>
             <div class="flex space-x-6">
@@ -1133,7 +1247,8 @@
 
           <div>
             <h3 class="text-xl font-semibold mb-2">3. Datenerfassung auf dieser Website</h3>
-            <h4 class="text-lg font-medium mb通信
+            <h4 class="text-lg font-medium mb-1">Kontaktformular</h4>
+            <p>
               Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular
               inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von
               Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
@@ -1166,9 +1281,9 @@
       scrollingSpeed: 1000,
       navigation: true,
       navigationPosition: 'right',
-      navigationTooltips: ['', '', '', '', '', '', '', '', ''],
+      navigationTooltips: ['', '', '', '', '', '', '', '', '', '', '', '', ''],
       showActiveTooltip: true,
-      anchors: ['', '', '', '', '', '', '', '', ''],
+      anchors: ['', '', '', '', '', '', '', '', '', '', '', '', ''],
       css3: true
     });
 
