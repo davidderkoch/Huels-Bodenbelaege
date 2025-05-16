@@ -526,7 +526,18 @@
     /* Footer */
     .footer {
       background-color: var(--secondary);
-      padding: 1.5rem 0;
+      padding: 2.5rem 0;
+      min-height: 120px;
+    }
+
+    /* Footer link separator */
+    .footer-separator {
+      display: inline-block;
+      width: 1px;
+      height: 1rem;
+      background-color: #ccc;
+      margin: 0 0.75rem;
+      vertical-align: middle;
     }
 
     /* Animation */
@@ -637,8 +648,7 @@
     }
 
     /* Fullpage.js custom styles */
-    #fp-nav ul li a span,
-    .fp-slidesNav ul li a span {
+    #fp-nav ul li a span {
       background: var(--primary-light) !important;
     }
 
@@ -649,6 +659,7 @@
     /* Custom styles for sections */
     .section {
       text-align: center;
+      overflow: hidden; /* Clip any overflow content */
     }
 
     .section-content {
@@ -662,13 +673,16 @@
 
     @media (max-width: 768px) {
       .section-content {
-        padding: 0 2rem;
+        padding: 0 2.5rem;
+      }
+      .section[data-anchor="stats"] .section-content {
+        padding-top: 3rem;
       }
     }
 
     @media (max-width: 480px) {
       .section-content {
-        padding: 0 1.5rem;
+        padding: 0 2rem;
       }
     }
 
@@ -678,6 +692,12 @@
       background-position: center;
       background-repeat: no-repeat;
       position: relative;
+      background-image: none; /* Default: no background image */
+    }
+
+    .service-section.active-bg {
+      /* Apply background image only to active section */
+      background-image: inherit;
     }
 
     .service-section::before {
@@ -793,26 +813,6 @@
     }
 
     @media (max-width: 768px) {
-      #contactForm,
-      #sampleForm,
-      #orderForm {
-        max-width: 90%;
-        margin: 0 auto;
-        padding: 1rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      #contactForm,
-      #sampleForm,
-      #orderForm {
-        max-width: 95%;
-        padding: 0.5rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .contact-section,
       .products-section {
         max-height: 75vh;
         overflow-y: auto;
@@ -967,25 +967,11 @@
     .section.active .hamburger-menu {
       display: block;
     }
-
-    /* Fullpage.js slides navigation */
-    .fp-slidesNav.bottom {
-      bottom: 20px;
-    }
-
-    .fp-slidesNav ul li a span {
-      background: var(--primary-light) !important;
-    }
-
-    /* Hide navigation arrows for slides */
-    .fp-controlArrow {
-      display: none !important;
-    }
   </style>
 </head>
 <body>
   <div class="fixed-logo animate-slide-down large">
-    <img src="Huellogo.png" alt="Huellogo">
+    <img src="Huellogo.png" alt="Hüls-Bodenbeläge Logo">
   </div>
   <div class="hamburger-menu" id="hamburgerMenu">
     <div class="bar"></div>
@@ -993,7 +979,7 @@
     <div class="bar"></div>
   </div>
   <div class="menu-buttons" id="menuButtons">
-    <button class="menu-button" onclick="fullpage_api.moveTo('contact', 0)">Kontaktformular</button>
+    <a href="contact.html" class="menu-button">Kontaktformular</a>
     <button class="menu-button" onclick="fullpage_api.moveTo('products', 0)">Bestellung</button>
     <button class="menu-button" onclick="fullpage_api.moveTo('location', 0)">Kontaktdaten</button>
   </div>
@@ -1031,127 +1017,73 @@
         </div>
       </div>
     </div>
-    <!-- Service Sections as Slides -->
-    <div class="section" data-anchor="services">
-      <div class="slide service-section service-parkett">
-        <div class="relative z-10 flex flex-col items-end justify-center h-full px-4 md:px-8">
-          <div class="service-text right">
-            <h2 class="text-3xl md:text-4xl font-light mb-4">Parkett</h2>
-            <p class="text-lg md:text-xl">
-              Natur pur – edles Echtholz mit warmer Ausstrahlung. Langlebig und stilvoll für Wohnräume.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="slide service-section service-vinyl">
-        <div class="relative z-10 flex flex-col items-start justify-center h-full px-4 md:px-8">
-          <div class="service-text left">
-            <h2 class="text-3xl md:text-4xl font-light mb-4">Vinyl Designbelag</h2>
-            <p class="text-lg md:text-xl">
-              Moderne Optik, pflegeleicht und wasserfest. Ideal für Bad, Küche und stark genutzte Räume.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="slide service-section service-teppich">
-        <div class="relative z-10 flex flex-col items-end justify-center h-full px-4 md:px-8">
-          <div class="service-text right">
-            <h2 class="text-3xl md:text-4xl font-light mb-4">Teppich</h2>
-            <p class="text-lg md:text-xl">
-              Weich, warm und gemütlich. Sorgt für Wohnkomfort und gute Akustik – perfekt fürs Schlafzimmer.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="slide service-section service-kautschuk">
-        <div class="relative z-10 flex flex-col items-start justify-center h-full px-4 md:px-8">
-          <div class="service-text left">
-            <h2 class="text-3xl md:text-4xl font-light mb-4">Kautschuk</h2>
-            <p class="text-lg md:text-xl">
-              Robust, rutschhemmend und pflegeleicht. Für stark beanspruchte Flächen und gewerbliche Nutzung.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="slide service-section service-laminat">
-        <div class="relative z-10 flex flex-col items-end justify-center h-full px-4 md:px-8">
-          <div class="service-text right">
-            <h2 class="text-3xl md:text-4xl font-light mb-4">Laminat</h2>
-            <p class="text-lg md:text-xl">
-              Attraktive Holzoptik zum fairen Preis. Kratzfest, pflegeleicht und schnell verlegt.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="slide service-section service-pvc">
-        <div class="relative z-10 flex flex-col items-start justify-center h-full px-4 md:px-8">
-          <div class="service-text left">
-            <h2 class="text-3xl md:text-4xl font-light mb-4">Homogener PVC</h2>
-            <p class="text-lg md:text-xl">
-              Durchgehendes Material – besonders widerstandsfähig. Beliebt in Praxen, Schulen und öffentlichen Gebäuden.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="slide service-section service-linoleum">
-        <div class="relative z-10 flex flex-col items-end justify-center h-full px-4 md:px-8">
-          <div class="service-text right">
-            <h2 class="text-3xl md:text-4xl font-light mb-4">Linoleum</h2>
-            <p class="text-lg md:text-xl">
-              Natürlich, ökologisch und langlebig. Antibakteriell und angenehm warm – ideal für nachhaltige Raumgestaltung.
-            </p>
-          </div>
+    <div class="section service-section service-parkett" data-anchor="parkett">
+      <div class="section-content items-end">
+        <div class="service-text right">
+          <h2 class="text-3xl md:text-4xl font-light mb-4">Parkett</h2>
+          <p class="text-lg md:text-xl">
+            Natur pur – edles Echtholz mit warmer Ausstrahlung. Langlebig und stilvoll für Wohnräume.
+          </p>
         </div>
       </div>
     </div>
-    <div class="section contact-section" data-anchor="contact">
-      <div class="section-content">
-        <div class="w-full max-w-2xl">
-          <h2 class="text-3xl md:text-4xl font-light mb-8 text-center">Kontaktieren Sie uns</h2>
-          <form id="contactForm" class="space-y-6" action="https://formsubmit.co/deine-email@example.com" method="POST">
-            <input type="hidden" name="_subject" value="Neue Kontaktanfrage von Hüls-Bodenbeläge">
-            <input type="hidden" name="_next" value="https://yourwebsite.com/#contact-success">
-            <input type="hidden" name="_error" value="https://yourwebsite.com/#contact-error">
-            <input type="hidden" name="_captcha" value="false">
-            <div id="formSuccess" class="alert alert-success" style="display: none;">
-              <span class="alert-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                </svg>
-              </span>
-              <span>Vielen Dank für Ihre Nachricht! Wir werden uns in Kürze bei Ihnen melden.</span>
-            </div>
-            <div id="formError" class="alert alert-error" style="display: none;">
-              <span class="alert-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="12" y1="8" x2="12" y2="12"></line>
-                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                </svg>
-              </span>
-              <span>Es gab ein Problem beim Senden Ihrer Nachricht. Bitte versuchen Sie es später erneut.</span>
-            </div>
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-              <label for="email">E-Mail</label>
-              <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-              <label for="message">Nachricht</label>
-              <textarea id="message" name="message" required></textarea>
-            </div>
-            <div class="checkbox-group">
-              <input type="checkbox" id="gdprConsent" name="gdprConsent" required>
-              <label for="gdprConsent" class="text-sm font-normal">
-                Ich stimme der Verarbeitung meiner Daten gemäß der Datenschutzerklärung zu.
-              </label>
-            </div>
-            <button type="submit" class="btn btn-block" id="submitButton" disabled>Nachricht senden</button>
-          </form>
+    <div class="section service-section service-vinyl" data-anchor="vinyl">
+      <div class="section-content items-start">
+        <div class="service-text left">
+          <h2 class="text-3xl md:text-4xl font-light mb-4">Vinyl Designbelag</h2>
+          <p class="text-lg md:text-xl">
+            Moderne Optik, pflegeleicht und wasserfest. Ideal für Bad, Küche und stark genutzte Räume.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="section service-section service-teppich" data-anchor="teppich">
+      <div class="section-content items-end">
+        <div class="service-text right">
+          <h2 class="text-3xl md:text-4xl font-light mb-4">Teppich</h2>
+          <p class="text-lg md:text-xl">
+            Weich, warm und gemütlich. Sorgt für Wohnkomfort und gute Akustik – perfekt fürs Schlafzimmer.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="section service-section service-kautschuk" data-anchor="kautschuk">
+      <div class="section-content items-start">
+        <div class="service-text left">
+          <h2 class="text-3xl md:text-4xl font-light mb-4">Kautschuk</h2>
+          <p class="text-lg md:text-xl">
+            Robust, rutschhemmend und pflegeleicht. Für stark beanspruchte Flächen und gewerbliche Nutzung.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="section service-section service-laminat" data-anchor="laminat">
+      <div class="section-content items-end">
+        <div class="service-text right">
+          <h2 class="text-3xl md:text-4xl font-light mb-4">Laminat</h2>
+          <p class="text-lg md:text-xl">
+            Attraktive Holzoptik zum fairen Preis. Kratzfest, pflegeleicht und schnell verlegt.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="section service-section service-pvc" data-anchor="pvc">
+      <div class="section-content items-start">
+        <div class="service-text left">
+          <h2 class="text-3xl md:text-4xl font-light mb-4">Homogener PVC</h2>
+          <p class="text-lg md:text-xl">
+            Durchgehendes Material – besonders widerstandsfähig. Beliebt in Praxen, Schulen und öffentlichen Gebäuden.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="section service-section service-linoleum" data-anchor="linoleum">
+      <div class="section-content items-end">
+        <div class="service-text right">
+          <h2 class="text-3xl md:text-4xl font-light mb-4">Linoleum</h2>
+          <p class="text-lg md:text-xl">
+            Natürlich, ökologisch und langlebig. Antibakteriell und angenehm warm – ideal für nachhaltige Raumgestaltung.
+          </p>
         </div>
       </div>
     </div>
@@ -1164,92 +1096,8 @@
               Entdecken Sie unsere hochwertigen Parkettböden. Sie können entweder ein Muster anfordern, um die Qualität hautnah zu erleben, oder direkt per E-Mail eine Bestellung aufgeben. Wir beraten Sie gerne!
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-              <button class="btn btn-block sm:w-auto" onclick="showForm('sampleForm')">Probe anfordern</button>
-              <button class="btn btn-outline btn-block sm:w-auto" onclick="showForm('orderForm')">Direkt per Mail bestellen</button>
-            </div>
-            <div id="sampleForm" class="space-y-6" style="display: none;">
-              <form action="https://formsubmit.co/deine-email@example.com" method="POST">
-                <input type="hidden" name="_subject" value="Musteranfrage von Hüls-Bodenbeläge">
-                <input type="hidden" name="_next" value="https://yourwebsite.com/#sample-success">
-                <input type="hidden" name="_error" value="https://yourwebsite.com/#sample-error">
-                <input type="hidden" name="_captcha" value="false">
-                <div class="form-group">
-                  <label for="sampleName">Name</label>
-                  <input type="text" id="sampleName" name="name" required>
-                </div>
-                <div class="form-group">
-                  <label for="sampleEmail">E-Mail</label>
-                  <input type="email" id="sampleEmail" name="email" required>
-                </div>
-                <div class="form-group">
-                  <label for="sampleProduct">Gewünschtes Produkt</label>
-                  <select id="sampleProduct" name="product" required>
-                    <option value="" disabled selected>Bitte auswählen</option>
-                    <option value="Parkett">Parkett</option>
-                    <option value="Vinyl">Vinyl Designbelag</option>
-                    <option value="Teppich">Teppich</option>
-                    <option value="Kautschuk">Kautschuk</option>
-                    <option value="Laminat">Laminat</option>
-                    <option value="PVC">Homogener PVC</option>
-                    <option value="Linoleum">Linoleum</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="sampleMessage">Zusätzliche Anmerkungen</label>
-                  <textarea id="sampleMessage" name="message"></textarea>
-                </div>
-                <div class="checkbox-group">
-                  <input type="checkbox" id="sampleGdprConsent" name="gdprConsent" required>
-                  <label for="sampleGdprConsent" class="text-sm font-normal">
-                    Ich stimme der Verarbeitung meiner Daten gemäß der Datenschutzerklärung zu.
-                  </label>
-                </div>
-                <button type="submit" class="btn btn-block" id="sampleSubmitButton" disabled>Probe anfordern</button>
-              </form>
-            </div>
-            <div id="orderForm" class="space-y-6" style="display: none;">
-              <form action="https://formsubmit.co/deine-email@example.com" method="POST">
-                <input type="hidden" name="_subject" value="Bestellanfrage von Hüls-Bodenbeläge">
-                <input type="hidden" name="_next" value="https://yourwebsite.com/#order-success">
-                <input type="hidden" name="_error" value="https://yourwebsite.com/#order-error">
-                <input type="hidden" name="_captcha" value="false">
-                <div class="form-group">
-                  <label for="orderName">Name</label>
-                  <input type="text" id="orderName" name="name" required>
-                </div>
-                <div class="form-group">
-                  <label for="orderEmail">E-Mail</label>
-                  <input type="email" id="orderEmail" name="email" required>
-                </div>
-                <div class="form-group">
-                  <label for="orderProduct">Gewünschtes Produkt</label>
-                  <select id="orderProduct" name="product" required>
-                    <option value="" disabled selected>Bitte auswählen</option>
-                    <option value="Parkett">Parkett</option>
-                    <option value="Vinyl">Vinyl Designbelag</option>
-                    <option value="Teppich">Teppich</option>
-                    <option value="Kautschuk">Kautschuk</option>
-                    <option value="Laminat">Laminat</option>
-                    <option value="PVC">Homogener PVC</option>
-                    <option value="Linoleum">Linoleum</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="orderQuantity">Menge (in m²)</label>
-                  <input type="number" id="orderQuantity" name="quantity" min="1" required>
-                </div>
-                <div class="form-group">
-                  <label for="orderMessage">Zusätzliche Anmerkungen</label>
-                  <textarea id="orderMessage" name="message"></textarea>
-                </div>
-                <div class="checkbox-group">
-                  <input type="checkbox" id="orderGdprConsent" name="gdprConsent" required>
-                  <label for="orderGdprConsent" class="text-sm font-normal">
-                    Ich stimme der Verarbeitung meiner Daten gemäß der Datenschutzerklärung zu.
-                  </label>
-                </div>
-                <button type="submit" class="btn btn-block" id="orderSubmitButton" disabled>Bestellung absenden</button>
-              </form>
+              <a href="sample-request.html" target="_blank" class="btn btn-block sm:w-auto">Probe anfordern</a>
+              <a href="direct-order.html" target="_blank" class="btn btn-outline btn-block sm:w-auto">Direkt per Mail bestellen</a>
             </div>
           </div>
         </div>
@@ -1273,7 +1121,7 @@
               <p class="text-secondary">
                 Telefon: +49 123 456789
                 <br>
-                E-Mail: info@huels-bodenbelege.de
+                E-Mail: info@huels-bodenbelaege.de
               </p>
             </div>
             <div>
@@ -1296,13 +1144,14 @@
           <div class="flex flex-col md:flex-row justify-between items-center">
             <div class="mb-4 md:mb-0">
               <p class="text-sm text-light">
-                © <span id="currentYear"></span> Hüls-Bodenbeläge. Alle Rechte vorbehalten.
+                © <span id="currentYear"></span> Hüls-Bodenbeläge GmbH. Alle Rechte vorbehalten.
               </p>
             </div>
             <div class="flex space-x-6">
               <a href="#" class="text-sm text-light hover:text-primary" onclick="showImpressum(); return false;">
                 Impressum
               </a>
+              <span class="footer-separator"></span>
               <a href="#" class="text-sm text-light hover:text-primary" onclick="showDatenschutz(); return false;">
                 Datenschutz
               </a>
@@ -1340,7 +1189,7 @@
             <p>
               Telefon: +49 123 456789
               <br>
-              E-Mail: info@huels-bodenbelege.de
+              E-Mail: info@huels-bodenbelaege.de
             </p>
           </div>
           <div>
@@ -1436,17 +1285,15 @@
       scrollingSpeed: 1000,
       navigation: true,
       navigationPosition: 'right',
-      navigationTooltips: ['', '', '', '', '', '', ''],
+      navigationTooltips: ['', '', '', '', '', '', '', '', '', '', '', ''],
       showActiveTooltip: true,
-      anchors: ['', '', '', '', '', '', ''],
+      anchors: ['home', 'stats', 'parkett', 'vinyl', 'teppich', 'kautschuk', 'laminat', 'pvc', 'linoleum', 'products', 'location', 'footer'],
       css3: true,
-      slidesNavigation: true,
-      slidesNavPosition: 'bottom',
-      controlArrows: false,
       afterLoad: function(origin, destination, direction) {
         const logo = document.querySelector('.fixed-logo');
         const hamburgerMenu = document.getElementById('hamburgerMenu');
         const menuButtons = document.getElementById('menuButtons');
+        // Manage logo size and hamburger menu visibility
         if (destination.index === 0) {
           logo.classList.remove('small');
           logo.classList.add('large');
@@ -1457,9 +1304,12 @@
           hamburgerMenu.style.display = 'none';
           menuButtons.classList.remove('active');
         }
-      },
-      afterSlideLoad: function(section, origin, destination, direction) {
-        // Optional: Add logic when a slide loads
+        // Hide background images for all sections, show only for active section
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(section => {
+          section.classList.remove('active-bg');
+        });
+        destination.item.classList.add('active-bg');
       }
     });
     document.getElementById('currentYear').textContent = new Date().getFullYear();
@@ -1475,61 +1325,6 @@
         menuButtons.classList.remove('active');
       }
     });
-    // Kontaktformular Logik
-    const contactForm = document.getElementById('contactForm');
-    const formSuccess = document.getElementById('formSuccess');
-    const formError = document.getElementById('formError');
-    const submitButton = document.getElementById('submitButton');
-    const gdprConsent = document.getElementById('gdprConsent');
-    gdprConsent.addEventListener('change', function() {
-      submitButton.disabled = !this.checked;
-    });
-    contactForm.addEventListener('submit', function(e) {
-      if (!gdprConsent.checked) {
-        e.preventDefault();
-        alert('Bitte stimmen Sie der Verarbeitung Ihrer Daten zu.');
-        return;
-      }
-      submitButton.textContent = 'Wird gesendet...';
-      submitButton.disabled = true;
-    });
-    // Musteranfrage Formular Logik
-    const sampleForm = document.querySelector('#sampleForm form');
-    const sampleSubmitButton = document.getElementById('sampleSubmitButton');
-    const sampleGdprConsent = document.getElementById('sampleGdprConsent');
-    sampleGdprConsent.addEventListener('change', function() {
-      sampleSubmitButton.disabled = !this.checked;
-    });
-    sampleForm.addEventListener('submit', function(e) {
-      if (!sampleGdprConsent.checked) {
-        e.preventDefault();
-        alert('Bitte stimmen Sie der Verarbeitung Ihrer Daten zu.');
-        return;
-      }
-      sampleSubmitButton.textContent = 'Wird gesendet...';
-      sampleSubmitButton.disabled = true;
-    });
-    // Bestellformular Logik
-    const orderForm = document.querySelector('#orderForm form');
-    const orderSubmitButton = document.getElementById('orderSubmitButton');
-    const orderGdprConsent = document.getElementById('orderGdprConsent');
-    orderGdprConsent.addEventListener('change', function() {
-      orderSubmitButton.disabled = !this.checked;
-    });
-    orderForm.addEventListener('submit', function(e) {
-      if (!orderGdprConsent.checked) {
-        e.preventDefault();
-        alert('Bitte stimmen Sie der Verarbeitung Ihrer Daten zu.');
-        return;
-      }
-      orderSubmitButton.textContent = 'Wird gesendet...';
-      orderSubmitButton.disabled = true;
-    });
-    // Formular Sichtbarkeit umschalten
-    function showForm(formId) {
-      document.getElementById('sampleForm').style.display = formId === 'sampleForm' ? 'block' : 'none';
-      document.getElementById('orderForm').style.display = formId === 'orderForm' ? 'block' : 'none';
-    }
     // Modals Logik
     function showImpressum() {
       document.getElementById('impressumModal').style.display = 'flex';
@@ -1540,7 +1335,7 @@
       document.body.style.overflow = 'hidden';
     }
     function hideModal(modalId) {
-      document.getElementById('modalId').style.display = 'none';
+      document.getElementById(modalId).style.display = 'none';
       document.body.style.overflow = '';
     }
     window.addEventListener('click', function(e) {
@@ -1557,25 +1352,6 @@
       if (e.key === 'Escape') {
         hideModal('impressumModal');
         hideModal('datenschutzModal');
-      }
-    });
-    // Erfolgs-/Fehlermeldungen basierend auf URL-Hash
-    window.addEventListener('load', function() {
-      if (window.location.hash === '#contact-success') {
-        formSuccess.style.display = 'flex';
-        contactForm.reset();
-        submitButton.disabled = true;
-        setTimeout(() => {
-          formSuccess.style.display = 'none';
-          window.location.hash = '';
-        }, 5000);
-      } else if (window.location.hash === '#contact-error') {
-        formError.style.display = 'flex';
-        submitButton.disabled = false;
-        setTimeout(() => {
-          formError.style.display = 'none';
-          window.location.hash = '';
-        }, 5000);
       }
     });
   </script>
