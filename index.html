@@ -742,7 +742,6 @@
       position: fixed;
       top: 0.5rem;
       left: 0.5rem;
-      width: 20rem;
       height: auto;
       background: transparent;
       padding: 0;
@@ -750,11 +749,20 @@
       display: flex;
       align-items: flex-start;
       justify-content: flex-start;
+      transition: width 0.3s ease; /* Sanfter Übergang für die Größenänderung */
     }
 
     .fixed-logo img {
       width: 100%;
       height: auto;
+    }
+
+    .fixed-logo.large {
+      width: 24rem;
+    }
+
+    .fixed-logo.small {
+      width: 12rem;
     }
 
     .slogan {
@@ -766,6 +774,7 @@
       letter-spacing: 0.05em;
       margin-bottom: 2rem;
     }
+
     /* Anpassung für Service-Text */
     .service-text {
       max-width: 36rem;
@@ -793,36 +802,36 @@
         text-align: center; /* Zentrierter Text auf kleineren Bildschirmen */
       }
     }
+
     @media (max-width: 768px) {
-  #contactForm {
-    max-width: 90%;
-    margin: 0 auto;
-    padding: 1rem;
-  }
-}
+      #contactForm {
+        max-width: 90%;
+        margin: 0 auto;
+        padding: 1rem;
+      }
+    }
 
-@media (max-width: 480px) {
-  #contactForm {
-    max-width: 95%;
-    padding: 0.5rem;
-  }
-}
-@media (max-width: 768px) {
-  .contact-section {
-    max-height: 75vh;
-    overflow-y: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+    @media (max-width: 480px) {
+      #contactForm {
+        max-width: 95%;
+        padding: 0.5rem;
+      }
+    }
 
-  #contactForm {
-    max-width: 90%;
-    padding: 1rem;
-  }
-}
+    @media (max-width: 768px) {
+      .contact-section {
+        max-height: 75vh;
+        overflow-y: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-
+      #contactForm {
+        max-width: 90%;
+        padding: 1rem;
+      }
+    }
 
     .stats-container {
       display: flex;
@@ -867,11 +876,12 @@
     }
 
     @media (max-width: 768px) {
-      .fixed-logo {
-        width: 12rem;
-        height: auto;
-        top: 1rem;
-        left: 1rem;
+      .fixed-logo.large {
+        width: 16rem;
+      }
+
+      .fixed-logo.small {
+        width: 8rem;
       }
 
       .slogan {
@@ -889,9 +899,12 @@
     }
 
     @media (max-width: 480px) {
-      .fixed-logo {
-        width: 8rem;
-        height: auto;
+      .fixed-logo.large {
+        width: 12rem;
+      }
+
+      .fixed-logo.small {
+        width: 6rem;
       }
 
       .slogan {
@@ -910,7 +923,7 @@
   </style>
 </head>
 <body>
-  <div class="fixed-logo animate-slide-down">
+  <div class="fixed-logo animate-slide-down large">
     <img src="Huellogo.png" alt="Huellogo">
   </div>
 
@@ -1278,7 +1291,7 @@
             <h4 class="text-lg font-medium mb-1">Kontaktformular</h4>
             <p>
               Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular
-              inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von
+              inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bear标准ung der Anfrage und für den Fall von
               Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
             </p>
           </div>
@@ -1312,7 +1325,17 @@
       navigationTooltips: ['', '', '', '', '', '', '', '', '', '', '', '', ''],
       showActiveTooltip: true,
       anchors: ['', '', '', '', '', '', '', '', '', '', '', '', ''],
-      css3: true
+      css3: true,
+      afterLoad: function(origin, destination, direction) {
+        const logo = document.querySelector('.fixed-logo');
+        if (destination.index === 0) {
+          logo.classList.remove('small');
+          logo.classList.add('large');
+        } else {
+          logo.classList.remove('large');
+          logo.classList.add('small');
+        }
+      }
     });
 
     document.getElementById('currentYear').textContent = new Date().getFullYear();
