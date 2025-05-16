@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hüls-Bodenbelege - Ihr Spezialist für hochwertige Bodenbeläge</title>
+  <title>Hüls-Bodenbeläge - Ihr Spezialist für hochwertige Bodenbeläge</title>
   <meta name="description" content="Hochwertige Bodenbeläge, Parkettböden, Laminat und Vinylböden. Beratung, Verkauf und professionelle Verlegung aus einer Hand.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
@@ -594,19 +594,15 @@
       .sm\:flex-row {
         flex-direction: row;
       }
-
       .sm\:space-y-0 {
         margin-top: 0 !important;
       }
-
       .sm\:space-x-4 > * + * {
         margin-left: 1rem;
       }
-
       .sm\:w-auto {
         width: auto;
       }
-
       .sm\:w-40 {
         width: 10rem;
       }
@@ -616,31 +612,24 @@
       .md\:flex-row {
         flex-direction: row;
       }
-
       .md\:grid-cols-2 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
-
       .md\:mb-0 {
         margin-bottom: 0;
       }
-
       .md\:text-5xl {
         font-size: 3rem;
       }
-
       .md\:text-2xl {
         font-size: 1.5rem;
       }
-
       .md\:text-4xl {
         font-size: 2.25rem;
       }
-
       .md\:p-12 {
         padding: 3rem;
       }
-
       .md\:px-8 {
         padding-left: 2rem;
         padding-right: 2rem;
@@ -668,18 +657,18 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 0 2rem; /* Größerer Seitenabstand für die erste Seite */
+      padding: 0 2rem;
     }
 
     @media (max-width: 768px) {
       .section-content {
-        padding: 0 2; /* Etwas kleiner für Tablets */
+        padding: 0 2rem;
       }
     }
 
     @media (max-width: 480px) {
       .section-content {
-        padding: 0 1.5rem; /* Minimaler Abstand für Mobilgeräte */
+        padding: 0 1.5rem;
       }
     }
 
@@ -698,7 +687,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(255, 255, 255, 0.8); /* Ausgebleichtes Overlay */
+      background-color: rgba(255, 255, 255, 0.8);
       z-index: 0;
     }
 
@@ -749,7 +738,7 @@
       display: flex;
       align-items: flex-start;
       justify-content: flex-start;
-      transition: width 0.3s ease; /* Sanfter Übergang für die Größenänderung */
+      transition: width 0.3s ease;
     }
 
     .fixed-logo img {
@@ -799,12 +788,14 @@
       .service-text.left {
         margin-left: 1rem;
         margin-right: 1rem;
-        text-align: center; /* Zentrierter Text auf kleineren Bildschirmen */
+        text-align: center;
       }
     }
 
     @media (max-width: 768px) {
-      #contactForm {
+      #contactForm,
+      #sampleForm,
+      #orderForm {
         max-width: 90%;
         margin: 0 auto;
         padding: 1rem;
@@ -812,24 +803,22 @@
     }
 
     @media (max-width: 480px) {
-      #contactForm {
+      #contactForm,
+      #sampleForm,
+      #orderForm {
         max-width: 95%;
         padding: 0.5rem;
       }
     }
 
     @media (max-width: 768px) {
-      .contact-section {
+      .contact-section,
+      .products-section {
         max-height: 75vh;
         overflow-y: auto;
         display: flex;
         justify-content: center;
         align-items: center;
-      }
-
-      #contactForm {
-        max-width: 90%;
-        padding: 1rem;
       }
     }
 
@@ -920,15 +909,96 @@
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
+
+    /* Hamburger Menu Styles */
+    .hamburger-menu {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 30;
+      cursor: pointer;
+      display: none;
+    }
+
+    .hamburger-menu .bar {
+      width: 30px;
+      height: 3px;
+      background-color: var(--text-primary);
+      margin: 6px 0;
+      transition: all 0.3s ease;
+    }
+
+    .menu-buttons {
+      position: fixed;
+      top: 4rem;
+      right: 1rem;
+      background-color: var(--white);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: var(--radius);
+      padding: 1rem;
+      display: none;
+      flex-direction: column;
+      gap: 0.5rem;
+      z-index: 30;
+    }
+
+    .menu-buttons.active {
+      display: flex;
+    }
+
+    .menu-button {
+      padding: 0.5rem 1rem;
+      background-color: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+      text-align: center;
+      transition: background-color 0.2s;
+    }
+
+    .menu-button:hover {
+      background-color: var(--primary-dark);
+    }
+
+    /* Ensure hamburger menu is visible only on homepage */
+    .section.active .hamburger-menu {
+      display: block;
+    }
+
+    /* Fullpage.js slides navigation */
+    .fp-slidesNav.bottom {
+      bottom: 20px;
+    }
+
+    .fp-slidesNav ul li a span {
+      background: var(--primary-light) !important;
+    }
+
+    /* Hide navigation arrows for slides */
+    .fp-controlArrow {
+      display: none !important;
+    }
   </style>
 </head>
 <body>
   <div class="fixed-logo animate-slide-down large">
     <img src="Huellogo.png" alt="Huellogo">
   </div>
-
+  <div class="hamburger-menu" id="hamburgerMenu">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+  <div class="menu-buttons" id="menuButtons">
+    <button class="menu-button" onclick="fullpage_api.moveTo('contact', 0)">Kontaktformular</button>
+    <button class="menu-button" onclick="fullpage_api.moveTo('products', 0)">Bestellung</button>
+    <button class="menu-button" onclick="fullpage_api.moveTo('location', 0)">Kontaktdaten</button>
+  </div>
   <div id="fullpage">
-    <div class="section">
+    <div class="section" data-anchor="home">
       <div class="section-content">
         <h2 class="slogan">Qualität, die man fühlt</h2>
         <p class="text-xl md:text-2xl text-secondary max-w-2xl text-center font-light">
@@ -943,8 +1013,7 @@
         </div>
       </div>
     </div>
-
-    <div class="section">
+    <div class="section" data-anchor="stats">
       <div class="section-content">
         <div class="stats-container">
           <div class="stat-item">
@@ -962,96 +1031,88 @@
         </div>
       </div>
     </div>
-
-    <!-- Service 1: Parkett -->
-    <div class="section service-section service-parkett">
-      <div class="relative z-10 flex flex-col items-end justify-center h-full px-4 md:px-8">
-        <div class="service-text right">
-          <h2 class="text-3xl md:text-4xl font-light mb-4">Parkett</h2>
-          <p class="text-lg md:text-xl">
-            Natur pur – edles Echtholz mit warmer Ausstrahlung. Langlebig und stilvoll für Wohnräume.
-          </p>
+    <!-- Service Sections as Slides -->
+    <div class="section" data-anchor="services">
+      <div class="slide service-section service-parkett">
+        <div class="relative z-10 flex flex-col items-end justify-center h-full px-4 md:px-8">
+          <div class="service-text right">
+            <h2 class="text-3xl md:text-4xl font-light mb-4">Parkett</h2>
+            <p class="text-lg md:text-xl">
+              Natur pur – edles Echtholz mit warmer Ausstrahlung. Langlebig und stilvoll für Wohnräume.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="slide service-section service-vinyl">
+        <div class="relative z-10 flex flex-col items-start justify-center h-full px-4 md:px-8">
+          <div class="service-text left">
+            <h2 class="text-3xl md:text-4xl font-light mb-4">Vinyl Designbelag</h2>
+            <p class="text-lg md:text-xl">
+              Moderne Optik, pflegeleicht und wasserfest. Ideal für Bad, Küche und stark genutzte Räume.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="slide service-section service-teppich">
+        <div class="relative z-10 flex flex-col items-end justify-center h-full px-4 md:px-8">
+          <div class="service-text right">
+            <h2 class="text-3xl md:text-4xl font-light mb-4">Teppich</h2>
+            <p class="text-lg md:text-xl">
+              Weich, warm und gemütlich. Sorgt für Wohnkomfort und gute Akustik – perfekt fürs Schlafzimmer.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="slide service-section service-kautschuk">
+        <div class="relative z-10 flex flex-col items-start justify-center h-full px-4 md:px-8">
+          <div class="service-text left">
+            <h2 class="text-3xl md:text-4xl font-light mb-4">Kautschuk</h2>
+            <p class="text-lg md:text-xl">
+              Robust, rutschhemmend und pflegeleicht. Für stark beanspruchte Flächen und gewerbliche Nutzung.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="slide service-section service-laminat">
+        <div class="relative z-10 flex flex-col items-end justify-center h-full px-4 md:px-8">
+          <div class="service-text right">
+            <h2 class="text-3xl md:text-4xl font-light mb-4">Laminat</h2>
+            <p class="text-lg md:text-xl">
+              Attraktive Holzoptik zum fairen Preis. Kratzfest, pflegeleicht und schnell verlegt.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="slide service-section service-pvc">
+        <div class="relative z-10 flex flex-col items-start justify-center h-full px-4 md:px-8">
+          <div class="service-text left">
+            <h2 class="text-3xl md:text-4xl font-light mb-4">Homogener PVC</h2>
+            <p class="text-lg md:text-xl">
+              Durchgehendes Material – besonders widerstandsfähig. Beliebt in Praxen, Schulen und öffentlichen Gebäuden.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="slide service-section service-linoleum">
+        <div class="relative z-10 flex flex-col items-end justify-center h-full px-4 md:px-8">
+          <div class="service-text right">
+            <h2 class="text-3xl md:text-4xl font-light mb-4">Linoleum</h2>
+            <p class="text-lg md:text-xl">
+              Natürlich, ökologisch und langlebig. Antibakteriell und angenehm warm – ideal für nachhaltige Raumgestaltung.
+            </p>
+          </div>
         </div>
       </div>
     </div>
-
-    <!-- Service 2: Vinyl Designbelag -->
-    <div class="section service-section service-vinyl">
-      <div class="relative z-10 flex flex-col items-start justify-center h-full px-4 md:px-8">
-        <div class="service-text left">
-          <h2 class="text-3xl md:text-4xl font-light mb-4">Vinyl Designbelag</h2>
-          <p class="text-lg md:text-xl">
-            Moderne Optik, pflegeleicht und wasserfest. Ideal für Bad, Küche und stark genutzte Räume.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Service 3: Teppich -->
-    <div class="section service-section service-teppich">
-      <div class="relative z-10 flex flex-col items-end justify-center h-full px-4 md:px-8">
-        <div class="service-text right">
-          <h2 class="text-3xl md:text-4xl font-light mb-4">Teppich</h2>
-          <p class="text-lg md:text-xl">
-            Weich, warm und gemütlich. Sorgt für Wohnkomfort und gute Akustik – perfekt fürs Schlafzimmer.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Service 4: Kautschuk -->
-    <div class="section service-section service-kautschuk">
-      <div class="relative z-10 flex flex-col items-start justify-center h-full px-4 md:px-8">
-        <div class="service-text left">
-          <h2 class="text-3xl md:text-4xl font-light mb-4">Kautschuk</h2>
-          <p class="text-lg md:text-xl">
-            Robust, rutschhemmend und pflegeleicht. Für stark beanspruchte Flächen und gewerbliche Nutzung.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Service 5: Laminat -->
-    <div class="section service-section service-laminat">
-      <div class="relative z-10 flex flex-col items-end justify-center h-full px-4 md:px-8">
-        <div class="service-text right">
-          <h2 class="text-3xl md:text-4xl font-light mb-4">Laminat</h2>
-          <p class="text-lg md:text-xl">
-            Attraktive Holzoptik zum fairen Preis. Kratzfest, pflegeleicht und schnell verlegt.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Service 6: Homogener PVC -->
-    <div class="section service-section service-pvc">
-      <div class="relative z-10 flex flex-col items-start justify-center h-full px-4 md:px-8">
-        <div class="service-text left">
-          <h2 class="text-3xl md:text-4xl font-light mb-4">Homogener PVC</h2>
-          <p class="text-lg md:text-xl">
-            Durchgehendes Material – besonders widerstandsfähig. Beliebt in Praxen, Schulen und öffentlichen Gebäuden.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Service 7: Linoleum -->
-    <div class="section service-section service-linoleum">
-      <div class="relative z-10 flex flex-col items-end justify-center h-full px-4 md:px-8">
-        <div class="service-text right">
-          <h2 class="text-3xl md:text-4xl font-light mb-4">Linoleum</h2>
-          <p class="text-lg md:text-xl">
-            Natürlich, ökologisch und langlebig. Antibakteriell und angenehm warm – ideal für nachhaltige Raumgestaltung.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
+    <div class="section contact-section" data-anchor="contact">
       <div class="section-content">
         <div class="w-full max-w-2xl">
           <h2 class="text-3xl md:text-4xl font-light mb-8 text-center">Kontaktieren Sie uns</h2>
-          <form id="contactForm" class="space-y-6">
+          <form id="contactForm" class="space-y-6" action="https://formsubmit.co/deine-email@example.com" method="POST">
+            <input type="hidden" name="_subject" value="Neue Kontaktanfrage von Hüls-Bodenbeläge">
+            <input type="hidden" name="_next" value="https://yourwebsite.com/#contact-success">
+            <input type="hidden" name="_error" value="https://yourwebsite.com/#contact-error">
+            <input type="hidden" name="_captcha" value="false">
             <div id="formSuccess" class="alert alert-success" style="display: none;">
               <span class="alert-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1061,7 +1122,6 @@
               </span>
               <span>Vielen Dank für Ihre Nachricht! Wir werden uns in Kürze bei Ihnen melden.</span>
             </div>
-
             <div id="formError" class="alert alert-error" style="display: none;">
               <span class="alert-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1072,36 +1132,30 @@
               </span>
               <span>Es gab ein Problem beim Senden Ihrer Nachricht. Bitte versuchen Sie es später erneut.</span>
             </div>
-
             <div class="form-group">
               <label for="name">Name</label>
               <input type="text" id="name" name="name" required>
             </div>
-
             <div class="form-group">
               <label for="email">E-Mail</label>
               <input type="email" id="email" name="email" required>
             </div>
-
             <div class="form-group">
               <label for="message">Nachricht</label>
               <textarea id="message" name="message" required></textarea>
             </div>
-
             <div class="checkbox-group">
               <input type="checkbox" id="gdprConsent" name="gdprConsent" required>
               <label for="gdprConsent" class="text-sm font-normal">
                 Ich stimme der Verarbeitung meiner Daten gemäß der Datenschutzerklärung zu.
               </label>
             </div>
-
             <button type="submit" class="btn btn-block" id="submitButton" disabled>Nachricht senden</button>
           </form>
         </div>
       </div>
     </div>
-
-    <div class="section">
+    <div class="section products-section" data-anchor="products">
       <div class="section-content">
         <div class="w-full max-w-3xl">
           <h2 class="text-3xl md:text-4xl font-light mb-8 text-center">Unsere Produkte</h2>
@@ -1110,15 +1164,98 @@
               Entdecken Sie unsere hochwertigen Parkettböden. Sie können entweder ein Muster anfordern, um die Qualität hautnah zu erleben, oder direkt per E-Mail eine Bestellung aufgeben. Wir beraten Sie gerne!
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="sample-request.html" class="btn btn-block sm:w-auto">Probe anfordern</a>
-              <a href="direct-order.html" class="btn btn-outline btn-block sm:w-auto">Direkt per Mail bestellen</a>
+              <button class="btn btn-block sm:w-auto" onclick="showForm('sampleForm')">Probe anfordern</button>
+              <button class="btn btn-outline btn-block sm:w-auto" onclick="showForm('orderForm')">Direkt per Mail bestellen</button>
+            </div>
+            <div id="sampleForm" class="space-y-6" style="display: none;">
+              <form action="https://formsubmit.co/deine-email@example.com" method="POST">
+                <input type="hidden" name="_subject" value="Musteranfrage von Hüls-Bodenbeläge">
+                <input type="hidden" name="_next" value="https://yourwebsite.com/#sample-success">
+                <input type="hidden" name="_error" value="https://yourwebsite.com/#sample-error">
+                <input type="hidden" name="_captcha" value="false">
+                <div class="form-group">
+                  <label for="sampleName">Name</label>
+                  <input type="text" id="sampleName" name="name" required>
+                </div>
+                <div class="form-group">
+                  <label for="sampleEmail">E-Mail</label>
+                  <input type="email" id="sampleEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                  <label for="sampleProduct">Gewünschtes Produkt</label>
+                  <select id="sampleProduct" name="product" required>
+                    <option value="" disabled selected>Bitte auswählen</option>
+                    <option value="Parkett">Parkett</option>
+                    <option value="Vinyl">Vinyl Designbelag</option>
+                    <option value="Teppich">Teppich</option>
+                    <option value="Kautschuk">Kautschuk</option>
+                    <option value="Laminat">Laminat</option>
+                    <option value="PVC">Homogener PVC</option>
+                    <option value="Linoleum">Linoleum</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="sampleMessage">Zusätzliche Anmerkungen</label>
+                  <textarea id="sampleMessage" name="message"></textarea>
+                </div>
+                <div class="checkbox-group">
+                  <input type="checkbox" id="sampleGdprConsent" name="gdprConsent" required>
+                  <label for="sampleGdprConsent" class="text-sm font-normal">
+                    Ich stimme der Verarbeitung meiner Daten gemäß der Datenschutzerklärung zu.
+                  </label>
+                </div>
+                <button type="submit" class="btn btn-block" id="sampleSubmitButton" disabled>Probe anfordern</button>
+              </form>
+            </div>
+            <div id="orderForm" class="space-y-6" style="display: none;">
+              <form action="https://formsubmit.co/deine-email@example.com" method="POST">
+                <input type="hidden" name="_subject" value="Bestellanfrage von Hüls-Bodenbeläge">
+                <input type="hidden" name="_next" value="https://yourwebsite.com/#order-success">
+                <input type="hidden" name="_error" value="https://yourwebsite.com/#order-error">
+                <input type="hidden" name="_captcha" value="false">
+                <div class="form-group">
+                  <label for="orderName">Name</label>
+                  <input type="text" id="orderName" name="name" required>
+                </div>
+                <div class="form-group">
+                  <label for="orderEmail">E-Mail</label>
+                  <input type="email" id="orderEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                  <label for="orderProduct">Gewünschtes Produkt</label>
+                  <select id="orderProduct" name="product" required>
+                    <option value="" disabled selected>Bitte auswählen</option>
+                    <option value="Parkett">Parkett</option>
+                    <option value="Vinyl">Vinyl Designbelag</option>
+                    <option value="Teppich">Teppich</option>
+                    <option value="Kautschuk">Kautschuk</option>
+                    <option value="Laminat">Laminat</option>
+                    <option value="PVC">Homogener PVC</option>
+                    <option value="Linoleum">Linoleum</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="orderQuantity">Menge (in m²)</label>
+                  <input type="number" id="orderQuantity" name="quantity" min="1" required>
+                </div>
+                <div class="form-group">
+                  <label for="orderMessage">Zusätzliche Anmerkungen</label>
+                  <textarea id="orderMessage" name="message"></textarea>
+                </div>
+                <div class="checkbox-group">
+                  <input type="checkbox" id="orderGdprConsent" name="gdprConsent" required>
+                  <label for="orderGdprConsent" class="text-sm font-normal">
+                    Ich stimme der Verarbeitung meiner Daten gemäß der Datenschutzerklärung zu.
+                  </label>
+                </div>
+                <button type="submit" class="btn btn-block" id="orderSubmitButton" disabled>Bestellung absenden</button>
+              </form>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="section">
+    <div class="section" data-anchor="location">
       <div class="section-content">
         <div class="w-full max-w-2xl">
           <h2 class="text-3xl md:text-4xl font-light mb-8 text-center">Unser Standort</h2>
@@ -1153,7 +1290,6 @@
         </div>
       </div>
     </div>
-
     <div class="section fp-auto-height">
       <footer class="footer">
         <div class="container">
@@ -1176,7 +1312,6 @@
       </footer>
     </div>
   </div>
-
   <div id="impressumModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" style="display: none;">
     <div class="bg-white rounded-lg shadow-lg max-w-2xl w-full max-h-screen overflow-y-auto">
       <div class="p-6">
@@ -1189,19 +1324,17 @@
             </svg>
           </button>
         </div>
-        
         <div class="space-y-6">
           <div>
             <h3 class="text-xl font-semibold mb-2">Angaben gemäß § 5 TMG</h3>
             <p>
-              Hüls-Bodenbelege GmbH
+              Hüls-Bodenbeläge GmbH
               <br>
               Musterstraße 123
               <br>
               12345 Musterstadt
             </p>
           </div>
-
           <div>
             <h3 class="text-xl font-semibold mb-2">Kontakt</h3>
             <p>
@@ -1210,7 +1343,6 @@
               E-Mail: info@huels-bodenbelege.de
             </p>
           </div>
-
           <div>
             <h3 class="text-xl font-semibold mb-2">Registereintrag</h3>
             <p>
@@ -1221,7 +1353,6 @@
               Registernummer: HRB 12345
             </p>
           </div>
-
           <div>
             <h3 class="text-xl font-semibold mb-2">Umsatzsteuer-ID</h3>
             <p>
@@ -1230,7 +1361,6 @@
               DE123456789
             </p>
           </div>
-
           <div>
             <h3 class="text-xl font-semibold mb-2">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h3>
             <p>
@@ -1242,7 +1372,6 @@
             </p>
           </div>
         </div>
-        
         <div class="mt-6">
           <button onclick="hideModal('impressumModal')" class="btn">
             Schließen
@@ -1251,7 +1380,6 @@
       </div>
     </div>
   </div>
-
   <div id="datenschutzModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" style="display: none;">
     <div class="bg-white rounded-lg shadow-lg max-w-2xl w-full max-h-screen overflow-y-auto">
       <div class="p-6">
@@ -1264,48 +1392,35 @@
             </svg>
           </button>
         </div>
-        
         <div class="space-y-6">
           <div>
             <h3 class="text-xl font-semibold mb-2">1. Datenschutz auf einen Blick</h3>
             <h4 class="text-lg font-medium mb-1">Allgemeine Hinweise</h4>
             <p>
-              Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten
-              passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich
-              identifiziert werden können.
+              Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten geschieht, wenn Sie unsere Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.
             </p>
           </div>
-
           <div>
             <h3 class="text-xl font-semibold mb-2">2. Allgemeine Hinweise und Pflichtinformationen</h3>
             <h4 class="text-lg font-medium mb-1">Datenschutz</h4>
             <p>
-              Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre
-              personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser
-              Datenschutzerklärung.
+              Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.
             </p>
           </div>
-
           <div>
             <h3 class="text-xl font-semibold mb-2">3. Datenerfassung auf dieser Website</h3>
             <h4 class="text-lg font-medium mb-1">Kontaktformular</h4>
             <p>
-              Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular
-              inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bear标准ung der Anfrage und für den Fall von
-              Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
+              Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
             </p>
           </div>
-
           <div>
             <h3 class="text-xl font-semibold mb-2">4. Bestellprozess</h3>
             <p>
-              Wenn Sie über unsere Website Produkte bestellen oder Muster anfordern, werden die von Ihnen angegebenen
-              Daten zur Bearbeitung Ihrer Bestellung verwendet. Diese Daten werden nur für den Zweck der Bestellabwicklung
-              verwendet und nicht an Dritte weitergegeben, außer wenn dies für die Bestellabwicklung notwendig ist.
+              Wenn Sie über unsere Website Produkte bestellen oder Muster anfordern, werden die von Ihnen angegebenen Daten zur Bearbeitung Ihrer Bestellung verwendet. Diese Daten werden nur für den Zweck der Bestellabwicklung verwendet und nicht an Dritte weitergegeben, außer wenn dies für die Bestellabwicklung notwendig ist.
             </p>
           </div>
         </div>
-        
         <div class="mt-6">
           <button onclick="hideModal('datenschutzModal')" class="btn">
             Schließen
@@ -1314,7 +1429,6 @@
       </div>
     </div>
   </div>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js"></script>
   <script>
     new fullpage('#fullpage', {
@@ -1322,98 +1436,146 @@
       scrollingSpeed: 1000,
       navigation: true,
       navigationPosition: 'right',
-      navigationTooltips: ['', '', '', '', '', '', '', '', '', '', '', '', ''],
+      navigationTooltips: ['', '', '', '', '', '', ''],
       showActiveTooltip: true,
-      anchors: ['', '', '', '', '', '', '', '', '', '', '', '', ''],
+      anchors: ['', '', '', '', '', '', ''],
       css3: true,
+      slidesNavigation: true,
+      slidesNavPosition: 'bottom',
+      controlArrows: false,
       afterLoad: function(origin, destination, direction) {
         const logo = document.querySelector('.fixed-logo');
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const menuButtons = document.getElementById('menuButtons');
         if (destination.index === 0) {
           logo.classList.remove('small');
           logo.classList.add('large');
+          hamburgerMenu.style.display = 'block';
         } else {
           logo.classList.remove('large');
           logo.classList.add('small');
+          hamburgerMenu.style.display = 'none';
+          menuButtons.classList.remove('active');
         }
+      },
+      afterSlideLoad: function(section, origin, destination, direction) {
+        // Optional: Add logic when a slide loads
       }
     });
-
     document.getElementById('currentYear').textContent = new Date().getFullYear();
-
+    // Hamburger Menu Logic
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const menuButtons = document.getElementById('menuButtons');
+    hamburgerMenu.addEventListener('click', function() {
+      menuButtons.classList.toggle('active');
+    });
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!hamburgerMenu.contains(event.target) && !menuButtons.contains(event.target)) {
+        menuButtons.classList.remove('active');
+      }
+    });
+    // Kontaktformular Logik
     const contactForm = document.getElementById('contactForm');
     const formSuccess = document.getElementById('formSuccess');
     const formError = document.getElementById('formError');
     const submitButton = document.getElementById('submitButton');
     const gdprConsent = document.getElementById('gdprConsent');
-
     gdprConsent.addEventListener('change', function() {
       submitButton.disabled = !this.checked;
     });
-
     contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
       if (!gdprConsent.checked) {
+        e.preventDefault();
         alert('Bitte stimmen Sie der Verarbeitung Ihrer Daten zu.');
         return;
       }
-
       submitButton.textContent = 'Wird gesendet...';
       submitButton.disabled = true;
-
-      setTimeout(() => {
-        const success = Math.random() > 0.1;
-        
-        if (success) {
-          formSuccess.style.display = 'flex';
-          contactForm.reset();
-          submitButton.disabled = true;
-        } else {
-          formError.style.display = 'flex';
-          submitButton.disabled = false;
-        }
-        
-        submitButton.textContent = 'Nachricht senden';
-        
-        setTimeout(() => {
-          formSuccess.style.display = 'none';
-          formError.style.display = 'none';
-        }, 5000);
-      }, 1500);
     });
-
+    // Musteranfrage Formular Logik
+    const sampleForm = document.querySelector('#sampleForm form');
+    const sampleSubmitButton = document.getElementById('sampleSubmitButton');
+    const sampleGdprConsent = document.getElementById('sampleGdprConsent');
+    sampleGdprConsent.addEventListener('change', function() {
+      sampleSubmitButton.disabled = !this.checked;
+    });
+    sampleForm.addEventListener('submit', function(e) {
+      if (!sampleGdprConsent.checked) {
+        e.preventDefault();
+        alert('Bitte stimmen Sie der Verarbeitung Ihrer Daten zu.');
+        return;
+      }
+      sampleSubmitButton.textContent = 'Wird gesendet...';
+      sampleSubmitButton.disabled = true;
+    });
+    // Bestellformular Logik
+    const orderForm = document.querySelector('#orderForm form');
+    const orderSubmitButton = document.getElementById('orderSubmitButton');
+    const orderGdprConsent = document.getElementById('orderGdprConsent');
+    orderGdprConsent.addEventListener('change', function() {
+      orderSubmitButton.disabled = !this.checked;
+    });
+    orderForm.addEventListener('submit', function(e) {
+      if (!orderGdprConsent.checked) {
+        e.preventDefault();
+        alert('Bitte stimmen Sie der Verarbeitung Ihrer Daten zu.');
+        return;
+      }
+      orderSubmitButton.textContent = 'Wird gesendet...';
+      orderSubmitButton.disabled = true;
+    });
+    // Formular Sichtbarkeit umschalten
+    function showForm(formId) {
+      document.getElementById('sampleForm').style.display = formId === 'sampleForm' ? 'block' : 'none';
+      document.getElementById('orderForm').style.display = formId === 'orderForm' ? 'block' : 'none';
+    }
+    // Modals Logik
     function showImpressum() {
       document.getElementById('impressumModal').style.display = 'flex';
       document.body.style.overflow = 'hidden';
     }
-
     function showDatenschutz() {
       document.getElementById('datenschutzModal').style.display = 'flex';
       document.body.style.overflow = 'hidden';
     }
-
     function hideModal(modalId) {
-      document.getElementById(modalId).style.display = 'none';
+      document.getElementById('modalId').style.display = 'none';
       document.body.style.overflow = '';
     }
-
     window.addEventListener('click', function(e) {
       const impressumModal = document.getElementById('impressumModal');
       const datenschutzModal = document.getElementById('datenschutzModal');
-      
       if (e.target === impressumModal) {
         hideModal('impressumModal');
       }
-      
       if (e.target === datenschutzModal) {
         hideModal('datenschutzModal');
       }
     });
-
     window.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         hideModal('impressumModal');
         hideModal('datenschutzModal');
+      }
+    });
+    // Erfolgs-/Fehlermeldungen basierend auf URL-Hash
+    window.addEventListener('load', function() {
+      if (window.location.hash === '#contact-success') {
+        formSuccess.style.display = 'flex';
+        contactForm.reset();
+        submitButton.disabled = true;
+        setTimeout(() => {
+          formSuccess.style.display = 'none';
+          window.location.hash = '';
+        }, 5000);
+      } else if (window.location.hash === '#contact-error') {
+        formError.style.display = 'flex';
+        submitButton.disabled = false;
+        setTimeout(() => {
+          formError.style.display = 'none';
+          window.location.hash = '';
+        }, 5000);
       }
     });
   </script>
