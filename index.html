@@ -692,12 +692,6 @@
       background-position: center;
       background-repeat: no-repeat;
       position: relative;
-      background-image: none; /* Default: no background image */
-    }
-
-    .service-section.active-bg {
-      /* Apply background image only to active section */
-      background-image: inherit;
     }
 
     .service-section::before {
@@ -709,35 +703,6 @@
       height: 100%;
       background-color: rgba(255, 255, 255, 0.8);
       z-index: 0;
-    }
-
-    /* Individuelle Hintergrundbilder für jede Service-Section */
-    .service-parkett {
-      background-image: url('Parkett.png');
-    }
-
-    .service-vinyl {
-      background-image: url('https://placeholder.svg?height=800&width=1200');
-    }
-
-    .service-teppich {
-      background-image: url('https://placeholder.svg?height=800&width=1200');
-    }
-
-    .service-kautschuk {
-      background-image: url('https://placeholder.svg?height=800&width=1200');
-    }
-
-    .service-laminat {
-      background-image: url('https://placeholder.svg?height=800&width=1200');
-    }
-
-    .service-pvc {
-      background-image: url('https://placeholder.svg?height=800&width=1200');
-    }
-
-    .service-linoleum {
-      background-image: url('https://placeholder.svg?height=800&width=1200');
     }
 
     .logo-container {
@@ -1017,7 +982,7 @@
         </div>
       </div>
     </div>
-    <div class="section service-section service-parkett" data-anchor="parkett">
+    <div class="section service-section" style="background-image: url('Parkett.png');" data-anchor="parkett">
       <div class="section-content items-end">
         <div class="service-text right">
           <h2 class="text-3xl md:text-4xl font-light mb-4">Parkett</h2>
@@ -1027,7 +992,7 @@
         </div>
       </div>
     </div>
-    <div class="section service-section service-vinyl" data-anchor="vinyl">
+    <div class="section service-section" style="background-image: url('https://placeholder.svg?height=800&width=1200');" data-anchor="vinyl">
       <div class="section-content items-start">
         <div class="service-text left">
           <h2 class="text-3xl md:text-4xl font-light mb-4">Vinyl Designbelag</h2>
@@ -1037,7 +1002,7 @@
         </div>
       </div>
     </div>
-    <div class="section service-section service-teppich" data-anchor="teppich">
+    <div class="section service-section" style="background-image: url('https://placeholder.svg?height=800&width=1200');" data-anchor="teppich">
       <div class="section-content items-end">
         <div class="service-text right">
           <h2 class="text-3xl md:text-4xl font-light mb-4">Teppich</h2>
@@ -1047,7 +1012,7 @@
         </div>
       </div>
     </div>
-    <div class="section service-section service-kautschuk" data-anchor="kautschuk">
+    <div class="section service-section" style="background-image: url('https://placeholder.svg?height=800&width=1200');" data-anchor="kautschuk">
       <div class="section-content items-start">
         <div class="service-text left">
           <h2 class="text-3xl md:text-4xl font-light mb-4">Kautschuk</h2>
@@ -1057,7 +1022,7 @@
         </div>
       </div>
     </div>
-    <div class="section service-section service-laminat" data-anchor="laminat">
+    <div class="section service-section" style="background-image: url('https://placeholder.svg?height=800&width=1200');" data-anchor="laminat">
       <div class="section-content items-end">
         <div class="service-text right">
           <h2 class="text-3xl md:text-4xl font-light mb-4">Laminat</h2>
@@ -1067,7 +1032,7 @@
         </div>
       </div>
     </div>
-    <div class="section service-section service-pvc" data-anchor="pvc">
+    <div class="section service-section" style="background-image: url('https://placeholder.svg?height=800&width=1200');" data-anchor="pvc">
       <div class="section-content items-start">
         <div class="service-text left">
           <h2 class="text-3xl md:text-4xl font-light mb-4">Homogener PVC</h2>
@@ -1077,7 +1042,7 @@
         </div>
       </div>
     </div>
-    <div class="section service-section service-linoleum" data-anchor="linoleum">
+    <div class="section service-section" style="background-image: url('https://placeholder.svg?height=800&width=1200');" data-anchor="linoleum">
       <div class="section-content items-end">
         <div class="service-text right">
           <h2 class="text-3xl md:text-4xl font-light mb-4">Linoleum</h2>
@@ -1280,6 +1245,7 @@
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js"></script>
   <script>
+    // Initialize fullPage.js
     new fullpage('#fullpage', {
       licenseKey: 'YOUR_KEY_HERE',
       scrollingSpeed: 1000,
@@ -1293,6 +1259,8 @@
         const logo = document.querySelector('.fixed-logo');
         const hamburgerMenu = document.getElementById('hamburgerMenu');
         const menuButtons = document.getElementById('menuButtons');
+        const serviceSections = document.querySelectorAll('.service-section');
+
         // Manage logo size and hamburger menu visibility
         if (destination.index === 0) {
           logo.classList.remove('small');
@@ -1304,40 +1272,63 @@
           hamburgerMenu.style.display = 'none';
           menuButtons.classList.remove('active');
         }
-        // Hide background images for all sections, show only for active section
-        const sections = document.querySelectorAll('.section');
-        sections.forEach(section => {
-          section.classList.remove('active-bg');
+
+        // Manage background images for service sections
+        serviceSections.forEach(section => {
+          // Cache the inline background-image in data-bg if not already set
+          if (!section.dataset.bg) {
+            const bgImage = section.style.backgroundImage;
+            if (bgImage) {
+              section.dataset.bg = bgImage;
+            }
+          }
+          // Set background-image to none for all service sections
+          section.style.backgroundImage = 'none';
         });
-        destination.item.classList.add('active-bg');
+
+        // Restore background-image for the active service section
+        if (destination.item.classList.contains('service-section')) {
+          const cachedBg = destination.item.dataset.bg;
+          if (cachedBg) {
+            destination.item.style.backgroundImage = cachedBg;
+          }
+        }
       }
     });
+
+    // Set current year in footer
     document.getElementById('currentYear').textContent = new Date().getFullYear();
+
     // Hamburger Menu Logic
     const hamburgerMenu = document.getElementById('hamburgerMenu');
     const menuButtons = document.getElementById('menuButtons');
     hamburgerMenu.addEventListener('click', function() {
       menuButtons.classList.toggle('active');
     });
+
     // Close menu when clicking outside
     document.addEventListener('click', function(event) {
       if (!hamburgerMenu.contains(event.target) && !menuButtons.contains(event.target)) {
         menuButtons.classList.remove('active');
       }
     });
-    // Modals Logik
+
+    // Modals Logic
     function showImpressum() {
       document.getElementById('impressumModal').style.display = 'flex';
       document.body.style.overflow = 'hidden';
     }
+
     function showDatenschutz() {
       document.getElementById('datenschutzModal').style.display = 'flex';
       document.body.style.overflow = 'hidden';
     }
+
     function hideModal(modalId) {
       document.getElementById(modalId).style.display = 'none';
       document.body.style.overflow = '';
     }
+
     window.addEventListener('click', function(e) {
       const impressumModal = document.getElementById('impressumModal');
       const datenschutzModal = document.getElementById('datenschutzModal');
@@ -1348,6 +1339,7 @@
         hideModal('datenschutzModal');
       }
     });
+
     window.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         hideModal('impressumModal');
