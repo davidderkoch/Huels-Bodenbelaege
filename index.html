@@ -871,10 +871,15 @@
       }
     }
     @media (max-width: 768px) {
+  .section[data-anchor="home"] .section-content {
+    padding-bottom: 4rem; /* oder mehr, je nach gewünschtem Abstand */
+  }
+
   .section[data-anchor="home"] .section-content > .absolute {
-    bottom: 1rem; /* weiter unten auf kleinen Geräten */
+    bottom: 1.5rem; /* der Pfeil selbst etwas höher */
   }
 }
+
 
 
     html::-webkit-scrollbar {
