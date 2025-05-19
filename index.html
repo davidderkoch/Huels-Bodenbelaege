@@ -150,14 +150,6 @@
       justify-content: space-between;
     }
 
-    .grid {
-      display: grid;
-    }
-
-    .grid-cols-1 {
-      grid-template-columns: repeat(1, minmax(0, 1fr));
-    }
-
     .gap-4 {
       gap: 1rem;
     }
@@ -230,7 +222,7 @@
     }
 
     .bg-white {
-      background-color: var(-- white);
+      background-color: var(--white);
     }
 
     .bg-secondary {
@@ -610,6 +602,17 @@
       }
     }
 
+    @keyframes slideUp {
+      0% {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
     .animate-bounce {
       animation: bounce 2s infinite;
     }
@@ -640,6 +643,151 @@
     .service-text.left {
       transform: translateX(100%);
       opacity: 0;
+    }
+
+    /* Contact section styles */
+    .contact-section {
+      position: relative;
+      background: var(--white);
+      min-height: 100vh;
+      overflow: visible;
+    }
+
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      z-index: 0;
+    }
+
+    .contact-section .section-content {
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .contact-flex {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+      gap: 3rem;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transform: translateY(50px);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .section.active .contact-item {
+      animation: slideUp 0.5s ease-out forwards;
+    }
+
+    .contact-item:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+
+    .contact-item:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .contact-item svg {
+      width: 32px;
+      height: 32px;
+      fill: var(--primary);
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .contact-item:nth-child(1) svg {
+      animation-delay: 0s;
+    }
+
+    .contact-item:nth-child(2) svg {
+      animation-delay: 0.3s;
+    }
+
+    .contact-item:nth-child(3) svg {
+      animation-delay: 0.6s;
+    }
+
+    .contact-item:hover svg {
+      transform: scale(1.2);
+    }
+
+    .contact-item h3 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-item p,
+    .contact-item a {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .contact-item a:hover {
+      color: var(--primary);
+    }
+
+    @media (max-width: 768px) {
+      .contact-section .section-content {
+        padding: 1.5rem;
+      }
+
+      .contact-flex {
+        flex-direction: column;
+        gap: 3rem;
+        padding: 1.5rem;
+      }
+
+      .contact-item {
+        min-width: 0;
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .contact-item h3 {
+        font-size: 1.25rem;
+      }
+
+      .contact-item p,
+      .contact-item a {
+        font-size: 1rem;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .contact-flex {
+        gap: 4rem;
+      }
+
+      .contact-item h3 {
+        font-size: 1.75rem;
+      }
+
+      .contact-item p,
+      .contact-item a {
+        font-size: 1.25rem;
+      }
     }
 
     /* Responsive */
@@ -854,11 +1002,11 @@
       }
     }
 
+    /* Responsive styles for service-text at max-width 768px */
     @media (max-width: 768px) {
       .service-text.right,
       .service-text.left {
-        margin-left: 1rem;
-        margin-right: 1rem;
+        margin: 0 1rem;
         text-align: center;
       }
     }
@@ -906,7 +1054,7 @@
     }
 
     @media (max-width: 768px) {
-      :where(.fixed-logo.large) {
+      .fixed-logo.large {
         width: 16rem;
       }
 
@@ -1059,7 +1207,7 @@
         <p class="text-xl md:text-2xl text-secondary max-w-2xl text-center font-light">
           Hüls-Bodenbeläge steht für Qualität, Präzision und Zuverlässigkeit. Ob Parkett, Vinyl oder Treppen – wir gestalten Ihren Boden mit Leidenschaft und Erfahrung. In ganz Lahr und Umgebung (Ortenaukreis)
         </p>
-        <div class="flex gap-6 mt-1">
+        <div class="flex gap-6 mt-6">
           <a href="https://www.facebook.com/profile.php?id=100093505875895" target="_blank" rel="noopener" aria-label="Facebook">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="text-secondary hover:text-primary" viewBox="0 0 24 24">
               <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.99 3.66 9.12 8.44 9.88v-6.99h-2.54v-2.89h2.54V9.41c0-2.51 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.45h-1.25c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.89h-2.34v6.99C18.34 21.12 22 16.99 22 12z"/>
@@ -1178,37 +1326,23 @@
         </div>
       </div>
     </div>
-    <div class="section" data-anchor="location">
+    <div class="section contact-section" data-anchor="location">
       <div class="section-content">
-        <div class="w-full max-w-2xl">
-          <h2 class="text-3xl md:text-4xl font-light mb-8 text-center">Unser Standort</h2>
-          <div class="bg-secondary p-8 rounded-lg">
-            <div class="mb-6">
-              <h3 class="text-xl font-medium mb-2">Adresse</h3>
-              <p class="text-secondary">
-                Musterstraße 123
-                <br>
-                12345 Musterstadt
-              </p>
-            </div>
-            <div class="mb-6">
-              <h3 class="text-xl font-medium mb-2">Kontakt</h3>
-              <p class="text-secondary">
-                Telefon: +49 123 456789
-                <br>
-                E-Mail: info@huels-bodenbelaege.de
-              </p>
-            </div>
-            <div>
-              <h3 class="text-xl font-medium mb-2">Öffnungszeiten</h3>
-              <p class="text-secondary">
-                Mo - Fr: 9:00 - 18:00 Uhr
-                <br>
-                Sa: 10:00 - 14:00 Uhr
-                <br>
-                So: Geschlossen
-              </p>
-            </div>
+        <div class="contact-flex">
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <h3>Adresse</h3>
+            <p>Musterstraße 123<br>12345 Musterstadt</p>
+          </div>
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.52 1.11-.71.44-.18.88-.22 1.33-.13l4.1 1.02c.55.14.92.62.92 1.2v3.24c0 .69-.56 1.25-1.25 1.25C7.69 22 2 16.31 2 9.75 2 9.06 2.56 8.5 3.25 8.5h3.24c.58 0 1.06.37 1.2.92l1.02 4.1c.09.45.05.89-.13 1.33-.19.44-.44.84-.71 1.11l-2.2 2.2z"/></svg>
+            <h3>Kontakt</h3>
+            <p>Telefon: <a href="tel:+49123456789">+49 123 456789</a><br>E-Mail: <a href="mailto:info@huels-bodenbelaege.de">info@huels-bodenbelaege.de</a></p>
+          </div>
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-13h-2v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+            <h3>Öffnungszeiten</h3>
+            <p>Mo - Fr: 9:00 - 18:00 Uhr<br>Sa: 10:00 - 14:00 Uhr<br>So: Geschlossen</p>
           </div>
         </div>
       </div>
@@ -1253,10 +1387,12 @@
       scrollingSpeed: 1000,
       navigation: true,
       navigationPosition: 'right',
-      navigationTooltips: ['', '', '', '', '', '', '', '', '', '', '', ''],
+      navigationTooltips: ['', '', '', '', '', '', '', '', '', '', '', '', ''],
       showActiveTooltip: true,
       anchors: ['home', 'stats', 'parkett', 'vinyl', 'teppich', 'kautschuk', 'laminat', 'pvc', 'linoleum', 'treppensanierung', 'location', 'seo', 'footer'],
       css3: true,
+      fitToSection: true,
+      autoScrolling: true,
       afterLoad: function(origin, destination, direction) {
         const logo = document.querySelector('.fixed-logo');
         const hamburgerMenu = document.getElementById('hamburgerMenu');
