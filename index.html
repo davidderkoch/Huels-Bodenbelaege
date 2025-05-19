@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
   <style>
     :root {
-      --primary: #3a3a3a;
+      --primary:#a05d2c;
       --primary-light: #4a4a4a;
       --primary-dark: #2a2a2a;
       --secondary: #f5f5f5;
@@ -654,6 +654,25 @@
       .lg\:text-2xl {
         font-size: 1.5rem;
       }
+      .footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .footer .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .footer .flex {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .footer .mb-4 {
+        margin-bottom: 0.5rem;
+      }
     }
 
     /* Fullpage.js custom styles */
@@ -901,15 +920,6 @@
       .stat-item {
         padding: 1rem;
       }
-    }
-
-    html::-webkit-scrollbar {
-      display: none;
-    }
-
-    html {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
     }
 
     .hamburger-menu {
@@ -1164,149 +1174,37 @@
     <div class="section seo-section" data-anchor="seo">
       <div class="section-content">
         <div class="w-full max-w-3xl text-center">
-          <h2 class="text-3xl md:text-4xl font-light mb-8">Ihr Experte für Bodenarbeiten im Ortenaukreis</h2>
-          <div class="space-y-6">
-            <p class="text-lg md:text-xl text-secondary max-w-2xl">
-              Ob Parkett, Vinyl, Laminat oder Treppen – wir verlegen Bodenbeläge präzise, langlebig und mit Leidenschaft. Für private und gewerbliche Räume – vom Untergrund bis zur perfekten Oberfläche.
+          <div class="max-w-2xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-light mb-8">Bodenarbeiten im Ortenaukreis</h2>
+            <p class="text-lg md:text-xl text-secondary">
+              Ob Parkett, Vinyl, Laminat oder Treppen – wir verlegen Bodenbeläge präzise, langlebig und mit Leidenschaft ...
             </p>
           </div>
         </div>
+
       </div>
     </div>
     <div class="section fp-auto-height">
-      <footer class="footer">
-        <div class="container">
-          <div class="flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-4 md:mb-0">
-              <p class="text-sm text-light">
-                © <span id="currentYear"></span> Hüls-Bodenbeläge GmbH. Alle Rechte vorbehalten.
-              </p>
-            </div>
-            <div class="flex space-x-6">
-              <a href="#" class="text-sm text-light hover:text-primary" onclick="showImpressum(); return false;">
-                Impressum
-              </a>
-              <span class="footer-separator"></span>
-              <a href="#" class="text-sm text-light hover:text-primary" onclick="showDatenschutz(); return false;">
-                Datenschutz
-              </a>
-            </div>
-          </div>
+  <footer class="footer">
+    <div class="container">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <p class="text-sm text-light">
+            © <span id="currentYear"></span> Hüls-Bodenbeläge GmbH. Alle Rechte vorbehalten.
+          </p>
         </div>
-      </footer>
-    </div>
-  </div>
-  <div id="impressumModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" style="display: none;">
-    <div class="bg-white rounded-lg shadow-lg max-w-2xl w-full max-h-screen overflow-y-auto">
-      <div class="p-6">
-        <div class="flex justify-between items-center mb-4">
-          <h2 class="text-2xl font-semibold">Impressum</h2>
-          <button onclick="hideModal('impressumModal')" class="text-gray-500 hover:text-gray-700">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
-        </div>
-        <div class="space-y-6">
-          <div>
-            <h3 class="text-xl font-semibold mb-2">Angaben gemäß § 5 TMG</h3>
-            <p>
-              Hüls-Bodenbeläge GmbH
-              <br>
-              Musterstraße 123
-              <br>
-              12345 Musterstadt
-            </p>
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold mb-2">Kontakt</h3>
-            <p>
-              Telefon: +49 123 456789
-              <br>
-              E-Mail: info@huels-bodenbelaege.de
-            </p>
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold mb-2">Registereintrag</h3>
-            <p>
-              Eintragung im Handelsregister.
-              <br>
-              Registergericht: Amtsgericht Musterstadt
-              <br>
-              Registernummer: HRB 12345
-            </p>
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold mb-2">Umsatzsteuer-ID</h3>
-            <p>
-              Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:
-              <br>
-              DE123456789
-            </p>
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold mb-2">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h3>
-            <p>
-              Max Mustermann
-              <br>
-              Musterstraße 123
-              <br>
-              12345 Musterstadt
-            </p>
-          </div>
-        </div>
-        <div class="mt-6">
-          <button onclick="hideModal('impressumModal')" class="btn">
-            Schließen
-          </button>
+        <div>
+          <p class="text-sm text-black whitespace-nowrap">
+            <a href="datenschutz.html" class="text-black hover:text-black">Datenschutz</a>
+            <span class="mx-2">|</span>
+            <a href="impressum.html" class="text-black hover:text-black">Impressum</a>
+          </p>
         </div>
       </div>
     </div>
-  </div>
-  <div id="datenschutzModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" style="display: none;">
-    <div class="bg-white rounded-lg shadow-lg max-w-2xl w-full max-h-screen overflow-y-auto">
-      <div class="p-6">
-        <div class="flex justify-between items-center mb-4">
-          <h2 class="text-2xl font-semibold">Datenschutzerklärung</h2>
-          <button onclick="hideModal('datenschutzModal')" class="text-gray-500 hover:text-gray-700">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
-        </div>
-        <div class="space-y-6">
-          <div>
-            <h3 class="text-xl font-semibold mb-2">1. Datenschutz auf einen Blick</h3>
-            <h4 class="text-lg font-medium mb-1">Allgemeine Hinweise</h4>
-            <p>
-              Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten geschieht, wenn Sie unsere Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.
-            </p>
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold mb-2">2. Allgemeine Hinweise und Pflichtinformationen</h3>
-            <h4 class="text-lg font-medium mb-1">Datenschutz</h4>
-            <p>
-              Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.
-            </p>
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold mb-2">3. Datenerfassung auf dieser Website</h3>
-            <h4 class="text-lg font-medium mb-1">Kontaktformular</h4>
-            <p>
-              Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
-            </p>
-          </div>
-        </div>
-        <div class="mt-6">
-          <button onclick="hideModal('datenschutzModal')" class="btn">
-            Schließen
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+  </footer>
+</div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js"></script>
   <script>
     new fullpage('#fullpage', {
@@ -1348,39 +1246,6 @@
     document.addEventListener('click', function(event) {
       if (!hamburgerMenu.contains(event.target) && !menuButtons.contains(event.target)) {
         menuButtons.classList.remove('active');
-      }
-    });
-
-    function showImpressum() {
-      document.getElementById('impressumModal').style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
-
-    function showDatenschutz() {
-      document.getElementById('datenschutzModal').style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
-
-    function hideModal(modalId) {
-      document.getElementById(modalId).style.display = 'none';
-      document.body.style.overflow = '';
-    }
-
-    window.addEventListener('click', function(e) {
-      const impressumModal = document.getElementById('impressumModal');
-      const datenschutzModal = document.getElementById('datenschutzModal');
-      if (e.target === impressumModal) {
-        hideModal('impressumModal');
-      }
-      if (e.target === datenschutzModal) {
-        hideModal('datenschutzModal');
-      }
-    });
-
-    window.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        hideModal('impressumModal');
-        hideModal('datenschutzModal');
       }
     });
   </script>
