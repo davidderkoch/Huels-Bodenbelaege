@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
   <style>
     :root {
-      --primary:#a05d2c;
+      --primary: #a05d2c;
       --primary-light: #4a4a4a;
       --primary-dark: #2a2a2a;
       --secondary: #f5f5f5;
@@ -230,7 +230,7 @@
     }
 
     .bg-white {
-      background-color: var(--white);
+      background-color: var(-- white);
     }
 
     .bg-secondary {
@@ -588,6 +588,28 @@
       }
     }
 
+    @keyframes slideFromLeft {
+      0% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideFromRight {
+      0% {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
     .animate-bounce {
       animation: bounce 2s infinite;
     }
@@ -598,6 +620,26 @@
 
     .animate-drop {
       animation: drop 1.5s ease-out forwards;
+    }
+
+    /* Apply animations to service-text when section is active */
+    .section.active .service-text.right {
+      animation: slideFromLeft 0.8s ease-out forwards;
+    }
+
+    .section.active .service-text.left {
+      animation: slideFromRight 0.8s ease-out forwards;
+    }
+
+    /* Ensure service-text starts off-screen before animation */
+    .service-text.right {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+
+    .service-text.left {
+      transform: translateX(100%);
+      opacity: 0;
     }
 
     /* Responsive */
@@ -864,7 +906,7 @@
     }
 
     @media (max-width: 768px) {
-      .fixed-logo.large {
+      :where(.fixed-logo.large) {
         width: 16rem;
       }
 
@@ -1181,30 +1223,29 @@
             </p>
           </div>
         </div>
-
       </div>
     </div>
     <div class="section fp-auto-height">
-  <footer class="footer">
-    <div class="container">
-      <div class="flex flex-col md:flex-row justify-between items-center">
-        <div class="mb-4 md:mb-0">
-          <p class="text-sm text-light">
-            © <span id="currentYear"></span> Hüls-Bodenbeläge GmbH. Alle Rechte vorbehalten.
-          </p>
+      <footer class="footer">
+        <div class="container">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+              <p class="text-sm text-light">
+                © <span id="currentYear"></span> Hüls-Bodenbeläge GmbH. Alle Rechte vorbehalten.
+              </p>
+            </div>
+            <div>
+              <p class="text-sm text-black whitespace-nowrap">
+                <a href="datenschutz.html" class="text-black hover:text-black">Datenschutz</a>
+                <span class="mx-2">|</span>
+                <a href="impressum.html" class="text-black hover:text-black">Impressum</a>
+              </p>
+            </div>
+          </div>
         </div>
-        <div>
-          <p class="text-sm text-black whitespace-nowrap">
-            <a href="datenschutz.html" class="text-black hover:text-black">Datenschutz</a>
-            <span class="mx-2">|</span>
-            <a href="impressum.html" class="text-black hover:text-black">Impressum</a>
-          </p>
-        </div>
-      </div>
+      </footer>
     </div>
-  </footer>
-</div>
-
+  </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js"></script>
   <script>
     new fullpage('#fullpage', {
