@@ -224,7 +224,7 @@
     input[type="text"],
     input[type="email"] {
       width: 100%;
-      padding: 0.4rem 0.75rem; /* vertikal reduziert */
+      padding: 0.25rem 0.75rem; /* vertikal reduziert */
       border: 1px solid var(--border);
       border-radius: var(--radius);
       font-family: 'Inter', sans-serif;
@@ -241,9 +241,14 @@
     }
 
     textarea {
-      min-height: 150px;
-      resize: vertical;
-    }
+  min-height: 300px; /* doppelt so hoch */
+  padding: 1rem;
+  resize: vertical;
+  font-size: 3.6rem;
+  font-family: 'Inter', sans-serif;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
 
     .checkbox-group {
       display: flex;
