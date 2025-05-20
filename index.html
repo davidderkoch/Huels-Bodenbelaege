@@ -1089,36 +1089,36 @@
     }
 
     .hero-btn {
-  background-color: #d4b49a;
-  color: #fef8f4;
-  padding: 1rem 2rem;
-  font-size: 1.125rem;
-  font-weight: 500;
-  border-radius: 1.5rem;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
+      background-color: #d4b49a;
+      color: #fef8f4;
+      padding: 1rem 2rem;
+      font-size: 1.125rem;
+      font-weight: 500;
+      border-radius: 1.5rem;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
 
-.hero-btn:hover {
-  background-color: #c4a78d;
-  transform: translateY(-3px) scale(1.02);
-}
+    .hero-btn:hover {
+      background-color: #c4a78d;
+      transform: translateY(-3px) scale(1.02);
+    }
 
-@media (max-width: 768px) {
-  .hero-btn {
-    font-size: 0.875rem; /* Kleinere Schriftgröße */
-    padding: 0.5rem 1.25rem; /* Reduziertes Padding */
-    border-radius: 1rem; /* Etwas kleinere Rundung */
-  }
-}
+    @media (max-width: 768px) {
+      .hero-btn {
+        font-size: 0.875rem; /* Kleinere Schriftgröße */
+        padding: 0.5rem 1.25rem; /* Reduziertes Padding */
+        border-radius: 1rem; /* Etwas kleinere Rundung */
+      }
+    }
 
-@media (max-width: 480px) {
-  .hero-btn {
-    font-size: 0.75rem; /* Noch kleinere Schriftgröße */
-    padding: 0.4rem 1rem; /* Noch kompakteres Padding */
-    border-radius: 0.75rem; /* Weitere Reduktion der Rundung */
-  }
-}
+    @media (max-width: 480px) {
+      .hero-btn {
+        font-size: 0.75rem; /* Noch kleinere Schriftgröße */
+        padding: 0.4rem 1rem; /* Noch kompakteres Padding */
+        border-radius: 0.75rem; /* Weitere Reduktion der Rundung */
+      }
+    }
 
     .stats-container {
       display: flex;
@@ -1221,19 +1221,18 @@
       }
     }
     @media (max-width: 768px) {
-  .hero-btn {
-    font-size: 1rem;
-    padding: 0.75rem 1.5rem;
-  }
-}
+      .hero-btn {
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+      }
+    }
 
-@media (max-width: 480px) {
-  .hero-btn {
-    font-size: 0.875rem;
-    padding: 0.5rem 1rem;
-  }
-}
-
+    @media (max-width: 480px) {
+      .hero-btn {
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+      }
+    }
 
     .hamburger-menu {
       position: fixed;
@@ -1308,25 +1307,194 @@
     .seo-section .w-full.max-w-3xl {
       text-align: center;
     }
-      .hero-btn {
-    background-color: #d4b49a; /* heller, gedeckter Ton */
-    color: var(--white);
-    padding: 1rem 2rem;
-    font-size: 1.125rem;
-    font-weight: 500;
-    border-radius: 9999px; /* sehr weich */
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    border-radius: 1.5rem;
-  color: #fef8f4;
+    .hero-btn {
+      background-color: #d4b49a; /* heller, gedeckter Ton */
+      color: var(--white);
+      padding: 1rem 2rem;
+      font-size: 1.125rem;
+      font-weight: 500;
+      border-radius: 9999px; /* sehr weich */
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border-radius: 1.5rem;
+      color: #fef8f4;
+    }
+    .hero-btn:hover {
+      background-color: #c4a78d; /* leicht dunkler */
+      transform: translateY(-3px) scale(1.02);
+    }
 
-  }
-.hero-btn:hover {
-  background-color: #c4a78d; /* leicht dunkler */
-  transform: translateY(-3px) scale(1.02);
+    /* Trades Section Styles - Überarbeitete Version */
+    .trades-section {
+      position: relative;
+      background: var(--white);
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .trades-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      z-index: 0;
+    }
+
+    .trades-text {
+      position: relative;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 4rem;
+      z-index: 1;
+      padding: 0 2rem;
+    }
+
+    .trades-container {
+      position: relative;
+      height: 200px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .trade-item {
+      position: absolute;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 3rem;
+      color: var(--primary);
+      text-align: center;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      pointer-events: none;
+      width: 100%;
+      padding: 0 1rem;
+    }
+
+    .trade-item.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Responsive styles für Trades Section */
+    @media (max-width: 768px) {
+      .trades-text {
+        font-size: 1.5rem;
+        margin-bottom: 3rem;
+      }
+      
+      .trade-item {
+        font-size: 2.25rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .trades-text {
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+      }
+      
+      .trade-item {
+        font-size: 1.75rem;
+      }
+    }
+
+    /* Gallery Section Styles */
+    .gallery-section {
+      position: relative;
+      background: var(--white);
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .gallery-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      max-width: 90%;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .gallery-track {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* statt 60vh */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
+    .gallery-slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 1s ease;
+      pointer-events: none;
+    }
+
+    .gallery-slide.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .gallery-image {
+  max-width: 95vw;
+  max-height: 90vh;
+  object-fit: cover; /* statt 'contain' für volle Fläche */
+  border-radius: var(--radius);
+}
+
+
+    .gallery-indicators {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .gallery-indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: rgba(160, 93, 44, 0.3);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .gallery-indicator.active {
+      background-color: var(--primary);
+    }
+
+    @media (max-width: 768px) {
+      .gallery-track {
+        min-height: 40vh;
+      }
+      
+      .gallery-image {
+        max-height: 60vh;
+      }
+      
+      .gallery-indicators {
+        bottom: 10px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1347,8 +1515,8 @@
       <div class="section-content">
         <p class="text-2xl font-semibold text-secondary mb-4">Qualität, die man fühlt</p>
         <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
-    Hüls-Bodenbeläge steht für Qualität, Präzision und Erfahrung – in Lahr, Offenburg und ganz Ortenau.
-  </p>
+          Hüls-Bodenbeläge steht für Qualität, Präzision und Erfahrung – in Lahr, Offenburg und ganz Ortenau.
+        </p>
         <div class="flex gap-6 mt-6">
           <a href="https://www.facebook.com/profile.php?id=100093505875895" target="_blank" rel="noopener" aria-label="Facebook">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="text-secondary hover:text-primary" viewBox="0 0 24 24">
@@ -1362,8 +1530,8 @@
           </a>
         </div>
         <div class="mt-8 mb-12">
-  <a href="#parkett" class="btn hero-btn">Unsere Leistungen ansehen</a>
-</div>
+          <a href="#parkett" class="btn hero-btn">Unsere Leistungen ansehen</a>
+        </div>
 
         <div class="absolute" style="bottom: 2.5rem;">
           <div class="animate-bounce">
@@ -1473,6 +1641,23 @@
         </div>
       </div>
     </div>
+    <!-- Überarbeitete Trades Section -->
+    <div class="section service-section trades-section" data-anchor="trades">
+      <div class="section-content">
+        <h2 class="trades-text">Wir arbeiten mit folgenden Handwerksbereichen zusammen:</h2>
+        <div class="trades-container" id="tradesContainer">
+          <div class="trade-item">Malerarbeiten</div>
+          <div class="trade-item">Trockenbau</div>
+          <div class="trade-item">Elektrik</div>
+          <div class="trade-item">Sanitärinstallation</div>
+          <div class="trade-item">Innenausbau</div>
+          <div class="trade-item">Fliesenleger</div>
+          <div class="trade-item">Schreiner</div>
+          <div class="trade-item">Fensterbau</div>
+          <div class="trade-item">Heizungsbau</div>
+        </div>
+      </div>
+    </div>
     <div class="section contact-section" data-anchor="location">
       <div class="section-content">
         <div class="contact-flex">
@@ -1494,14 +1679,32 @@
         </div>
       </div>
     </div>
-    <div class="section seo-section" data-anchor="seo">
+    <div class="section gallery-section" data-anchor="gallery">
       <div class="section-content">
-        <div class="w-full max-w-3xl text-center">
-          <div class="max-w-2xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-light mb-8">Bodenarbeiten im Ortenaukreis</h2>
-            <p class="text-lg md:text-xl text-secondary">
-              Ob Parkett, Vinyl, Laminat oder Treppen – wir verlegen Bodenbeläge präzise, langlebig und mit Leidenschaft ...
-            </p>
+        <div class="gallery-container">
+          <div class="gallery-track" id="galleryTrack">
+            <div class="gallery-slide active">
+              <img src="Bild1.jpg" alt="Bodenbelag Beispiel 1" class="gallery-image">
+            </div>
+            <div class="gallery-slide">
+              <img src="Bild2.jpg" alt="Bodenbelag Beispiel 2" class="gallery-image">
+            </div>
+            <div class="gallery-slide">
+              <img src="Bild3.jpg" alt="Bodenbelag Beispiel 3" class="gallery-image">
+            </div>
+            <div class="gallery-slide">
+              <img src="Bild4.jpg" alt="Bodenbelag Beispiel 4" class="gallery-image">
+            </div>
+            <div class="gallery-slide">
+              <img src="Bild5.jpg" alt="Bodenbelag Beispiel 5" class="gallery-image">
+            </div>
+          </div>
+          <div class="gallery-indicators" id="galleryIndicators">
+            <span class="gallery-indicator active" data-index="0"></span>
+            <span class="gallery-indicator" data-index="1"></span>
+            <span class="gallery-indicator" data-index="2"></span>
+            <span class="gallery-indicator" data-index="3"></span>
+            <span class="gallery-indicator" data-index="4"></span>
           </div>
         </div>
       </div>
@@ -1534,9 +1737,9 @@
       scrollingSpeed: 1000,
       navigation: true,
       navigationPosition: 'right',
-      navigationTooltips: ['', '', '', '', '', '', '', '', '', '', '', '', ''],
+      navigationTooltips: ['', '', '', '', '', '', '', '', '', '', '', '', '', ''],
       showActiveTooltip: true,
-      anchors: ['home', 'stats', 'parkett', 'vinyl', 'teppich', 'kautschuk', 'laminat', 'pvc', 'linoleum', 'treppensanierung', 'location', 'seo', 'footer'],
+      anchors: ['home', 'stats', 'parkett', 'vinyl', 'teppich', 'kautschuk', 'laminat', 'pvc', 'linoleum', 'treppensanierung', 'trades', 'location', 'gallery', 'footer'],
       css3: true,
       fitToSection: true,
       autoScrolling: true,
@@ -1544,7 +1747,6 @@
         const logo = document.querySelector('.fixed-logo');
         const hamburgerMenu = document.getElementById('hamburgerMenu');
         const menuButtons = document.getElementById('menuButtons');
-        const serviceSections = document.querySelectorAll('.service-section');
 
         if (destination.index === 0) {
           logo.classList.remove('small');
@@ -1555,6 +1757,13 @@
           logo.classList.add('small');
           hamburgerMenu.style.display = 'none';
           menuButtons.classList.remove('active');
+        }
+        
+        // Handle trades section animation
+        if (destination.anchor === 'trades') {
+          startTradesAnimation();
+        } else {
+          stopTradesAnimation();
         }
       }
     });
@@ -1572,6 +1781,127 @@
         menuButtons.classList.remove('active');
       }
     });
+    
+    // Trades Animation mit requestAnimationFrame
+    let tradesAnimationId = null;
+    let tradesLastTime = 0;
+    const tradesAnimationDuration = 2000; // 3 Sekunden pro Begriff
+    let currentTradeIndex = 0;
+
+    // Funktion zum Starten der Trades-Animation
+    function startTradesAnimation() {
+      const tradeItems = document.querySelectorAll('.trade-item');
+      
+      // Alle Elemente zurücksetzen
+      tradeItems.forEach(item => {
+        item.classList.remove('active');
+      });
+      
+      // Ersten Begriff anzeigen
+      tradeItems[currentTradeIndex].classList.add('active');
+      
+      // Animation starten
+      tradesLastTime = 0;
+      animateTradeItems();
+    }
+
+    // Animation-Loop für die Trades
+    function animateTradeItems(timestamp) {
+      const tradeItems = document.querySelectorAll('.trade-item');
+      
+      if (!tradesLastTime) tradesLastTime = timestamp;
+      
+      const elapsed = timestamp - tradesLastTime;
+      
+      if (elapsed >= tradesAnimationDuration) {
+        // Zeit für den nächsten Begriff
+        tradeItems[currentTradeIndex].classList.remove('active');
+        
+        // Zum nächsten Begriff wechseln
+        currentTradeIndex = (currentTradeIndex + 1) % tradeItems.length;
+        
+        // Neuen Begriff anzeigen
+        tradeItems[currentTradeIndex].classList.add('active');
+        
+        // Timer zurücksetzen
+        tradesLastTime = timestamp;
+      }
+      
+      // Animation fortsetzen
+      tradesAnimationId = requestAnimationFrame(animateTradeItems);
+    }
+
+    // Funktion zum Stoppen der Trades-Animation
+    function stopTradesAnimation() {
+      if (tradesAnimationId) {
+        cancelAnimationFrame(tradesAnimationId);
+        tradesAnimationId = null;
+      }
+      
+      const tradeItems = document.querySelectorAll('.trade-item');
+      tradeItems.forEach(item => {
+        item.classList.remove('active');
+      });
+    }
+    
+    // Page Visibility API für bessere Performance
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // Seite ist nicht sichtbar, Animation pausieren
+        if (tradesAnimationId) {
+          cancelAnimationFrame(tradesAnimationId);
+          tradesAnimationId = null;
+        }
+      } else {
+        // Seite ist wieder sichtbar, Animation fortsetzen wenn wir auf der trades-Sektion sind
+        const currentSection = fullpage_api.getActiveSection();
+        if (currentSection && currentSection.anchor === 'trades' && !tradesAnimationId) {
+          tradesLastTime = 0;
+          animateTradeItems();
+        }
+      }
+    });
+
+    // Gallery Functionality
+    document.addEventListener('DOMContentLoaded', function () {
+    const slides = document.querySelectorAll('.gallery-slide');
+    const indicators = document.querySelectorAll('.gallery-indicator');
+    let currentSlide = 0;
+    let slideInterval;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+        indicators[i].classList.toggle('active', i === index);
+      });
+      currentSlide = index;
+    }
+
+    function nextSlide() {
+      const next = (currentSlide + 1) % slides.length;
+      showSlide(next);
+    }
+
+    function startSlideshow() {
+      stopSlideshow(); // sichergehen, dass keine doppelte Schleife läuft
+      slideInterval = setInterval(nextSlide, 4000); // alle 4s wechseln
+    }
+
+    function stopSlideshow() {
+      if (slideInterval) clearInterval(slideInterval);
+    }
+
+    // Optional: manuelles Klicken auf Punkte
+    indicators.forEach((indicator, i) => {
+      indicator.addEventListener('click', () => {
+        showSlide(i);
+        startSlideshow(); // neu starten
+      });
+    });
+
+    showSlide(0);       // Ersten Slide anzeigen
+    startSlideshow();   // Direkt starten – egal ob Galerie sichtbar ist oder nicht
+  });
   </script>
 </body>
 </html>
