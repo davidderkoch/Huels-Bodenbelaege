@@ -1088,6 +1088,38 @@
       }
     }
 
+    .hero-btn {
+  background-color: #d4b49a;
+  color: #fef8f4;
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.hero-btn:hover {
+  background-color: #c4a78d;
+  transform: translateY(-3px) scale(1.02);
+}
+
+@media (max-width: 768px) {
+  .hero-btn {
+    font-size: 0.875rem; /* Kleinere Schriftgröße */
+    padding: 0.5rem 1.25rem; /* Reduziertes Padding */
+    border-radius: 1rem; /* Etwas kleinere Rundung */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-btn {
+    font-size: 0.75rem; /* Noch kleinere Schriftgröße */
+    padding: 0.4rem 1rem; /* Noch kompakteres Padding */
+    border-radius: 0.75rem; /* Weitere Reduktion der Rundung */
+  }
+}
+
     .stats-container {
       display: flex;
       justify-content: space-around;
@@ -1307,7 +1339,7 @@
     <div class="bar"></div>
   </div>
   <div class="menu-buttons" id="menuButtons">
-    <a href="contact.html" class="menu-button">Kontakt formular</a>
+    <a href="contact.html" class="menu-button">Kontaktsformular</a>
     <button class="menu-button" onclick="fullpage_api.moveTo('location', 0)">Kontaktdaten</button>
   </div>
   <div id="fullpage">
