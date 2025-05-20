@@ -1087,6 +1087,27 @@
         text-align: center;
       }
     }
+    @media (max-width: 768px) {
+  .gallery-image {
+    border-radius: var(--radius); /* bleibt rund auf Mobile */
+    max-width: 90vw;
+    max-height: 60vh;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .gallery-track {
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+  }
+
+  .gallery-indicators {
+    margin-top: 1rem;
+  }
+}
+
 
     .hero-btn {
       background-color: #d4b49a;
