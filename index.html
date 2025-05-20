@@ -964,6 +964,7 @@
       justify-content: center;
       align-items: center;
       padding: 0 2rem;
+      justify-content: center;
     }
 
     @media (max-width: 768px) {
@@ -1088,14 +1089,6 @@
       }
     }
     @media (max-width: 768px) {
-  .gallery-image {
-    border-radius: var(--radius); /* bleibt rund auf Mobile */
-    max-width: 90vw;
-    max-height: 60vh;
-    object-fit: cover;
-    display: block;
-    margin: 0 auto;
-  }
 
   .gallery-track {
     justify-content: center;
@@ -1123,22 +1116,6 @@
     .hero-btn:hover {
       background-color: #c4a78d;
       transform: translateY(-3px) scale(1.02);
-    }
-
-    @media (max-width: 768px) {
-      .hero-btn {
-        font-size: 0.875rem; /* Kleinere Schriftgröße */
-        padding: 0.5rem 1.25rem; /* Reduziertes Padding */
-        border-radius: 1rem; /* Etwas kleinere Rundung */
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-btn {
-        font-size: 0.75rem; /* Noch kleinere Schriftgröße */
-        padding: 0.4rem 1rem; /* Noch kompakteres Padding */
-        border-radius: 0.75rem; /* Weitere Reduktion der Rundung */
-      }
     }
 
     .stats-container {
@@ -1242,18 +1219,20 @@
       }
     }
     @media (max-width: 768px) {
-      .hero-btn {
-        font-size: 1rem;
-        padding: 0.75rem 1.5rem;
-      }
-    }
+  .hero-btn {
+    font-size: 0.875rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 1rem;
+  }
+}
+@media (max-width: 480px) {
+  .hero-btn {
+    font-size: 0.75rem;
+    padding: 0.4rem 1rem;
+    border-radius: 0.75rem;
+  }
+}
 
-    @media (max-width: 480px) {
-      .hero-btn {
-        font-size: 0.875rem;
-        padding: 0.5rem 1rem;
-      }
-    }
 
     .hamburger-menu {
       position: fixed;
@@ -1327,18 +1306,6 @@
 
     .seo-section .w-full.max-w-3xl {
       text-align: center;
-    }
-    .hero-btn {
-      background-color: #d4b49a; /* heller, gedeckter Ton */
-      color: var(--white);
-      padding: 1rem 2rem;
-      font-size: 1.125rem;
-      font-weight: 500;
-      border-radius: 9999px; /* sehr weich */
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-      border-radius: 1.5rem;
-      color: #fef8f4;
     }
     .hero-btn:hover {
       background-color: #c4a78d; /* leicht dunkler */
@@ -1819,8 +1786,9 @@
       tradeItems[currentTradeIndex].classList.add('active');
       
       // Animation starten
-      tradesLastTime = 0;
-      animateTradeItems();
+      tradesLastTime = performance.now();
+      tradesAnimationId = requestAnimationFrame(animateTradeItems);
+
     }
 
     // Animation-Loop für die Trades
