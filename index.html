@@ -492,6 +492,16 @@
     showSlide(0);       // Ersten Slide anzeigen
     startSlideshow();   // Direkt starten – egal ob Galerie sichtbar ist oder nicht
   });
+  fullpage_api.setAllowScrolling(true);
+
+fullpage_api.on('afterLoad', function(origin, destination) {
+  const section = destination.item;
+  const bg = section.getAttribute('data-bg');
+  if (bg && !section.style.backgroundImage) {
+    section.style.backgroundImage = `url(${bg})`;
+  }
+});
+
   </script>
 </body>
 </html>
