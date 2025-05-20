@@ -1054,6 +1054,7 @@
       color: var(--primary);
       margin-bottom: 0.5rem;
       animation: pulse 2s ease-in-out infinite;
+      will-change: transform;
     }
 
     .stat-item:nth-child(1) h3 {
