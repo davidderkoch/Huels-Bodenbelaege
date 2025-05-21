@@ -1361,39 +1361,46 @@ textarea {
   border-radius: var(--radius);
 }
 
+/* Gallery Indicators Styles */
 .gallery-indicators {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-top: 1rem;
-  position: static;
-  padding-bottom: 2rem;
+  gap: 12px;
+  margin-top: 1.5rem;
+  position: absolute;
+  bottom: 2rem;
+  left: 0;
+  right: 0;
+  z-index: 10;
 }
 
 .gallery-indicator {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background-color: rgba(160, 93, 44, 0.3);
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.gallery-indicator:hover {
+  background-color: rgba(160, 93, 44, 0.6);
 }
 
 .gallery-indicator.active {
   background-color: var(--primary);
+  transform: scale(1.2);
 }
 
 @media (max-width: 768px) {
-  .gallery-track {
-    min-height: 40vh;
-  }
-
-  .gallery-image {
-    max-height: 60vh;
-  }
-
   .gallery-indicators {
-    bottom: 10px;
+    bottom: 1rem;
+    gap: 8px;
+  }
+  
+  .gallery-indicator {
+    width: 10px;
+    height: 10px;
   }
 }
 

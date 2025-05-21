@@ -46,6 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
       afterRender: () => {
         // Load first section background immediately
         loadSectionBackground(document.querySelector(".section.active"))
+        // Initialize gallery after fullpage is rendered
+        initGallery()
         isInitialized = true
       },
     })
@@ -82,27 +84,33 @@ document.addEventListener("DOMContentLoaded", () => {
       stopTradesAnimation()
     }
 
+    // Start gallery slideshow when gallery section is active
+    if (destination.anchor === "gallery") {
+      startGallerySlideshow()
+    }
+
     // Preload next section background
     if (destination.next) {
       loadSectionBackground(destination.next)
     }
     if (destination.prev) {
-  loadSectionBackground(destination.prev)}
+      loadSectionBackground(destination.prev)
+    }
   }
 
   // Handle section leave event
   function handleSectionLeave(origin, destination, direction) {
     // Preload background of the *next* and *previous* sections
-const prevIndex = destination.index - 1;
-const nextIndex = destination.index + 1;
+    const prevIndex = destination.index - 1;
+    const nextIndex = destination.index + 1;
 
-const allSections = document.querySelectorAll(".section");
-if (allSections[prevIndex]) {
-  loadSectionBackground(allSections[prevIndex]);
-}
-if (allSections[nextIndex]) {
-  loadSectionBackground(allSections[nextIndex]);
-}
+    const allSections = document.querySelectorAll(".section");
+    if (allSections[prevIndex]) {
+      loadSectionBackground(allSections[prevIndex]);
+    }
+    if (allSections[nextIndex]) {
+      loadSectionBackground(allSections[nextIndex]);
+    }
 
     // Optimize animations by pausing those not in view
     if (origin.anchor === "trades") {
@@ -188,103 +196,164 @@ if (allSections[nextIndex]) {
     })
   }
 
-  // Gallery Functions
+  // Gallery Functions - Überarbeitete Version
   function initGallery() {
-    const slides = document.querySelectorAll(".gallery-slide")
-    const indicators = document.querySelectorAll(".gallery-indicator")
-    let currentSlide = 0
+    const galleryTrack = document.getElementById("galleryTrack");
+    const indicatorsContainer = document.getElementById("galleryIndicators");
+    const slides = document.querySelectorAll(".gallery-slide");
+    let currentSlide = 0;
+    let slideInterval = null;
+    const slideDuration = 5000; // 5 Sekunden pro Slide
 
+    // Indikatoren dynamisch basierend auf der Anzahl der Slides generieren
+    function generateIndicators() {
+      // Zuerst Container leeren
+      indicatorsContainer.innerHTML = "";
+      
+      // Für jeden Slide einen Indikator erstellen
+      slides.forEach((_, index) => {
+        const indicator = document.createElement("span");
+        indicator.classList.add("gallery-indicator");
+        indicator.setAttribute("data-index", index);
+        
+        // Ersten Indikator als aktiv markieren
+        if (index === 0) {
+          indicator.classList.add("active");
+        }
+        
+        // Click-Event-Handler hinzufügen
+        indicator.addEventListener("click", () => {
+          showSlide(index);
+          resetSlideshow(); // Slideshow zurücksetzen, wenn manuell geklickt wird
+        });
+        
+        indicatorsContainer.appendChild(indicator);
+      });
+      
+      // Debug-Ausgabe
+      console.log(`${slides.length} Indikatoren generiert`);
+    }
+
+    // Zeigt einen bestimmten Slide an
     function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle("active", i === index)
-        indicators[i].classList.toggle("active", i === index)
-      })
-      currentSlide = index
+      // Alle Slides und Indikatoren deaktivieren
+      slides.forEach((slide) => {
+        slide.classList.remove("active");
+      });
+      
+      const indicators = document.querySelectorAll(".gallery-indicator");
+      indicators.forEach((indicator) => {
+        indicator.classList.remove("active");
+      });
+      
+      // Ausgewählten Slide und Indikator aktivieren
+      slides[index].classList.add("active");
+      
+      // Sicherstellen, dass der entsprechende Indikator existiert
+      const activeIndicator = document.querySelector(`.gallery-indicator[data-index="${index}"]`);
+      if (activeIndicator) {
+        activeIndicator.classList.add("active");
+      }
+      
+      // Aktuellen Slide-Index aktualisieren
+      currentSlide = index;
     }
 
+    // Zum nächsten Slide wechseln
     function nextSlide() {
-      const next = (currentSlide + 1) % slides.length
-      showSlide(next)
+      const next = (currentSlide + 1) % slides.length;
+      showSlide(next);
     }
 
+    // Slideshow starten
     function startSlideshow() {
-      stopSlideshow() // ensure no duplicate intervals
-      slideInterval = setInterval(nextSlide, 4000)
+      stopSlideshow(); // Sicherstellen, dass keine doppelten Intervalle existieren
+      slideInterval = setInterval(nextSlide, slideDuration);
     }
 
+    // Slideshow stoppen
     function stopSlideshow() {
-      if (slideInterval) clearInterval(slideInterval)
+      if (slideInterval) {
+        clearInterval(slideInterval);
+        slideInterval = null;
+      }
     }
 
-    // Add click handlers to indicators
-    indicators.forEach((indicator, i) => {
-      indicator.addEventListener("click", () => {
-        showSlide(i)
-        startSlideshow()
-      })
-    })
+    // Slideshow zurücksetzen (stoppen und neu starten)
+    function resetSlideshow() {
+      stopSlideshow();
+      startSlideshow();
+    }
 
-    // Initialize gallery
-    showSlide(0)
+    // Indikatoren generieren
+    generateIndicators();
+    
+    // Ersten Slide anzeigen
+    showSlide(0);
 
-    // Expose functions
+    // Funktionen global verfügbar machen
     window.galleryFunctions = {
       start: startSlideshow,
       stop: stopSlideshow,
-    }
+      next: nextSlide,
+      show: showSlide
+    };
   }
 
   function startGallerySlideshow() {
     if (window.galleryFunctions) {
-      window.galleryFunctions.start()
+      window.galleryFunctions.start();
     }
   }
 
   function pauseGallerySlideshow() {
     if (window.galleryFunctions) {
-      window.galleryFunctions.stop()
+      window.galleryFunctions.stop();
     }
   }
 
   // Event Handlers
   function setupEventHandlers() {
     // Set current year in footer
-    document.getElementById("currentYear").textContent = new Date().getFullYear()
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
 
     // Hamburger menu toggle
-    const hamburgerMenu = document.getElementById("hamburgerMenu")
-    const menuButtons = document.getElementById("menuButtons")
+    const hamburgerMenu = document.getElementById("hamburgerMenu");
+    const menuButtons = document.getElementById("menuButtons");
 
     hamburgerMenu.addEventListener("click", () => {
-      menuButtons.classList.toggle("active")
-    })
+      menuButtons.classList.toggle("active");
+    });
 
     // Close menu when clicking outside
     document.addEventListener("click", (event) => {
       if (!hamburgerMenu.contains(event.target) && !menuButtons.contains(event.target)) {
-        menuButtons.classList.remove("active")
+        menuButtons.classList.remove("active");
       }
-    })
+    });
 
     // Contact button handler
-    document.getElementById("contactButton").addEventListener("click", () => {
-      if (typeof fullpage_api !== "undefined") {
-        fullpage_api.moveTo("location")
-      }
-    })
+    const contactButton = document.getElementById("contactButton");
+    if (contactButton) {
+        contactButton.addEventListener("click", () => {
+            if (typeof fullpage_api !== "undefined") {
+                fullpage_api.moveTo("location");
+            }
+        });
+    }
 
     // Services button handler with debounce
-    const servicesButton = document.getElementById("servicesButton")
+    const servicesButton = document.getElementById("servicesButton");
     if (servicesButton) {
       servicesButton.addEventListener("click", (e) => {
-        e.preventDefault()
+        e.preventDefault();
         // Small delay to ensure button works reliably
         setTimeout(() => {
           if (typeof fullpage_api !== "undefined") {
-            fullpage_api.moveTo("parkett")
+            fullpage_api.moveTo("parkett");
           }
-        }, 50)
-      })
+        }, 50);
+      });
     }
   }
 
@@ -293,29 +362,28 @@ if (allSections[nextIndex]) {
     if (document.hidden) {
       // Page is not visible, pause animations
       if (tradesAnimationId) {
-        cancelAnimationFrame(tradesAnimationId)
-        tradesAnimationId = null
+        cancelAnimationFrame(tradesAnimationId);
+        tradesAnimationId = null;
       }
-      pauseGallerySlideshow()
+      pauseGallerySlideshow();
     } else {
       // Page is visible again, resume animations if on relevant section
-      const currentSection = fullpage_api.getActiveSection()
+      const currentSection = fullpage_api.getActiveSection();
       if (currentSection) {
         if (currentSection.anchor === "trades" && !tradesAnimationId) {
-          tradesLastTime = 0
-          startTradesAnimation()
+          tradesLastTime = 0;
+          startTradesAnimation();
         }
         if (currentSection.anchor === "gallery") {
-          startGallerySlideshow()
+          startGallerySlideshow();
         }
       }
     }
-  })
-
+  });
+  
   // Initialize everything with a slight delay to ensure DOM is ready
   setTimeout(() => {
-    initFullPage()
-    initGallery()
-    setupEventHandlers()
-  }, 100)
-})
+    initFullPage();
+    setupEventHandlers();
+  }, 100);
+});
