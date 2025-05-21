@@ -5,9 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kontakt - Hüls-Bodenbeläge</title>
   <meta name="description" content="Kontaktieren Sie Hüls-Bodenbeläge für Ihre Fragen zu hochwertigen Bodenbelägen.">
+  
+  <!-- Preload critical assets -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+  <link rel="preload" href="Huellogo.png" as="image">
+  
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-  <link rel="stylesheet" href="Contact.css">
-  <link rel="preload" href="Contact.min.css" as="style" onload="this.onload=null;this.rel='stylesheet';">
+  <link rel="stylesheet" href="Contact-optimized.css">
 </head>
 <body>
   <section class="contact-section py-8">
@@ -203,74 +208,8 @@
       </div>
     </div>
   </div>
-  <script>
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
-    // Kontaktformular Logik
-    const contactForm = document.getElementById('contactForm');
-    const formSuccess = document.getElementById('formSuccess');
-    const formError = document.getElementById('formError');
-    const submitButton = document.getElementById('submitButton');
-    const gdprConsent = document.getElementById('gdprConsent');
-    gdprConsent.addEventListener('change', function() {
-      submitButton.disabled = !this.checked;
-    });
-    contactForm.addEventListener('submit', function(e) {
-      if (!gdprConsent.checked) {
-        e.preventDefault();
-        alert('Bitte stimmen Sie der Verarbeitung Ihrer Daten zu.');
-        return;
-      }
-      submitButton.textContent = 'Wird gesendet...';
-      submitButton.disabled = true;
-    });
-    // Modals Logik
-    function showImpressum() {
-      document.getElementById('impressumModal').style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
-    function showDatenschutz() {
-      document.getElementById('datenschutzModal').style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
-    function hideModal(modalId) {
-      document.getElementById(modalId).style.display = 'none';
-      document.body.style.overflow = '';
-    }
-    window.addEventListener('click', function(e) {
-      const impressumModal = document.getElementById('impressumModal');
-      const datenschutzModal = document.getElementById('datenschutzModal');
-      if (e.target === impressumModal) {
-        hideModal('impressumModal');
-      }
-      if (e.target === datenschutzModal) {
-        hideModal('datenschutzModal');
-      }
-    });
-    window.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        hideModal('impressumModal');
-        hideModal('datenschutzModal');
-      }
-    });
-    // Erfolgs-/Fehlermeldungen basierend auf URL-Hash
-    window.addEventListener('load', function() {
-      if (window.location.hash === '#contact-success') {
-        formSuccess.style.display = 'flex';
-        contactForm.reset();
-        submitButton.disabled = true;
-        setTimeout(() => {
-          formSuccess.style.display = 'none';
-          window.location.hash = '';
-        }, 5000);
-      } else if (window.location.hash === '#contact-error') {
-        formError.style.display = 'flex';
-        submitButton.disabled = false;
-        setTimeout(() => {
-          formError.style.display = 'none';
-          window.location.hash = '';
-        }, 5000);
-      }
-    });
-  </script>
+  
+  <!-- Load script at the end of the body -->
+  <script src="contact-optimized.js" defer></script>
 </body>
 </html>

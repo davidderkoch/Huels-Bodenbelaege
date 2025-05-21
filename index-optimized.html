@@ -5,12 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Parkettleger & Bodenleger Lahr, Offenburg, Ortenau - Hüls-Bodenbeläge</title>
   <meta name="description" content="Bodenleger Lahr, Offenburg: Parkett, Vinyl, Laminat, Treppensanierung im Ortenaukreis. Qualität & Präzision.">
+  
+  <!-- Preload critical assets -->
+  <link rel="preload" href="Huellogo.png" as="image">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css" as="style">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js" as="script">
+  
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-  <link rel="stylesheet" href="Styles.css">
-  <link rel="preload" href="Styles.min.css" as="style" onload="this.onload=null;this.rel='stylesheet';">
+  <link rel="stylesheet" href="Styles-optimized.css">
+  
+  <!-- Structured data -->
   <script type="application/ld+json">
-    
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -90,7 +97,7 @@
 </head>
 <body>
   <div class="fixed-logo animate-slide-down large">
-    <img src="Huellogo.png" alt="Hüls-Bodenbeläge - Bodenleger Lahr Ortenau Logo">
+    <img src="Huellogo.png" alt="Hüls-Bodenbeläge - Bodenleger Lahr Ortenau Logo" width="150" height="75">
   </div>
   <div class="hamburger-menu" id="hamburgerMenu">
     <div class="bar"></div>
@@ -99,7 +106,7 @@
   </div>
   <div class="menu-buttons" id="menuButtons">
     <a href="contact.html" class="menu-button">Kontaktformular</a>
-    <button class="menu-button" onclick="fullpage_api.moveTo('location', 0)">Kontaktdaten</button>
+    <button class="menu-button" id="contactButton">Kontaktdaten</button>
   </div>
   <div id="fullpage">
     <div class="section" data-anchor="home">
@@ -121,7 +128,7 @@
           </a>
         </div>
         <div class="mt-8 mb-12">
-          <a href="#parkett" class="btn hero-btn">Unsere Leistungen ansehen</a>
+          <a href="#parkett" class="btn hero-btn" id="servicesButton">Unsere Leistungen ansehen</a>
         </div>
 
         <div class="absolute" style="bottom: 2.5rem;">
@@ -151,7 +158,7 @@
         </div>
       </div>
     </div>
-    <div class="section service-section" style="background-image: url('Parkett.png');" data-anchor="parkett">
+    <div class="section service-section" data-anchor="parkett" data-bg="Parkett.png">
       <div class="section-content items-end">
         <div class="service-text right">
           <h2 class="text-3xl lg:text-5xl font-light mb-4">Parkett</h2>
@@ -161,7 +168,7 @@
         </div>
       </div>
     </div>
-    <div class="section service-section" style="background-image: url('Vinyl.png');" data-anchor="vinyl">
+    <div class="section service-section" data-anchor="vinyl" data-bg="Vinyl.png">
       <div class="section-content items-start">
         <div class="service-text left">
           <h2 class="text-3xl lg:text-5xl font-light mb-4">Vinyl</h2>
@@ -172,7 +179,7 @@
         </div>
       </div>
     </div>
-    <div class="section service-section" style="background-image: url('Teppich.png');" data-anchor="teppich">
+    <div class="section service-section" data-anchor="teppich" data-bg="Teppich.png">
       <div class="section-content items-end">
         <div class="service-text right">
           <h2 class="text-3xl lg:text-5xl font-light mb-4">Teppichboden</h2>
@@ -182,7 +189,7 @@
         </div>
       </div>
     </div>
-    <div class="section service-section" style="background-image: url('Kautschuk.png');" data-anchor="kautschuk">
+    <div class="section service-section" data-anchor="kautschuk" data-bg="Kautschuk.png">
       <div class="section-content items-start">
         <div class="service-text left">
           <h2 class="text-3xl lg:text-5xl font-light mb-4">Kautschukboden</h2>
@@ -192,7 +199,7 @@
         </div>
       </div>
     </div>
-    <div class="section service-section" style="background-image: url('Laminat.png');" data-anchor="laminat">
+    <div class="section service-section" data-anchor="laminat" data-bg="Laminat.png">
       <div class="section-content items-end">
         <div class="service-text right">
           <h2 class="text-3xl lg:text-5xl font-light mb-4">Laminat</h2>
@@ -202,7 +209,7 @@
         </div>
       </div>
     </div>
-    <div class="section service-section" style="background-image: url('PVC.png');" data-anchor="pvc">
+    <div class="section service-section" data-anchor="pvc" data-bg="PVC.png">
       <div class="section-content items-start">
         <div class="service-text left">
           <h2 class="text-3xl lg:text-5xl font-light mb-4">PVC-Boden</h2>
@@ -212,7 +219,7 @@
         </div>
       </div>
     </div>
-    <div class="section service-section" style="background-image: url('Linoleum.png');" data-anchor="linoleum">
+    <div class="section service-section" data-anchor="linoleum" data-bg="Linoleum.png">
       <div class="section-content items-end">
         <div class="service-text right">
           <h2 class="text-3xl lg:text-5xl font-light mb-4">Linoleum</h2>
@@ -222,7 +229,7 @@
         </div>
       </div>
     </div>
-    <div class="section service-section" style="background-image: url('Treppe.png');" data-anchor="treppensanierung">
+    <div class="section service-section" data-anchor="treppensanierung" data-bg="Treppe.png">
       <div class="section-content items-start">
         <div class="service-text left">
           <h2 class="text-3xl lg:text-5xl font-light mb-4">Treppensanierung</h2>
@@ -273,19 +280,19 @@
         <div class="gallery-container">
           <div class="gallery-track" id="galleryTrack">
             <div class="gallery-slide active">
-              <img src="Bild1.jpg" alt="Bodenbelag Beispiel 1" class="gallery-image">
+              <img src="Bild1.jpg" alt="Bodenbelag Beispiel 1" class="gallery-image" loading="lazy">
             </div>
             <div class="gallery-slide">
-              <img src="Bild2.jpg" alt="Bodenbelag Beispiel 2" class="gallery-image">
+              <img src="Bild2.jpg" alt="Bodenbelag Beispiel 2" class="gallery-image" loading="lazy">
             </div>
             <div class="gallery-slide">
-              <img src="Bild3.jpg" alt="Bodenbelag Beispiel 3" class="gallery-image">
+              <img src="Bild3.jpg" alt="Bodenbelag Beispiel 3" class="gallery-image" loading="lazy">
             </div>
             <div class="gallery-slide">
-              <img src="Bild4.jpg" alt="Bodenbelag Beispiel 4" class="gallery-image">
+              <img src="Bild4.jpg" alt="Bodenbelag Beispiel 4" class="gallery-image" loading="lazy">
             </div>
             <div class="gallery-slide">
-              <img src="Bild5.jpg" alt="Bodenbelag Beispiel 5" class="gallery-image">
+              <img src="Bild5.jpg" alt="Bodenbelag Beispiel 5" class="gallery-image" loading="lazy">
             </div>
           </div>
           <div class="gallery-indicators" id="galleryIndicators">
@@ -319,189 +326,9 @@
       </footer>
     </div>
   </div>
+  
+  <!-- Load scripts at the end of the body -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js"></script>
-  <script>
-    new fullpage('#fullpage', {
-      licenseKey: 'YOUR_KEY_HERE',
-      scrollingSpeed: 1000,
-      navigation: true,
-      navigationPosition: 'right',
-      navigationTooltips: ['', '', '', '', '', '', '', '', '', '', '', '', '', ''],
-      showActiveTooltip: true,
-      anchors: ['home', 'stats', 'parkett', 'vinyl', 'teppich', 'kautschuk', 'laminat', 'pvc', 'linoleum', 'treppensanierung', 'trades', 'location', 'gallery', 'footer'],
-      css3: true,
-      fitToSection: true,
-      autoScrolling: true,
-      afterLoad: function(origin, destination, direction) {
-        const logo = document.querySelector('.fixed-logo');
-        const hamburgerMenu = document.getElementById('hamburgerMenu');
-        const menuButtons = document.getElementById('menuButtons');
-
-        if (destination.index === 0) {
-          logo.classList.remove('small');
-          logo.classList.add('large');
-          hamburgerMenu.style.display = 'block';
-        } else {
-          logo.classList.remove('large');
-          logo.classList.add('small');
-          hamburgerMenu.style.display = 'none';
-          menuButtons.classList.remove('active');
-        }
-        
-        // Handle trades section animation
-        if (destination.anchor === 'trades') {
-          startTradesAnimation();
-        } else {
-          stopTradesAnimation();
-        }
-      }
-    });
-
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-    const hamburgerMenu = document.getElementById('hamburgerMenu');
-    const menuButtons = document.getElementById('menuButtons');
-    hamburgerMenu.addEventListener('click', function() {
-      menuButtons.classList.toggle('active');
-    });
-
-    document.addEventListener('click', function(event) {
-      if (!hamburgerMenu.contains(event.target) && !menuButtons.contains(event.target)) {
-        menuButtons.classList.remove('active');
-      }
-    });
-    
-    // Trades Animation mit requestAnimationFrame
-    let tradesAnimationId = null;
-    let tradesLastTime = 0;
-    const tradesAnimationDuration = 2000; // 3 Sekunden pro Begriff
-    let currentTradeIndex = 0;
-
-    // Funktion zum Starten der Trades-Animation
-    function startTradesAnimation() {
-      const tradeItems = document.querySelectorAll('.trade-item');
-      
-      // Alle Elemente zurücksetzen
-      tradeItems.forEach(item => {
-        item.classList.remove('active');
-      });
-      
-      // Ersten Begriff anzeigen
-      tradeItems[currentTradeIndex].classList.add('active');
-      
-      // Animation starten
-      tradesLastTime = performance.now();
-      tradesAnimationId = requestAnimationFrame(animateTradeItems);
-
-    }
-
-    // Animation-Loop für die Trades
-    function animateTradeItems(timestamp) {
-      const tradeItems = document.querySelectorAll('.trade-item');
-      
-      if (!tradesLastTime) tradesLastTime = timestamp;
-      
-      const elapsed = timestamp - tradesLastTime;
-      
-      if (elapsed >= tradesAnimationDuration) {
-        // Zeit für den nächsten Begriff
-        tradeItems[currentTradeIndex].classList.remove('active');
-        
-        // Zum nächsten Begriff wechseln
-        currentTradeIndex = (currentTradeIndex + 1) % tradeItems.length;
-        
-        // Neuen Begriff anzeigen
-        tradeItems[currentTradeIndex].classList.add('active');
-        
-        // Timer zurücksetzen
-        tradesLastTime = timestamp;
-      }
-      
-      // Animation fortsetzen
-      tradesAnimationId = requestAnimationFrame(animateTradeItems);
-    }
-
-    // Funktion zum Stoppen der Trades-Animation
-    function stopTradesAnimation() {
-      if (tradesAnimationId) {
-        cancelAnimationFrame(tradesAnimationId);
-        tradesAnimationId = null;
-      }
-      
-      const tradeItems = document.querySelectorAll('.trade-item');
-      tradeItems.forEach(item => {
-        item.classList.remove('active');
-      });
-    }
-    
-    // Page Visibility API für bessere Performance
-    document.addEventListener('visibilitychange', function() {
-      if (document.hidden) {
-        // Seite ist nicht sichtbar, Animation pausieren
-        if (tradesAnimationId) {
-          cancelAnimationFrame(tradesAnimationId);
-          tradesAnimationId = null;
-        }
-      } else {
-        // Seite ist wieder sichtbar, Animation fortsetzen wenn wir auf der trades-Sektion sind
-        const currentSection = fullpage_api.getActiveSection();
-        if (currentSection && currentSection.anchor === 'trades' && !tradesAnimationId) {
-          tradesLastTime = 0;
-          animateTradeItems();
-        }
-      }
-    });
-
-    // Gallery Functionality
-    document.addEventListener('DOMContentLoaded', function () {
-    const slides = document.querySelectorAll('.gallery-slide');
-    const indicators = document.querySelectorAll('.gallery-indicator');
-    let currentSlide = 0;
-    let slideInterval;
-
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-        indicators[i].classList.toggle('active', i === index);
-      });
-      currentSlide = index;
-    }
-
-    function nextSlide() {
-      const next = (currentSlide + 1) % slides.length;
-      showSlide(next);
-    }
-
-    function startSlideshow() {
-      stopSlideshow(); // sichergehen, dass keine doppelte Schleife läuft
-      slideInterval = setInterval(nextSlide, 4000); // alle 4s wechseln
-    }
-
-    function stopSlideshow() {
-      if (slideInterval) clearInterval(slideInterval);
-    }
-
-    // Optional: manuelles Klicken auf Punkte
-    indicators.forEach((indicator, i) => {
-      indicator.addEventListener('click', () => {
-        showSlide(i);
-        startSlideshow(); // neu starten
-      });
-    });
-
-    showSlide(0);       // Ersten Slide anzeigen
-    startSlideshow();   // Direkt starten – egal ob Galerie sichtbar ist oder nicht
-  });
-  fullpage_api.setAllowScrolling(true);
-
-fullpage_api.on('afterLoad', function(origin, destination) {
-  const section = destination.item;
-  const bg = section.getAttribute('data-bg');
-  if (bg && !section.style.backgroundImage) {
-    section.style.backgroundImage = `url(${bg})`;
-  }
-});
-
-  </script>
+  <script src="main-optimized.js" defer></script>
 </body>
 </html>
