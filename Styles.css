@@ -1340,8 +1340,8 @@ textarea {
 .gallery-slide {
   position: absolute;
   width: 100%;
-  height: 100%;
-  display: flex;
+  height: auto;
+  display: none;
   align-items: center;
   justify-content: center;
   opacity: 0;
@@ -1350,6 +1350,7 @@ textarea {
 }
 
 .gallery-slide.active {
+  display: flex;
   opacity: 1;
   pointer-events: auto;
 }
@@ -1412,4 +1413,16 @@ html::-webkit-scrollbar {
 html {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+@media (max-width: 768px) {
+  .gallery-section,
+  .gallery-track,
+  .gallery-slide {
+    height: auto;
+    min-height: auto;
+  }
+
+  .gallery-image {
+    max-height: 60vh;
+  }
 }
