@@ -356,7 +356,64 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   }
+  // Event Handlers
+  function setupEventHandlers() {
+    // Set current year in footer
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
 
+    // Hamburger menu toggle
+    const hamburgerMenu = document.getElementById("hamburgerMenu");
+    const menuButtons = document.getElementById("menuButtons");
+
+    hamburgerMenu.addEventListener("click", () => {
+      menuButtons.classList.toggle("active");
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", (event) => {
+      if (!hamburgerMenu.contains(event.target) && !menuButtons.contains(event.target)) {
+        menuButtons.classList.remove("active");
+      }
+    });
+
+    // Contact button handler
+    const contactButton = document.getElementById("contactButton");
+    if (contactButton) {
+        contactButton.addEventListener("click", () => {
+            menuButtons.classList.remove("active");
+            if (typeof fullpage_api !== "undefined") {
+                fullpage_api.moveTo("location");
+            }
+        });
+    }
+
+    const aboutButton = document.getElementById("aboutButton");
+    if (aboutButton) {
+      aboutButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        menuButtons.classList.remove("active");
+        setTimeout(() => {
+          if (typeof fullpage_api !== "undefined") {
+            fullpage_api.moveTo("info");
+          }
+        }, 50);
+      });
+    }
+
+    // Services button handler with debounce
+    const servicesButton = document.getElementById("servicesButton");
+    if (servicesButton) {
+      servicesButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        // Small delay to ensure button works reliably
+        setTimeout(() => {
+          if (typeof fullpage_api !== "undefined") {
+            fullpage_api.moveTo("parkett");
+          }
+        }, 50);
+      });
+    }
+  }
   // Page Visibility API for better performance
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
