@@ -1434,11 +1434,13 @@ html {
 }
 
 .hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(255,255,255,0.75);
-  z-index: 0;
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: brightness(1.15);
+    z-index: 0;
 }
+
 
 .hero-content {
   position: relative;
@@ -1449,10 +1451,11 @@ html {
 }
 
 .hero-title {
-  font-size: 3rem;
-  font-weight: 300;
-  margin-bottom: 1rem;
-  color: var(--text-primary);
+    font-weight: 600;                 /* kräftiger, aber nicht fett-klotzig */
+    font-size: 3.8rem;                /* etwas größer wirkt edler */
+    letter-spacing: -0.5px;           /* leichte Verdichtung */
+    color: #2b2b2b;                   /* dunkles, hochwertiges Grau */
+    text-shadow: 0 2px 6px rgba(0,0,0,0.08); /* dezentes Premium-Shadowing */
 }
 
 .hero-subtitle {
@@ -1906,4 +1909,92 @@ html {
   .menu-info p {
     font-size: 0.8rem;
   }
+}
+
+/* Einheitlich schöne, weiße Hamburger-Bar */
+.hamburger-menu .bar {
+    width: 28px;
+    height: 2.5px;              /* exakt gleiche Dicke */
+    background-color: #ffffff;  /* weiß */
+    margin: 6px 0;
+    border-radius: 2px;         /* leichte Abrundung für Premium-Look */
+    transition: all 0.3s ease;
+}
+
+/* Optional: Auf der Startseite stärker weiß machen */
+.section[data-anchor="home"] .hamburger-menu .bar {
+    background-color: #ffffff;
+}
+
+/* Optional: Beim Öffnen animierte "X"-Transformation */
+.hamburger-menu.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Heller Fade beginnt ab der Mitte und wird nach unten komplett weiß */
+.hero-section::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 55%;  /* Fade beginnt etwas über der Mitte */
+    pointer-events: none;
+    z-index: 10;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0) 0%,      /* Bild ganz normal */
+        rgba(255, 255, 255, 0.15) 30%,  /* weich, sehr subtil */
+        rgba(255, 255, 255, 0.35) 55%,  /* sichtbar heller */
+        rgba(255, 255, 255, 0.65) 80%,  /* deutlicher Übergang */
+        rgba(255, 255, 255, 1) 100%     /* ganz unten hell/weiß */
+    );
+}
+
+/* Startseite hell machen – garantiert */
+.section[data-anchor="home"] {
+    position: relative;
+}
+
+.section[data-anchor="home"]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: rgba(255, 255, 255, 0.50); /* Helligkeit 50% */
+    backdrop-filter: brightness(1.25);
+}
+
+/* Exklusive Premium-Überschrift – nur Startseite */
+.section[data-anchor="home"] .hero-title {
+    font-size: clamp(3.2rem, 6.5vw, 4rem);
+    font-weight: 400; /* schlanker, moderner */
+    letter-spacing: -0.02em;
+    color: #ffffff;
+
+    /* Edler Glow-Effekt – sehr dezent */
+    text-shadow:
+        0 3px 12px rgba(0,0,0,0.35),
+        0 0 24px rgba(255,255,255,0.10);
+
+    /* feine Eleganz statt Wucht */
+    backdrop-filter: blur(1px);
+}
+
+/* Mobile: Galerie unabhängig scrollen können */
+@media (max-width: 768px) {
+    .gallery {
+        overflow-y: auto !important;
+        max-height: 60vh;                 /* verhindert, dass die Seite „stecken bleibt“ */
+        -webkit-overflow-scrolling: touch; /* flüssiges iPhone-Scrollen */
+    }
 }

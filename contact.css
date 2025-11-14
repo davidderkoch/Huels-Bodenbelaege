@@ -526,3 +526,12 @@ html {
 .whitespace-nowrap {
   white-space: nowrap;
 }
+.honeypot {
+    position: absolute;
+    left: -5000px;  
+    top: -5000px;
+    height: 0;
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+}
