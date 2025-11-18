@@ -2058,3 +2058,16 @@ html {
     margin-top: 1rem;
   }
 }
+/* Mobile Fix: Mehr Abstand oben auf der Startseite */
+@media (max-width: 768px) {
+  .hero-section .hero-content {
+    padding-top: 7rem !important;
+  }
+}
+
+/* Sehr kleine Geräte, z. B. iPhone SE */
+@media (max-width: 480px) {
+  .hero-section .hero-content {
+    padding-top: 8.5rem !important;
+  }
+}
