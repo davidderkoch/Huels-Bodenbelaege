@@ -20,54 +20,51 @@
       <div class="flex flex-col items-center">
         <h2 class="text-3xl md:text-4xl font-light mb-8 text-center">Kontaktieren Sie uns</h2>
         <div class="w-full max-w-2xl">
-          <form id="contactForm" class="space-y-6" action="https://formsubmit.co/info@huels-bodenbelaege.de" method="POST">
-            <input type="hidden" name="_subject" value="Neue Kontaktanfrage durch Ihre Webseite">
-            <input type="hidden" name="_next" value="https://huels-bodenbelaege.de/contact.html#contact-success">
-            <input type="hidden" name="_error" value="https://huels-bodenbelaege.de/contact.html#contact-error">
-            <input type="hidden" name="_captcha" value="false">
-            <div id="formSuccess" class="alert alert-success" style="display: none;">
-              <span class="alert-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                </svg>
-              </span>
-              <span>Vielen Dank für Ihre Nachricht! Wir werden uns in Kürze bei Ihnen melden.</span>
+          <form
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            id="contactForm"
+            class="space-y-6"
+          >
+            <input type="hidden" name="form-name" value="contact">
+
+            <!-- Honeypot (unsichtbar) -->
+            <div style="display:none;">
+              <label>
+                Don’t fill this out:
+                <input name="bot-field">
+              </label>
             </div>
-            <div id="formError" class="alert alert-error" style="display: none;">
-              <span class="alert-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="12" y1="8" x2="12" y2="12"></line>
-                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                </svg>
-              </span>
-              <span>Es gab ein Problem beim Senden Ihrer Nachricht. Bitte versuchen Sie es später erneut.</span>
-            </div>
+
             <div class="form-group">
               <label for="name">Name</label>
               <input type="text" id="name" name="name" required>
             </div>
+
             <div class="form-group">
               <label for="email">E-Mail</label>
               <input type="email" id="email" name="email" required>
             </div>
+
             <div class="form-group">
               <label for="message">Nachricht</label>
               <textarea id="message" name="message" required></textarea>
             </div>
-            <div style="display:none;">
-              <input type="text" name="_honey" autocomplete="off">
-            </div>
 
             <div class="checkbox-group">
-              <input type="checkbox" id="gdprConsent" name="gdprConsent" required>
-              <label for="gdprConsent" class="text-sm font-normal">
+              <input type="checkbox" id="gdprConsent" required>
+              <label for="gdprConsent" class="text-sm">
                 Ich stimme der Verarbeitung meiner Daten gemäß der Datenschutzerklärung zu.
               </label>
             </div>
-            <button type="submit" class="btn btn-block" id="submitButton" disabled>Nachricht senden</button>
+
+            <button type="submit" class="btn btn-block" id="submitButton" disabled>
+              Nachricht senden
+            </button>
           </form>
+
         </div>
         <div class="mt-4">
           <a href="index.html" class="btn btn-outline">Zurück zur Startseite</a>
