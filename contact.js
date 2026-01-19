@@ -9,13 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const formError = document.getElementById("formError")
   const submitButton = document.getElementById("submitButton")
   const gdprConsent = document.getElementById("gdprConsent")
-  const params = new URLSearchParams(window.location.search)
-
-if (params.get("success") === "true") {
-  formSuccess.style.display = "flex"
-  contactForm.reset()
-}
-
 
   // Enable/disable submit button based on GDPR consent
   gdprConsent.addEventListener("change", function () {
